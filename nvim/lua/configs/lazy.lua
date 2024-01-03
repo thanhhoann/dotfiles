@@ -11,11 +11,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- ---------------------------------------
+
 local COLOR_SCHEMES = {
     { "folke/tokyonight.nvim" },
     { "tiagovla/tokyodark.nvim" },
     { 'marko-cerovac/material.nvim' }
 }
+
+-- ---------------------------------------
 
 local LSP = {
     { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
@@ -31,13 +35,29 @@ local LSP = {
     { 'neovim/nvim-lspconfig' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
+
     { 'epwalsh/obsidian.nvim' },
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    { "rafamadriz/friendly-snippets" }
+
+    -- TODO: add snippet
+    {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" }
+    },
+
+    { "rafamadriz/friendly-snippets" },
+
+    {
+        'rmagatti/goto-preview',
+        config = function()
+            require('goto-preview').setup {}
+        end
+    }
+
 }
+
+-- ---------------------------------------
 
 local UTILS = {
     { 'nvim-tree/nvim-web-devicons' },
@@ -47,15 +67,6 @@ local UTILS = {
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opts = {}
-    },
     {
         'stevearc/oil.nvim',
         opts = {},
@@ -72,8 +83,49 @@ local UTILS = {
             require 'alpha'.setup(require 'alpha.themes.startify'.config)
         end
     },
-    { "numToStr/FTerm.nvim" }
+
+    { "numToStr/FTerm.nvim" },
+
+    {
+        "AckslD/nvim-neoclip.lua",
+        requires = {
+            -- you'll need at least one of these
+            -- {'nvim-telescope/telescope.nvim'},
+            -- {'ibhagwan/fzf-lua'},
+        },
+        config = function()
+            require('neoclip').setup()
+        end,
+    },
+    { 'xiyaowong/nvim-transparent' },
+
+    { -- https://github.com/rcarriga/nvim-notify/tree/master
+        'rcarriga/nvim-notify'
+    }
 }
+
+-- ---------------------------------------
+
+local FOLKE = {
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {}
+    },
+
+    { -- https://github.com/folke/todo-comments.nvim
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {}
+    },
+
+}
+
+-- ---------------------------------------
 
 local EDITING_SUPPORT = {
     {
@@ -92,9 +144,12 @@ local EDITING_SUPPORT = {
         'numToStr/Comment.nvim',
         opts = {},
         lazy = false,
-    }
+    },
+    { 'tpope/vim-surround' },
 
 }
+
+-- ---------------------------------------
 
 local TMUX = {
     {
@@ -102,6 +157,8 @@ local TMUX = {
         lazy = false
     }
 }
+
+-- ---------------------------------------
 
 local EDUCATION = {
     { 'ThePrimeagen/vim-be-good' },
@@ -115,7 +172,6 @@ local EDUCATION = {
 
             -- optional
             "nvim-treesitter/nvim-treesitter",
-            "rcarriga/nvim-notify",
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
@@ -125,16 +181,22 @@ local EDUCATION = {
 
 }
 
+-- ---------------------------------------
+
 local ENTERTAIN = {
     { 'eandrju/cellular-automaton.nvim' },
     { 'echasnovski/mini.nvim',          version = '*' },
 }
+
+-- ---------------------------------------
 
 local STATUS_LINE = {
     {
         'nvim-lualine/lualine.nvim'
     }
 }
+
+-- ---------------------------------------
 
 local SUGGESTION = {
     {
@@ -144,6 +206,8 @@ local SUGGESTION = {
     },
 }
 
+-- ---------------------------------------
+
 local NOTE_TAKING = {
     { 'renerocksai/telekasten.nvim' },
     { 'renerocksai/calendar-vim' },                  -- viewing calendar
@@ -152,11 +216,13 @@ local NOTE_TAKING = {
     { 'cnshsliu/smp.nvim' },
 }
 
+-- ---------------------------------------
 
 require("lazy").setup({
     COLOR_SCHEMES,
     LSP,
     UTILS,
+    FOLKE,
     EDITING_SUPPORT,
     TMUX,
     STATUS_LINE,

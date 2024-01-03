@@ -9,6 +9,7 @@ local COLOR_SCHEMES = 'plugins.color_schemes.'
 require(LSP .. 'lsp')
 require(LSP .. 'treesitter')
 require(LSP .. 'fugitive')
+require(LSP .. 'goto-preview')
 
 require(UTILS .. 'telescope')
 require(UTILS .. 'harpoon')
@@ -17,6 +18,10 @@ require(UTILS .. 'tmux-navigator')
 require(UTILS .. 'neoscroll')
 require(UTILS .. 'startify')
 require(UTILS .. 'FTerm')
+require(UTILS .. 'neoclip')        -- 2/1/2024
+-- require(UTILS .. 'noice')   -- 2/1/2024
+require(UTILS .. 'notify')         -- 2/1/2024
+require(UTILS .. 'nui_lsp_rename') -- 2/1/2024
 
 require(EDITING_SUPPORT .. 'null-ls')
 require(EDITING_SUPPORT .. 'prettier')
@@ -32,3 +37,4 @@ require(STATUS_LINE .. 'lualine')
 require(ENTERTAIN .. 'mini-animate')
 
 require(COLOR_SCHEMES .. 'material')
+require(COLOR_SCHEMES .. 'tokyonight')
