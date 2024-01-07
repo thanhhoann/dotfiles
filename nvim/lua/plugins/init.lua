@@ -30,7 +30,8 @@ require(EDITING_SUPPORT .. 'luasnip')
 require(EDITING_SUPPORT .. 'comment')
 
 require(NOTE_TAKING .. 'telekasten')
-require(NOTE_TAKING .. 'smp') -- Markdown Previewer
+require(NOTE_TAKING .. 'smp')      -- Markdown Previewer
+require(NOTE_TAKING .. 'obsidian') -- 3/1/2024
 
 require(STATUS_LINE .. 'lualine')
 

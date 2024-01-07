@@ -21,6 +21,9 @@ vim.keymap.set('n', "<leader>n",
 -- select all
 vim.keymap.set('n', "<leader>a", "ggVG")
 
+-- screen saver
+vim.keymap.set('n', '<leader>l', ':CellularAutomaton make_it_rain<CR>')
+
 -- nui
 -- rename all variables
 vim.api.nvim_set_keymap(

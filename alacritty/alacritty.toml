@@ -1,24 +1,35 @@
 import = [
-   "~/.config/alacritty/themes/catppuccin-mocha.toml"
-  # "~/.config/alacritty/themes/catppuccin-macchiato.toml"
-  # "~/.config/alacritty/themes/catppuccin-frappe.toml"
-  # "~/.config/alacritty/themes/catppuccin-latte.toml"
+   "~/.config/alacritty/themes/tokyo-night.toml"
 ]
 
 [window]
-dimensions = { columns = 140, lines = 40 }
+dimensions = { columns = 145, lines = 42 }
 padding = { x = 10, y = 30 }
-position = { x = 150, y = 200}
+position = { x = 30, y = 80}
 decorations = "Transparent"
-opacity = 0.7
+opacity = 0.4
 blur = true
 
 [font]
 normal = { family = "GoMono Nerd Font", style = "Regular" }
-size = 15
+size = 17
+
+[[keyboard.bindings]]
+# tmux : create new window 
+key = "T"
+mods = "Command"
+chars = "\u0000c"
+
+[[keyboard.bindings]]
+# tmux : open tmux session manager popup 
+key = "A"
+mods = "Command"
+chars = "\u0000K"
 
 [env]
 TERM = "xterm-256color"
+
+
 
 
 

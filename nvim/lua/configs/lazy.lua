@@ -21,6 +21,27 @@ local COLOR_SCHEMES = {
 
 -- ---------------------------------------
 
+local SESSION = {
+    { 'tpope/vim-obsession' }
+}
+
+-- ---------------------------------------
+
+local DATABASE = {
+    {
+        "tpope/vim-dadbod",
+        opt = true,
+        requires = {
+            "kristijanhusak/vim-dadbod-ui",
+            "kristijanhusak/vim-dadbod-completion",
+        },
+    },
+    { 'kristijanhusak/vim-dadbod-ui' },
+    { 'kristijanhusak/vim-dadbod-completion' },
+}
+
+-- ---------------------------------------
+
 local LSP = {
     { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
 
@@ -214,12 +235,32 @@ local NOTE_TAKING = {
     { 'nvim-lua/popup.nvim' },
     { 'nvim-telescope/telescope-media-files.nvim' }, -- viewing media files
     { 'cnshsliu/smp.nvim' },
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = true,
+        ft = "markdown",
+        -- replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+        -- event = {
+        --   -- if you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+        --   -- e.g. "bufreadpre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+        --   "bufreadpre path/to/my-vault/**.md",
+        --   "bufnewfile path/to/my-vault/**.md",
+        -- },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        opts = {
+        },
+    },
 }
 
 -- ---------------------------------------
 
 require("lazy").setup({
     COLOR_SCHEMES,
+    SESSION,
+    DATABASE,
     LSP,
     UTILS,
     FOLKE,

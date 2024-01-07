@@ -10,4 +10,4 @@ require("plugins")
 -- material (darker, lighter, oceanic, palenight, deep-ocean)
 --
 
-vim.cmd(":lua SetColor('tokyodark', 'none', false)")
+vim.cmd(":lua SetColor('tokyonight', 'night', false)")
