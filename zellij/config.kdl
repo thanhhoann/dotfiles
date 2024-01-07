@@ -10,6 +10,9 @@ keybinds clear-defaults=true {
 		unbind "Ctrl o"
 		unbind "Ctrl q"
 		unbind "Ctrl h"
+
+        bind "Ctrl k" { Run "lazygit"; }
+
 		// uncomment this and adjust key if using copy_on_select=false
 		// bind "Alt c" { Copy; }
 	}
