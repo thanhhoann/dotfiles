@@ -8,6 +8,7 @@ key_set('n', '<leader>fb', require('telescope.builtin').buffers, {})
 key_set('n', '<leader>fo', require('telescope.builtin').oldfiles, {})
 key_set('n', '<leader>fc', require('telescope.builtin').colorscheme, {})
 key_set('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, {})
+key_set('n', '<leader>fl', require('telescope.builtin').lsp_references, {})
 
 -- adjacent : find files in same dir
 key_set("n", "<leader>fff", "<cmd>Telescope adjacent<cr>", { noremap = true, silent = false })
@@ -15,13 +16,13 @@ key_set("n", "<leader>fff", "<cmd>Telescope adjacent<cr>", { noremap = true, sil
 -- undo
 key_set('n', '<leader>fu', "<cmd>Telescope undo<cr>", {})
 
+-- menu
+key_set('n', '<leader>fm', "<cmd>Telescope menu<cr>", {})
+
 -- VonHeikemen/lsp-zero.nvim
 -----------------------------------------------------------------------------------
 require('lsp-zero').on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
-
-    key_set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    key_set("n", "K", function() vim.lsp.buf.hover() end, opts)
 end)
 
 -- kawre/leetcode.nvim

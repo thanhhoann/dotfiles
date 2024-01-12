@@ -1,6 +1,13 @@
 local builtin = require('telescope.builtin')
 
 require("telescope").setup({
+    pickers = {
+        lsp_references = {
+            layout_config = {
+                preview_width = 0.65,
+            },
+        }
+    },
     extensions = {
         lazy = {
             -- Optional theme (the extension doesn't set a default theme)
@@ -42,9 +49,19 @@ require("telescope").setup({
                 preview_width = 0.65,
             },
         },
+
+        menu = {
+            theme = 'ivy',
+            default = {
+                items = {
+                    { display = "Change colorscheme", value = "Themery" },
+                },
+            },
+        },
     },
 })
 
 require("telescope").load_extension "lazy"
 require("telescope").load_extension "adjacent"
 require("telescope").load_extension "undo"
+require("telescope").load_extension "menu"

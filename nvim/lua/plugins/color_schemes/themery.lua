@@ -1,5 +1,3 @@
-vim.keymap.set('n', '<leader>t', ':Themery<CR>')
-
 require("themery").setup({
     livePreview = true, -- Apply theme while browsing. Default to true.
     themeConfigFile = "~/.config/nvim/init.lua",
@@ -106,10 +104,6 @@ require("themery").setup({
         {
             name = "rose-pine",
             colorscheme = "rose-pine"
-        },
-        {
-            name = "rose-pine-dawn",
-            colorscheme = "rose-pine-dawn"
         },
         {
             name = "rose-pine-main",

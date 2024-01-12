@@ -11,31 +11,58 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- ---------------------------------------
+
+local CMP = {
+    {
+        'hrsh7th/nvim-cmp',
+        event = { "InsertEnter", "CmdlineEnter" },
+    },
+
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lua' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'doxnit/cmp-luasnip-choice' },
+
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-cmdline' },
+
+    { 'mtoohey31/cmp-fish' },
+    { 'amarakon/nvim-cmp-fonts' },
+}
 
 -- ---------------------------------------
 
-local COLOR_SCHEMES = {
-    { 'zaldih/themery.nvim' }, -- theme picker update realtime
-    -- LIST OF 41 POPULAR THEMES
-    -- https://github.com/linrongbin16/colorbox.nvim/blob/main/COLORSCHEMES.md
-    { "folke/tokyonight.nvim" },
-    { 'marko-cerovac/material.nvim' },
-    { 'catppuccin/nvim' },
-    { 'rebelot/kanagawa.nvim' },
-    { 'nlknguyen/papercolor-theme' },
-    { 'sainnhe/everforest' },
-    { 'cocopon/iceberg.vim' },
-    { 'junegunn/seoul256.vim' },
-    { 'sainnhe/gruvbox-material' },
-    { 'rose-pine/neovim' },
-    { 'ku1ik/vim-monokai' },
-    { 'sainnhe/sonokai' },
-    { 'dracula/vim' },
-    { 'navarasu/onedark.nvim' },
-    { 'jacoborus/tender.vim' },
-    { 'lifepillar/vim-solarized8' },
-    { 'mhartington/oceanic-next' },
-    { 'projekt0n/github-nvim-theme' },
+local SNIPPETS = {
+    {
+        'L3MON4D3/LuaSnip',
+        dependencies = { "rafamadriz/friendly-snippets" },
+    },
+    { "honza/vim-snippets" },
+    { 'rafamadriz/friendly-snippets' },
+}
+
+-- ---------------------------------------
+
+local GIT = {
+    { 'tpope/vim-fugitive' },
+    { 'lewis6991/gitsigns.nvim' },
+}
+
+-- ---------------------------------------
+
+local LSP = {
+    { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
+
+    { 'neovim/nvim-lspconfig' },
+    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
+    { 'onsails/lspkind.nvim' },
+
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+
+    -- { 'rmagatti/goto-preview' }, -- previewing definitions using floating windows
 }
 
 -- ---------------------------------------
@@ -61,48 +88,6 @@ local DATABASE = {
 
 -- ---------------------------------------
 
-local CMP = {
-    {
-        'hrsh7th/nvim-cmp',
-        event = { "InsertEnter", "CmdlineEnter" },
-    },
-
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lua' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-cmdline' },
-    { 'dcampos/cmp-snippy' },
-    { 'mtoohey31/cmp-fish' },
-
-    { 'dcampos/nvim-snippy' },
-    {'amarakon/nvim-cmp-fonts'}
-}
-
--- ---------------------------------------
-
-local LSP = {
-    { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
-
-    { 'tpope/vim-fugitive' },
-
-    { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
-
-    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-    { 'neovim/nvim-lspconfig' },
-
-    {
-        'rmagatti/goto-preview',
-        config = function()
-            require('goto-preview').setup {}
-        end
-    },
-
-}
-
--- ---------------------------------------
-
 local TELESCOPE = {
     {
         'nvim-telescope/telescope.nvim',
@@ -113,22 +98,14 @@ local TELESCOPE = {
     { "debugloop/telescope-undo.nvim" },
     { "MaximilianLloyd/adjacent.nvim" }, -- find files in same dir
     { "tsakirist/telescope-lazy.nvim" },
-    -- {'jonarrien/telescope-cmdline.nvim'},
+    { 'octarect/telescope-menu.nvim' }
 }
 
 -- ---------------------------------------
 
 local UTILS = {
     { 'nvim-tree/nvim-web-devicons' },
-    { 'ThePrimeagen/harpoon' },
 
-    {
-        'stevearc/oil.nvim',
-        opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-    },
-    { "cpea2506/relative-toggle.nvim" },
-    { "honza/vim-snippets" },
     { "MunifTanjim/nui.nvim" },
     { "karb94/neoscroll.nvim" },
     {
@@ -152,6 +129,17 @@ local UTILS = {
     },
     { 'xiyaowong/nvim-transparent' },
 
+}
+
+-- ---------------------------------------
+
+local FILE_MOTIONS = {
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    { 'ThePrimeagen/harpoon' },
 }
 
 -- ---------------------------------------
@@ -188,29 +176,13 @@ local EDITING_SUPPORT = {
     { 'jose-elias-alvarez/null-ls.nvim' },
     { 'MunifTanjim/prettier.nvim' },
     { 'tpope/vim-surround' },
-    -- {
-    --     "folke/flash.nvim",
-    --     event = "VeryLazy",
-    --     opts = {},
-    --     -- stylua: ignore
-    --     keys = {
-    --         { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-    --         { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-    --         { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-    --         { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    --         { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    --     },
-    -- },
+    { "cpea2506/relative-toggle.nvim" },
+    { "folke/twilight.nvim",            opts = {} },
     {
         'numToStr/Comment.nvim',
         opts = {},
         lazy = false,
     },
-    {
-        "folke/twilight.nvim",
-        opts = {}
-    }
-
 }
 
 -- ---------------------------------------
@@ -231,14 +203,13 @@ local EDUCATION = {
         build = ":TSUpdate html",
         dependencies = {
             "nvim-telescope/telescope.nvim",
-            "nvim-lua/plenary.nvim", -- required by telescope
+            "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons",
         },
         opts = {},
     }
-
 }
 
 -- ---------------------------------------
@@ -251,9 +222,7 @@ local ENTERTAIN = {
 -- ---------------------------------------
 
 local STATUS_LINE = {
-    {
-        'nvim-lualine/lualine.nvim'
-    }
+    { 'nvim-lualine/lualine.nvim' }
 }
 
 -- ---------------------------------------
@@ -269,30 +238,49 @@ local SUGGESTION = {
 -- ---------------------------------------
 
 local NOTE_TAKING = {
-    -- { 'renerocksai/telekasten.nvim' },
-    -- { 'renerocksai/calendar-vim' },                  -- viewing calendar
-    -- { 'nvim-lua/popup.nvim' },
-    -- { 'nvim-telescope/telescope-media-files.nvim' }, -- viewing media files
-    -- { 'cnshsliu/smp.nvim' },
     {
         "epwalsh/obsidian.nvim",
         version = "*", -- recommended, use latest release instead of latest commit
         lazy = true,
         ft = "markdown",
-        -- replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-        -- event = {
-        --   -- if you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-        --   -- e.g. "bufreadpre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-        --   "bufreadpre path/to/my-vault/**.md",
-        --   "bufnewfile path/to/my-vault/**.md",
-        -- },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        opts = {
-        },
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
     },
 }
+
+-- ---------------------------------------
+
+local COLOR_SCHEMES = {
+    { 'zaldih/themery.nvim' }, -- theme picker update realtime
+
+    -- reference : https://github.com/linrongbin16/colorbox.nvim/blob/main/COLORSCHEMES.md
+    { "folke/tokyonight.nvim" },
+    { 'marko-cerovac/material.nvim' },
+    { 'catppuccin/nvim' },
+    { 'rebelot/kanagawa.nvim' },
+    { 'nlknguyen/papercolor-theme' },
+    { 'sainnhe/everforest' },
+    { 'cocopon/iceberg.vim' },
+    { 'junegunn/seoul256.vim' },
+    { 'sainnhe/gruvbox-material' },
+    { 'rose-pine/neovim' },
+    { 'ku1ik/vim-monokai' },
+    { 'sainnhe/sonokai' },
+    { 'dracula/vim' },
+    { 'navarasu/onedark.nvim' },
+    { 'jacoborus/tender.vim' },
+    { 'lifepillar/vim-solarized8' },
+    { 'mhartington/oceanic-next' },
+    { 'projekt0n/github-nvim-theme' },
+    { 'ellisonleao/gruvbox.nvim' },
+    { 'tomasiser/vim-code-dark' },
+    { 'jnurmine/zenburn' },
+    { 'romainl/apprentice' },
+    { 'nyoom-engineering/oxocarbon.nvim' },
+    { 'sainnhe/edge' },
+    { 'raphamorim/lucario' },
+}
+
 
 -- ---------------------------------------
 
@@ -301,8 +289,11 @@ require("lazy").setup({
     SESSION,
     TELESCOPE,
     DATABASE,
+    GIT,
+    SNIPPETS,
     LSP,
     CMP,
+    FILE_MOTIONS,
     UTILS,
     FOLKE,
     EDITING_SUPPORT,
