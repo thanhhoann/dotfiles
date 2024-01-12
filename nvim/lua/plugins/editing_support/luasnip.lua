@@ -1,46 +1,39 @@
 require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_lua").load({paths = "~/snippets"})
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
 
-local ls = require "luasnip"
-
-local snippet = ls.snippet
-local text = ls.text_node
-local insert = ls.insert_node
+local ls = require("luasnip")
 local extras = require("luasnip.extras")
-local rep = extras.rep
-local fmt = require("luasnip.extras.fmt").fmt
-local c = ls.choice_node
-local f = ls.function_node
-local d = ls.dynamic_node
+
+local s = ls.snippet
 local sn = ls.snippet_node
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+local c = ls.choice_node
+local d = ls.dynamic_node
+local r = ls.restore_node
+local l = extras.lambda
+local rep = extras.rep
+local p = extras.partial
+local m = extras.match
+local n = extras.nonempty
+local dl = extras.dynamic_lambda
 
-local sl = require("luasnip.extras.snippet_list")
-
-vim.keymap.set({ "i", "s" }, "<A-n>", function()
-    if ls.choice_active() then
-        ls.change_choice(1)
-    end
-end)
-
-vim.keymap.set({ "i", "s" }, "<A-k>", function()
-    if ls.expand_or_jumpable() then
-        ls.expand_or_jump()
-    end
-end, { silent = true })
-
-vim.keymap.set({ "i", "s" }, "<A-j>", function()
-    if ls.jumpable(-1) then
-        ls.jump(-1)
-    end
-end, { silent = true })
 
 -- SNIPPETS
 
-ls.add_snippets("all", {
-    snippet("clg", {
-        text('console.log('),
-        insert(1),
-        text(')')
+ls.add_snippets("lua", {
+    s("clg", {
+        t('console.log('),
+        i(1),
+        t(')')
+    }),
+    s("fn", {
+        -- Simple static text.
+        t("//Parameters: "),
+        -- Last Placeholder, exit Point of the snippet.
+        i(0),
+        t({ "", "}" }),
     }),
 
 })

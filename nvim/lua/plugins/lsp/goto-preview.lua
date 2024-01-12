@@ -20,4 +20,3 @@ require('goto-preview').setup {
     preview_window_title = { enable = true, position = "left" }, -- Whether to set the preview window title as the filename
 }
 
-vim.keymap.set("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })

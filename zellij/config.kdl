@@ -11,7 +11,7 @@ keybinds clear-defaults=true {
 		unbind "Ctrl q"
 		unbind "Ctrl h"
 
-        bind "Ctrl k" { Run "lazygit"; }
+        bind "Ctrl k" { Run "zellij" "run" "--in-place" "--close-on-exit" "--" "lazygit"; }
 
 		// uncomment this and adjust key if using copy_on_select=false
 		// bind "Alt c" { Copy; }

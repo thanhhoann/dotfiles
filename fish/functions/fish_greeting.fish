@@ -1,3 +1,3 @@
 function fish_greeting
-    _pure_check_for_new_release
+    echo 'Embrace the might of Tools to unleash prodigious truimphs in labor - Lucius Maximus'
 end

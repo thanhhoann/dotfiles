@@ -11,12 +11,31 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 -- ---------------------------------------
 
 local COLOR_SCHEMES = {
+    { 'zaldih/themery.nvim' }, -- theme picker update realtime
+    -- LIST OF 41 POPULAR THEMES
+    -- https://github.com/linrongbin16/colorbox.nvim/blob/main/COLORSCHEMES.md
     { "folke/tokyonight.nvim" },
-    { "tiagovla/tokyodark.nvim" },
-    { 'marko-cerovac/material.nvim' }
+    { 'marko-cerovac/material.nvim' },
+    { 'catppuccin/nvim' },
+    { 'rebelot/kanagawa.nvim' },
+    { 'nlknguyen/papercolor-theme' },
+    { 'sainnhe/everforest' },
+    { 'cocopon/iceberg.vim' },
+    { 'junegunn/seoul256.vim' },
+    { 'sainnhe/gruvbox-material' },
+    { 'rose-pine/neovim' },
+    { 'ku1ik/vim-monokai' },
+    { 'sainnhe/sonokai' },
+    { 'dracula/vim' },
+    { 'navarasu/onedark.nvim' },
+    { 'jacoborus/tender.vim' },
+    { 'lifepillar/vim-solarized8' },
+    { 'mhartington/oceanic-next' },
+    { 'projekt0n/github-nvim-theme' },
 }
 
 -- ---------------------------------------
@@ -42,10 +61,28 @@ local DATABASE = {
 
 -- ---------------------------------------
 
+local CMP = {
+    {
+        'hrsh7th/nvim-cmp',
+        event = { "InsertEnter", "CmdlineEnter" },
+    },
+
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lua' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'dcampos/cmp-snippy' },
+    { 'mtoohey31/cmp-fish' },
+
+    { 'dcampos/nvim-snippy' },
+    {'amarakon/nvim-cmp-fonts'}
+}
+
+-- ---------------------------------------
+
 local LSP = {
     { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
-
-    { 'ThePrimeagen/harpoon' },
 
     { 'tpope/vim-fugitive' },
 
@@ -54,39 +91,36 @@ local LSP = {
 
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
     { 'neovim/nvim-lspconfig' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/nvim-cmp' },
-
-    { 'epwalsh/obsidian.nvim' },
-
-    -- TODO: add snippet
-    {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        build = "make install_jsregexp",
-        dependencies = { "rafamadriz/friendly-snippets" }
-    },
-
-    { "rafamadriz/friendly-snippets" },
 
     {
         'rmagatti/goto-preview',
         config = function()
             require('goto-preview').setup {}
         end
-    }
+    },
 
+}
+
+-- ---------------------------------------
+
+local TELESCOPE = {
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.5',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+
+    { "debugloop/telescope-undo.nvim" },
+    { "MaximilianLloyd/adjacent.nvim" }, -- find files in same dir
+    { "tsakirist/telescope-lazy.nvim" },
+    -- {'jonarrien/telescope-cmdline.nvim'},
 }
 
 -- ---------------------------------------
 
 local UTILS = {
     { 'nvim-tree/nvim-web-devicons' },
-    {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
+    { 'ThePrimeagen/harpoon' },
 
     {
         'stevearc/oil.nvim',
@@ -105,8 +139,6 @@ local UTILS = {
         end
     },
 
-    { "numToStr/FTerm.nvim" },
-
     {
         "AckslD/nvim-neoclip.lua",
         requires = {
@@ -120,9 +152,6 @@ local UTILS = {
     },
     { 'xiyaowong/nvim-transparent' },
 
-    { -- https://github.com/rcarriga/nvim-notify/tree/master
-        'rcarriga/nvim-notify'
-    }
 }
 
 -- ---------------------------------------
@@ -155,18 +184,32 @@ local EDITING_SUPPORT = {
         opts = {}
     },
     { 'windwp/nvim-ts-autotag' },
-    {
-        "gbprod/yanky.nvim",
-        opts = {}
-    },
+    { 'gbprod/yanky.nvim' },
     { 'jose-elias-alvarez/null-ls.nvim' },
     { 'MunifTanjim/prettier.nvim' },
+    { 'tpope/vim-surround' },
+    -- {
+    --     "folke/flash.nvim",
+    --     event = "VeryLazy",
+    --     opts = {},
+    --     -- stylua: ignore
+    --     keys = {
+    --         { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+    --         { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+    --         { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+    --         { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    --         { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+    --     },
+    -- },
     {
         'numToStr/Comment.nvim',
         opts = {},
         lazy = false,
     },
-    { 'tpope/vim-surround' },
+    {
+        "folke/twilight.nvim",
+        opts = {}
+    }
 
 }
 
@@ -190,14 +233,10 @@ local EDUCATION = {
             "nvim-telescope/telescope.nvim",
             "nvim-lua/plenary.nvim", -- required by telescope
             "MunifTanjim/nui.nvim",
-
-            -- optional
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons",
         },
-        opts = {
-            -- configuration goes here
-        },
+        opts = {},
     }
 
 }
@@ -230,11 +269,11 @@ local SUGGESTION = {
 -- ---------------------------------------
 
 local NOTE_TAKING = {
-    { 'renerocksai/telekasten.nvim' },
-    { 'renerocksai/calendar-vim' },                  -- viewing calendar
-    { 'nvim-lua/popup.nvim' },
-    { 'nvim-telescope/telescope-media-files.nvim' }, -- viewing media files
-    { 'cnshsliu/smp.nvim' },
+    -- { 'renerocksai/telekasten.nvim' },
+    -- { 'renerocksai/calendar-vim' },                  -- viewing calendar
+    -- { 'nvim-lua/popup.nvim' },
+    -- { 'nvim-telescope/telescope-media-files.nvim' }, -- viewing media files
+    -- { 'cnshsliu/smp.nvim' },
     {
         "epwalsh/obsidian.nvim",
         version = "*", -- recommended, use latest release instead of latest commit
@@ -260,8 +299,10 @@ local NOTE_TAKING = {
 require("lazy").setup({
     COLOR_SCHEMES,
     SESSION,
+    TELESCOPE,
     DATABASE,
     LSP,
+    CMP,
     UTILS,
     FOLKE,
     EDITING_SUPPORT,

@@ -15,14 +15,11 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- format -> save -> source
-vim.keymap.set('n', "<leader>n",
-    ':LspZeroFormat<CR>:w<CR>:so<CR>:lua require("notify")("✅ ok m")<CR>')
+vim.keymap.set('n', "<leader>n", ':LspZeroFormat<CR>:w<CR>:so<CR>')
 
 -- select all
 vim.keymap.set('n', "<leader>a", "ggVG")
 
--- screen saver
-vim.keymap.set('n', '<leader>l', ':CellularAutomaton make_it_rain<CR>')
 
 -- nui
 -- rename all variables

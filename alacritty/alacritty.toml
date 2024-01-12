@@ -2,12 +2,15 @@ import = [
    "~/.config/alacritty/themes/tokyo-night.toml"
 ]
 
+[env]
+TERM = "xterm-256color"
+
 [window]
 dimensions = { columns = 145, lines = 42 }
 padding = { x = 10, y = 30 }
 position = { x = 30, y = 80}
 decorations = "Transparent"
-opacity = 0.4
+opacity = 0.95
 blur = true
 
 [font]
@@ -20,14 +23,6 @@ key = "T"
 mods = "Command"
 chars = "\u0000c"
 
-[[keyboard.bindings]]
-# tmux : open tmux session manager popup 
-key = "A"
-mods = "Command"
-chars = "\u0000K"
-
-[env]
-TERM = "xterm-256color"
 
 
 
