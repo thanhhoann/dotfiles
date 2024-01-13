@@ -22,6 +22,14 @@ abbr --add rm trash
 
 abbr --add money node /Users/thanhhoann/core_machine/desktop/codiing/cli/monthly-finance/getMoneyCanSpend.js
 
+# ls
+abbr --add ls eza --color=auto --icons=auto -F -l --no-user --no-permissions --total-size --bytes --group-directories-first --tree
+# ls all
+abbr --add lsa eza --color=auto --icons=auto -F -a -a -l --no-user --no-permissions --total-size --bytes --group-directories-first
+# ls  files - dirs
+abbr --add lsf eza --color=auto --icons=auto -F -a -a -l --no-user --no-permissions --total-size --bytes --group-directories-first --only-files
+abbr --add lsd eza --color=auto --icons=auto -F -a -a -l --no-user --no-permissions --total-size --bytes --group-directories-first --only-dirs
+
 # PATHS : binary files
 # ---------------------------------------------------------------
 

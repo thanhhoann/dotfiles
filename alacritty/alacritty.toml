@@ -10,8 +10,8 @@ dimensions = { columns = 145, lines = 42 }
 padding = { x = 10, y = 30 }
 position = { x = 30, y = 80}
 decorations = "Transparent"
-opacity = 0.95
-blur = true
+opacity = 0.9
+blur = false
 
 [font]
 normal = { family = "GoMono Nerd Font", style = "Regular" }

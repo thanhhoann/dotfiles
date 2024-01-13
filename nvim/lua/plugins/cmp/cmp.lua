@@ -85,7 +85,7 @@ cmp.setup({
                     { show_autosnippets = true }
                 }
             },
-            -- { name = 'path' },
+            { name = 'path' },
             -- { name = 'fish' },
             -- { name = "fonts",   option = { space_filter = "-" } }
         }),
