@@ -20,7 +20,7 @@ require(LSP .. 'lsp')
 require(LSP .. 'mason-config')
 require(LSP .. 'treesitter')
 require(LSP .. 'fugitive')
--- require(LSP .. 'goto-preview')
+require(LSP .. 'goto-preview')
 
 require(UI .. 'alpha')
 
@@ -39,6 +39,7 @@ require(EDITING_SUPPORT .. 'comment')
 require(NOTE_TAKING .. 'obsidian')
 
 require(STATUS_LINE .. 'lualine')
+require(STATUS_LINE .. 'barbecue') -- winbar
 
 require(EDUCATION .. 'leetcode')
 

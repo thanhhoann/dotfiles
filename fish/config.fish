@@ -1,5 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+     eval (zellij setup --generate-auto-start fish | string collect) 
 end
 
 # EXPORTS
@@ -14,16 +15,23 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # vim
 abbr --add v nvim
 
+# ZELLIJ
+abbr --add ze zellij
+
+# exit
+abbr --add x exit
+
 # tmux session manager
 abbr --add tn "tmux new -s (pwd | sed 's/.*\///g')"
 
 # trash cli
 abbr --add rm trash
 
+# money
 abbr --add money node /Users/thanhhoann/core_machine/desktop/codiing/cli/monthly-finance/getMoneyCanSpend.js
 
 # ls
-abbr --add ls eza --color=auto --icons=auto -F -l --no-user --no-permissions --total-size --bytes --group-directories-first --tree
+abbr --add ls eza --color=auto --icons=auto -F -l --no-user --no-permissions --total-size --bytes 
 # ls all
 abbr --add lsa eza --color=auto --icons=auto -F -a -a -l --no-user --no-permissions --total-size --bytes --group-directories-first
 # ls  files - dirs
@@ -131,3 +139,4 @@ echo ''
 oh-my-posh init fish --config ~/.config/oh-my-posh/themes/amro.omp.json | source
 
 zoxide init fish | source
+

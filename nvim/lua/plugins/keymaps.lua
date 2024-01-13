@@ -21,8 +21,16 @@ key_set('n', '<leader>fm', "<cmd>Telescope menu<cr>", {})
 
 -- VonHeikemen/lsp-zero.nvim
 -----------------------------------------------------------------------------------
-require('lsp-zero').on_attach(function(client, bufnr)
-    local opts = { buffer = bufnr, remap = false }
+key_set({ 'n', 't' }, '<C-h>', '<CMD>NavigatorLeft<CR>')
+key_set({ 'n', 't' }, '<C-l>', '<CMD>NavigatorRight<CR>')
+key_set({ 'n', 't' }, '<C-k>', '<CMD>NavigatorUp<CR>')
+key_set({ 'n', 't' }, '<C-j>', '<CMD>NavigatorDown<CR>')
+key_set({ 'n', 't' }, '<C-p>', '<CMD>NavigatorPrevious<CR>')
+
+-- VonHeikemen/lsp-zero.nvim
+-----------------------------------------------------------------------------------
+require 'lsp-zero'.on_attach(function(client, bufnr)
+    require 'lsp-zero'.default_keymaps({ buffer = bufnr })
 end)
 
 -- kawre/leetcode.nvim

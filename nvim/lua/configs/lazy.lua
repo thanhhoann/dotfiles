@@ -62,7 +62,7 @@ local LSP = {
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
 
-    -- { 'rmagatti/goto-preview' }, -- previewing definitions using floating windows
+    { 'rmagatti/goto-preview' }, -- previewing definitions using floating windows
 }
 
 -- ---------------------------------------
@@ -188,9 +188,15 @@ local EDITING_SUPPORT = {
 -- ---------------------------------------
 
 local TMUX = {
+    -- {
+    --     'christoomey/vim-tmux-navigator',
+    --     lazy = false
+    -- }
     {
-        'christoomey/vim-tmux-navigator',
-        lazy = false
+        'numToStr/Navigator.nvim',
+        config = function()
+            require('Navigator').setup()
+        end
     }
 }
 
@@ -222,7 +228,17 @@ local ENTERTAIN = {
 -- ---------------------------------------
 
 local STATUS_LINE = {
-    { 'nvim-lualine/lualine.nvim' }
+    { 'nvim-lualine/lualine.nvim' },
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        opts = {},
+    }
 }
 
 -- ---------------------------------------

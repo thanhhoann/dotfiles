@@ -6,12 +6,13 @@ import = [
 TERM = "xterm-256color"
 
 [window]
-dimensions = { columns = 145, lines = 42 }
-padding = { x = 10, y = 30 }
+dimensions = { columns = 143, lines = 43 }
+padding = { x = 10, y = 10 }
 position = { x = 30, y = 80}
-decorations = "Transparent"
-opacity = 0.9
-blur = false
+decorations = "Buttonless"
+opacity = 0.8
+blur = true
+option_as_alt = "Both"
 
 [font]
 normal = { family = "GoMono Nerd Font", style = "Regular" }
