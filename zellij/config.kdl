@@ -43,7 +43,7 @@ keybinds clear-defaults=true {
 		bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
 		bind "f" { TogglePaneFrames; SwitchToMode "Normal"; }
 		bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
-		bind "Ctrl a" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+		bind "a" { ToggleFloatingPanes; SwitchToMode "Normal"; }
 		bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
 		bind "r" { SwitchToMode "RenamePane"; PaneNameInput 0;}
 	}
@@ -157,7 +157,7 @@ keybinds clear-defaults=true {
 		bind "Alt [" { PreviousSwapLayout; }
 		bind "Alt ]" { NextSwapLayout; }
 
-        bind "Ctrl h" {
+        bind "Ctrl p" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/harpoon.wasm" {
                 floating true; 
                 move_to_focused_tab true;
@@ -259,7 +259,7 @@ default_shell "fish"
 pane_frames false
 
 
-// default_layout "zjstatus"
+default_layout "zjstatus"
 
 mouse_mode true
 

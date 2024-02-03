@@ -1,0 +1,44 @@
+layout {
+
+    pane split_direction="vertical" {
+        pane 
+    }
+
+    pane size=1 borderless=true {
+        plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+            format_left  "{mode}#[fg=#4C4C59,bg=black]#[fg=black,bg=#4C4C59]󰙴 {session}#[fg=#4C4C59,bg=black] {tabs}"
+            format_right "#[fg=black,bg=#b1bbfa]{datetime}"
+            format_space "#[bg=black]"
+
+            tab_active              "#[fg=black,bg=#1efc1e,bold,italic]   {name} #[fg=#1efc1e,bg=black]"
+            tab_normal              "#[fg=black,bg=#4C4C59] #[fg=#000000,bg=#4C4C59]{index}  {name} #[fg=#4C4C59,bg=black]"
+            tab_normal_fullscreen   "#[fg=#6C7086,bg=#000000] {index} {name} [] "
+            tab_normal_sync         "#[fg=#6C7086,bg=#000000] {index} {name} <> "
+            tab_active_fullscreen   "#[fg=#9399B2,bg=#000000,bold,italic]   {name} [] "
+            tab_active_sync         "#[fg=#9399B2,bg=#000000,bold,italic]   {name} <> "
+
+
+            hide_frame_for_single_pane "true"
+
+            mode_normal        "#[fg=#70d6ff,bold,bg=black]   NORMAL "
+            mode_locked        "#[fg=#ff3c38,bold,bg=black] ( LOCKED ) "
+            mode_resize        "#[fg=#ff9770,bold,bg=black] 󰩨  RESIZE "
+            mode_pane          "#[fg=#ffd670,bold,bg=black]   PANE "
+            mode_tab           "#[fg=#04e762,bold,bg=black]   TAB "
+            mode_scroll        "#[fg=#f038ff,bold,bg=black] 󰑮  SCROLL "
+            mode_enter_search  "#[fg=white,bold,bg=black] {name} ENTER-SEARCH "
+            mode_search        "#[fg=white,bold,bg=black] {name} SEARCH "
+            mode_rename_tab    "#[fg=#00f5d4,bold,bg=black] 󰑕   RENAME-TAB "
+            mode_rename_pane   "#[fg=#00f5d4,bold,bg=black] 󰑕   RENAME-PANE "
+            mode_session       "#[fg=#ffbf81,bold,bg=black]   SESSION "
+            mode_move          "#[fg=white,bold,bg=black] MOVE "
+            mode_prompt        "#[fg=white,bold,bg=black] PROMPT "
+
+
+
+            datetime          "#[fg=#FB2576,bg=black,bold] {format} "  
+            datetime_format   "%A, %d %b %Y"
+            datetime_timezone "Asia/Ho_Chi_Minh"
+        }
+    }
+}

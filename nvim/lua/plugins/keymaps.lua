@@ -46,13 +46,18 @@ key_set('n', '<leader>ls', ':Leet submit<CR>')
 
 -- ThePrimeagen/harpoon
 -----------------------------------------------------------------------------------
-key_set('n', '<leader>ha', require('harpoon.mark').add_file)
-key_set('n', '<leader>h', require('harpoon.ui').toggle_quick_menu)
+key_set("n", "<leader>ha", function() require 'harpoon':list():append() end)
+key_set("n", "<leader>h", function() require 'harpoon'.ui:toggle_quick_menu(require 'harpoon':list()) end)
 
-key_set('n', '<leader>h1', function() require('harpoon.ui').nav_file(1) end)
-key_set('n', '<leader>h2', function() require('harpoon.ui').nav_file(2) end)
-key_set('n', '<leader>h3', function() require('harpoon.ui').nav_file(3) end)
-key_set('n', '<leader>h4', function() require('harpoon.ui').nav_file(4) end)
+key_set("n", "<leader>1", function() require 'harpoon':list():select(1) end)
+key_set("n", "<leader>2", function() require 'harpoon':list():select(2) end)
+key_set("n", "<leader>3", function() require 'harpoon':list():select(3) end)
+key_set("n", "<leader>4", function() require 'harpoon':list():select(4) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+key_set("n", "<leader>i", function() require 'harpoon':list():prev() end)
+key_set("n", "<leader>o", function() require 'harpoon':list():next() end)
+
 
 -- rmagatti/goto-preview
 -----------------------------------------------------------------------------------
@@ -61,3 +66,12 @@ key_set("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<C
 -- tpope/vim-fugitive
 -----------------------------------------------------------------------------------
 key_set('n', '<leader>gs', vim.cmd.Git)
+
+-- roobert/search-replace.nvim
+-----------------------------------------------------------------------------------
+
+key_set("v", "<C-s>", "<CMD>SearchReplaceWithinVisualSelection<CR>", opts)
+key_set("n", "<leader>rbo", "<CMD>SearchReplaceMultiBufferOpen<CR>", opts)
+
+-- show the effects of a search / replace in a live preview window
+vim.o.inccommand = "split"

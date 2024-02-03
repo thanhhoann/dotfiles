@@ -139,7 +139,11 @@ local FILE_MOTIONS = {
         opts = {},
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
-    { 'ThePrimeagen/harpoon' },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    }
 }
 
 -- ---------------------------------------
@@ -183,6 +187,17 @@ local EDITING_SUPPORT = {
         opts = {},
         lazy = false,
     },
+
+    {
+        "roobert/search-replace.nvim",
+        config = function()
+            require("search-replace").setup({
+                -- optionally override defaults
+                default_replace_single_buffer_options = "gcI",
+                default_replace_multi_buffer_options = "egcI",
+            })
+        end,
+    }
 }
 
 -- ---------------------------------------
@@ -296,7 +311,6 @@ local COLOR_SCHEMES = {
     { 'sainnhe/edge' },
     { 'raphamorim/lucario' },
 }
-
 
 -- ---------------------------------------
 

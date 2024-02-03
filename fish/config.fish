@@ -1,6 +1,5 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-     eval (zellij setup --generate-auto-start fish | string collect) 
+    # eval (zellij setup --generate-auto-start fish | string collect) 
 end
 
 # EXPORTS
@@ -8,9 +7,32 @@ end
 
 # brew
 export HOMEBREW_NO_AUTO_UPDATE=1
+export VISUAL=nvim
+export EDITOR=nvim
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# ranger
+export FZF_FZM_OPTS="--reverse --height 75% --min-height 30 --cycle +m --ansi --bind=ctrl-o:accept,ctrl-t:toggle --select-1"
+export FZF_DMARK_OPTS="--reverse --height 75% --min-height 30 --cycle -m --ansi --bind=ctrl-o:accept,ctrl-t:toggle"
+
+# starship
+# export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# nnn : file manager
+set -x NNN_PLUG_PERSONAL 'g:personal/convert2zoom;p:personal/echo'
+set -x NNN_PLUG_WORK 'j:work/prettyjson;d:work/foobar'
+set -x NNN_PLUG_INLINE 'e:!go run "$nnn"*'
+set -x NNN_PLUG_DEFAULT '1:ipinfo;p:preview-tui;o:fzz;b:nbak'
+set -x NNN_PLUG "$NNN_PLUG_PERSONAL;$NNN_PLUG_WORK;$NNN_PLUG_DEFAULT;$NNN_PLUG_INLINE"
+
+# ALIAS
+# ---------------------------------------------------------------
+alias ls="exa --icons -F -H --group-directories-first --git -1"
 
 # ABBREVIATIONS
 # ---------------------------------------------------------------
+# brew
+abbr --add bs brew services
 
 # vim
 abbr --add v nvim
@@ -21,6 +43,9 @@ abbr --add ze zellij
 # exit
 abbr --add x exit
 
+# ranger
+abbr --add r ranger
+
 # tmux session manager
 abbr --add tn "tmux new -s (pwd | sed 's/.*\///g')"
 
@@ -30,13 +55,9 @@ abbr --add rm trash
 # money
 abbr --add money node /Users/thanhhoann/core_machine/desktop/codiing/cli/monthly-finance/getMoneyCanSpend.js
 
-# ls
-abbr --add ls eza --color=auto --icons=auto -F -l --no-user --no-permissions --total-size --bytes 
-# ls all
-abbr --add lsa eza --color=auto --icons=auto -F -a -a -l --no-user --no-permissions --total-size --bytes --group-directories-first
-# ls  files - dirs
-abbr --add lsf eza --color=auto --icons=auto -F -a -a -l --no-user --no-permissions --total-size --bytes --group-directories-first --only-files
-abbr --add lsd eza --color=auto --icons=auto -F -a -a -l --no-user --no-permissions --total-size --bytes --group-directories-first --only-dirs
+
+# MTMR
+abbr --add mtmr cd /Users/thanhhoann/Library/Application\ Support/MTMR
 
 # PATHS : binary files
 # ---------------------------------------------------------------
@@ -136,7 +157,10 @@ echo ''
 # THEME
 # ---------------------------------------------------------------
 
-oh-my-posh init fish --config ~/.config/oh-my-posh/themes/amro.omp.json | source
+# oh-my-posh init fish --config ~/.config/oh-my-posh/themes/amro.omp.json | source
+
+starship init fish | source
 
 zoxide init fish | source
+
 

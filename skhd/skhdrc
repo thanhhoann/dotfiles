@@ -1,0 +1,70 @@
+# -- ALT --
+# fast focus desktop
+lalt - tab : yabai -m space --focus recent
+
+# delete desktop
+lalt - x : yabai -m space --destroy
+# focus desktop #
+lalt - 1 : yabai -m space --focus 1 
+lalt - 2 : yabai -m space --focus 2 
+lalt - 3 : yabai -m space --focus 3 
+lalt - 4 : yabai -m space --focus 4 
+
+# toggle window split type
+lalt - e : yabai -m window --toggle split
+
+# rotate layout clockwise
+lalt - r : yabai -m space --rotate 90
+
+# sketchybar
+lalt - f : yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
+
+# focus window
+lalt - j : yabai -m window --focus south  || yabai -m display --focus south
+lalt - k : yabai -m window --focus north || yabai -m display --focus north
+lalt - l : yabai -m window --focus east || yabai -m display --focus east
+lalt - h : yabai -m window --focus west  || yabai -m display --focus west
+
+# -- SHIFT ALT --
+# move window to space #
+# shift + lalt - 1 : yabai -m window --space 1;
+# shift + lalt - 2 : yabai -m window --space 2;
+# shift + lalt - 3 : yabai -m window --space 3;
+# shift + lalt - 4 : yabai -m window --space 4;
+
+# Mirror Space on X and Y Axis: shift + lalt - {x, y}
+# lalt - p : yabai -m space --mirror x-axis
+lalt - p : yabai -m space --mirror y-axis
+
+# swap windows
+shift + lalt - j : yabai -m window --swap south
+shift + lalt - k : yabai -m window --swap north
+shift + lalt - h : yabai -m window --swap west
+shift + lalt - l : yabai -m window --swap east
+
+# toggle window float and center
+shift + lalt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# balance out tree of windows (resize to occupy same area)
+shift + lalt - e : yabai -m space --balance
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+shift + lalt - n : yabai -m space --create && \
+                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                   yabai -m window --space "${index}" && \
+                   yabai -m space --focus "${index}"
+
+# -- CTRL ALT --
+# Resize windows
+ctrl + lalt - h    : yabai -m window --resize right:-100:0 || yabai -m window --resize left:-100:0
+ctrl + lalt - l : yabai -m window --resize right:100:0 || yabai -m window --resize left:100:0
+ctrl + lalt - j    : yabai -m window --resize bottom:0:100 || yabai -m window --resize top:0:100
+ctrl + lalt - k    : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
+
+# -- Starting/Stopping/Restarting Yabai --
+# stop/start/restart yabai
+ctrl + lalt - q : yabai --start-service
+ctrl + lalt - s : yabai --stop-service
+
+ctrl + lalt - y : yabai --restart-service 
+ctrl + lalt - b : brew services restart borders 
