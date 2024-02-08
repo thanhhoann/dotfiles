@@ -33,6 +33,21 @@ local CMP = {
 }
 
 -- ---------------------------------------
+local DEVELOPMENT = {
+    {
+        'akinsho/flutter-tools.nvim',
+        lazy = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+        config = true,
+    },
+    { "dart-lang/dart-vim-plugin" },
+    -- { 'robertbrunhage/dart-tools.nvim' }
+}
+
+-- ---------------------------------------
 
 local SNIPPETS = {
     {
@@ -63,6 +78,7 @@ local LSP = {
     { 'williamboman/mason-lspconfig.nvim' },
 
     { 'rmagatti/goto-preview' }, -- previewing definitions using floating windows
+    { 'lvimuser/lsp-inlayhints.nvim' }
 }
 
 -- ---------------------------------------
@@ -98,7 +114,9 @@ local TELESCOPE = {
     { "debugloop/telescope-undo.nvim" },
     { "MaximilianLloyd/adjacent.nvim" }, -- find files in same dir
     { "tsakirist/telescope-lazy.nvim" },
-    { 'octarect/telescope-menu.nvim' }
+    { 'octarect/telescope-menu.nvim' },
+    { 'nvim-telescope/telescope-ui-select.nvim' }
+
 }
 
 -- ---------------------------------------
@@ -129,6 +147,13 @@ local UTILS = {
     },
     { 'xiyaowong/nvim-transparent' },
 
+    {
+        "j-hui/fidget.nvim",
+        opts = {},
+        config = function()
+            require('fidget').setup()
+        end,
+    }
 }
 
 -- ---------------------------------------
@@ -143,7 +168,7 @@ local FILE_MOTIONS = {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" }
-    }
+    },
 }
 
 -- ---------------------------------------
@@ -165,6 +190,16 @@ local FOLKE = {
         opts = {}
     },
 
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    }
+
 }
 
 -- ---------------------------------------
@@ -177,11 +212,9 @@ local EDITING_SUPPORT = {
     },
     { 'windwp/nvim-ts-autotag' },
     { 'gbprod/yanky.nvim' },
-    { 'jose-elias-alvarez/null-ls.nvim' },
-    { 'MunifTanjim/prettier.nvim' },
     { 'tpope/vim-surround' },
     { "cpea2506/relative-toggle.nvim" },
-    { "folke/twilight.nvim",            opts = {} },
+    { "folke/twilight.nvim",          opts = {} },
     {
         'numToStr/Comment.nvim',
         opts = {},
@@ -197,7 +230,27 @@ local EDITING_SUPPORT = {
                 default_replace_multi_buffer_options = "egcI",
             })
         end,
+    },
+    {
+        'declancm/maximize.nvim',
+        config = function() require('maximize').setup() end
+    },
+    { 'jose-elias-alvarez/null-ls.nvim' },
+    { 'MunifTanjim/prettier.nvim' },
+    { "mhartington/formatter.nvim" },
+    { 'NvChad/nvim-colorizer.lua' },
+    {
+        "max397574/colortils.nvim",
+        cmd = "Colortils",
+        config = function()
+            require("colortils").setup()
+        end,
     }
+
+    -- {
+    --     'stevearc/conform.nvim',
+    --     opts = {},
+    -- }
 }
 
 -- ---------------------------------------
@@ -316,6 +369,7 @@ local COLOR_SCHEMES = {
 
 require("lazy").setup({
     COLOR_SCHEMES,
+    DEVELOPMENT,
     SESSION,
     TELESCOPE,
     DATABASE,

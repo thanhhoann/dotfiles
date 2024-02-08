@@ -25,6 +25,11 @@ keymap_set('n', "<leader>a", "ggVG")
 -- quit
 keymap_set('n', 'Z', ':quitall<CR>')
 
+-- maximize the buffer
+keymap_set('n', '<leader>bm', "<C-w>T<cr>")
+-- after maximize the buffer, return to splits
+keymap_set('n', '<Leader>br', "mAZZ<C-w>S`A")
+
 -- VISUAL MODE
 -- -------------------------------------
 -- moving strings

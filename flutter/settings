@@ -1,0 +1,5 @@
+{
+  "enable-macos-desktop": false,
+  "enable-ios": false,
+  "cli-animations": true
+}

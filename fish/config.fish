@@ -9,7 +9,7 @@ end
 export HOMEBREW_NO_AUTO_UPDATE=1
 export VISUAL=nvim
 export EDITOR=nvim
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+# export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # ranger
 export FZF_FZM_OPTS="--reverse --height 75% --min-height 30 --cycle +m --ansi --bind=ctrl-o:accept,ctrl-t:toggle --select-1"
@@ -63,7 +63,7 @@ abbr --add mtmr cd /Users/thanhhoann/Library/Application\ Support/MTMR
 # ---------------------------------------------------------------
 
 # flutter
-fish_add_path /Users/thanhhoann/flutter/bin $PATH
+fish_add_path $HOME/development/flutter/bin
 
 # go 
 fish_add_path $HOME/go/bin
@@ -144,6 +144,15 @@ function nvm_start
     # end
 end
 
+# ---------------------------
+
+function flutter_run
+    tmux send-keys "flutter run $1 $2 $3 $4 --pid-file=/tmp/tf1.pid" Enter \;\
+    split-window -v \;\
+    send-keys 'npx -y nodemon -e dart -x "cat /tmp/tf1.pid | xargs kill -s USR1"' Enter \;\
+    select-pane -t 0 \;
+end
+
 # PLUGIN SETUP
 # ---------------------------------------------------------------
 
@@ -151,15 +160,12 @@ end
 # STARTUP
 # ---------------------------------------------------------------
 
-
-echo ''
-
 # THEME
 # ---------------------------------------------------------------
 
-# oh-my-posh init fish --config ~/.config/oh-my-posh/themes/amro.omp.json | source
+oh-my-posh init fish --config ~/.config/oh-my-posh/themes/amro.omp.json | source
 
-starship init fish | source
+# starship init fish | source
 
 zoxide init fish | source
 

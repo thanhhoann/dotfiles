@@ -1,5 +1,14 @@
 local key_set = vim.keymap.set
 
+-- flutter-tools
+-----------------------------------------------------------------------------------
+key_set("n", "<leader>xx", function() require("trouble").toggle() end)
+key_set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
+key_set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
+key_set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
+key_set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
+key_set("n", "gR", function() require("trouble").toggle("lsp_references") end)
+
 -- nvim-telescope/telescope.nvim
 -----------------------------------------------------------------------------------
 key_set('n', '<leader>ff', require('telescope.builtin').find_files, {})
@@ -54,11 +63,6 @@ key_set("n", "<leader>2", function() require 'harpoon':list():select(2) end)
 key_set("n", "<leader>3", function() require 'harpoon':list():select(3) end)
 key_set("n", "<leader>4", function() require 'harpoon':list():select(4) end)
 
--- Toggle previous & next buffers stored within Harpoon list
-key_set("n", "<leader>i", function() require 'harpoon':list():prev() end)
-key_set("n", "<leader>o", function() require 'harpoon':list():next() end)
-
-
 -- rmagatti/goto-preview
 -----------------------------------------------------------------------------------
 key_set("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
@@ -69,9 +73,9 @@ key_set('n', '<leader>gs', vim.cmd.Git)
 
 -- roobert/search-replace.nvim
 -----------------------------------------------------------------------------------
-
 key_set("v", "<C-s>", "<CMD>SearchReplaceWithinVisualSelection<CR>", opts)
 key_set("n", "<leader>rbo", "<CMD>SearchReplaceMultiBufferOpen<CR>", opts)
+key_set('v', '<leader>)', ":s/)/),/gcI<cr>a<cr>") -- put comma behind every bracket
 
 -- show the effects of a search / replace in a live preview window
 vim.o.inccommand = "split"

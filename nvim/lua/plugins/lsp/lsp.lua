@@ -8,41 +8,67 @@ require('mason-lspconfig').setup({
     },
 })
 
-local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-})
-
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup({
-    mapping = cmp_mappings
-})
-
 lsp.set_preferences({
     suggest_lsp_servers = true,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
 })
 
+lsp.set_sign_icons({
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = '»'
+})
 
-lsp.setup()
+lsp.on_attach(function(client, bufnr)
+    -- lsp.default_keymaps({ buffer = bufnr })
+    lsp.default_keymaps({
+        buffer = bufnr,
+        preserve_mappings = false
+    })
+    local opts = { buffer = bufnr }
+    vim.keymap.set('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+    vim.keymap.set('n', 'ca', '<cmd> lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set('n', 'ch', '<cmd> lua vim.lsp.buf.signature_help()<cr>', opts)
+    vim.keymap.set('n', 'cf', '<cmd> lua vim.diagnostic.setqflist()<cr>', opts)
+end)
 
 vim.diagnostic.config({
     virtual_text = true
 })
 
+local cmp = require('cmp')
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = false }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+})
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+lsp.setup({ mapping = cmp_mappings })
+
+
 -- LANGUAGE SERVER(S) SETUP
+
+require 'lspconfig'.dartls.setup {
+    cmd = { "dart", "language-server", "--protocol=lsp" },
+    filetypes = { "dart" },
+    init_options = {
+        closingLabels = true,
+        flutterOutline = true,
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        outline = true,
+        suggestFromUnimportedLibraries = true
+    },
+    settings = {
+        dart = {
+            completeFunctionCalls = true,
+            showTodos = true,
+            enableSdkFormatter = true
+        }
+    }
+}
 
 require 'lspconfig'.lua_ls.setup {
     on_init = function(client)

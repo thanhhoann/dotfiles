@@ -10,6 +10,6 @@ require("plugins")
 
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme dracula")
-vim.g.theme_id = 26
+vim.cmd("colorscheme catppuccin-mocha")
+vim.g.theme_id = 12
 -- end themery block

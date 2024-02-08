@@ -2,8 +2,12 @@
 # fast focus desktop
 lalt - tab : yabai -m space --focus recent
 
+# Show date
+# alt - d : osascript ~/.config/skhd/applescripts/pop.scpt
+
 # delete desktop
 lalt - x : yabai -m space --destroy
+
 # focus desktop #
 lalt - 1 : yabai -m space --focus 1 
 lalt - 2 : yabai -m space --focus 2 

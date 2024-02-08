@@ -22,4 +22,6 @@ vim.opt.updatetime = 50
 
 vim.opt.conceallevel = 1
 
+vim.opt.cursorline = true
+
 -- vim.opt.colorcolumn = "80"

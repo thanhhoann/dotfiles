@@ -7,7 +7,7 @@ require("oil").setup({
     columns = {
         "icon",
         -- "permissions",
-        -- "size",
+        "size",
         -- "mtime",
     },
     -- Buffer-local options to use for oil buffers
@@ -27,11 +27,11 @@ require("oil").setup({
         concealcursor = "nvic",
     },
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-    delete_to_trash = false,
+    delete_to_trash = true,
     -- Skip the confirmation popup for simple operations
-    skip_confirm_for_simple_edits = false,
+    skip_confirm_for_simple_edits = true,
     -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
-    prompt_save_on_select_new_entry = true,
+    prompt_save_on_select_new_entry = false,
     -- Oil will automatically delete hidden buffers after this delay
     -- You can set the delay to false to disable cleanup entirely
     -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
@@ -43,7 +43,7 @@ require("oil").setup({
     -- Set to `false` to remove a keymap
     -- See :help oil-actions for a list of all available actions
     keymaps = {
-        ["g?"] = "actions.show_help",
+        ["h"] = "actions.show_help",
         ["<CR>"] = "actions.select",
         ["<C-s>"] = "actions.select_vsplit",
         ["<C-h>"] = "actions.select_split",
@@ -64,7 +64,7 @@ require("oil").setup({
     use_default_keymaps = true,
     view_options = {
         -- Show files and directories that start with "."
-        show_hidden = false,
+        show_hidden = true,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
             return vim.startswith(name, ".")
@@ -83,12 +83,12 @@ require("oil").setup({
     -- Configuration for the floating window in oil.open_float
     float = {
         -- Padding around the floating window
-        padding = 2,
+        padding = 10,
         max_width = 100,
         max_height = 30,
         border = "rounded",
         win_options = {
-            winblend = 20,
+            winblend = 8,
         },
         -- This is the config that will be passed to nvim_open_win.
         -- Change values here to customize the layout

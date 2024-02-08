@@ -1,6 +1,14 @@
 local builtin = require('telescope.builtin')
 
 require("telescope").setup({
+    defaults = {
+        layout_config = {
+            horizontal = {
+                width = 0.99,
+                preview_width = 0.6,
+            }
+        }
+    },
     pickers = {
         lsp_references = {
             layout_config = {
@@ -58,6 +66,10 @@ require("telescope").setup({
                 },
             },
         },
+
+        ["ui-select"] = {
+            require 'telescope.themes'.get_dropdown {}
+        }
     },
 })
 
@@ -65,3 +77,5 @@ require("telescope").load_extension "lazy"
 require("telescope").load_extension "adjacent"
 require("telescope").load_extension "undo"
 require("telescope").load_extension "menu"
+require("telescope").load_extension "ui-select"
+-- require("telescope").load_extension "flutter"

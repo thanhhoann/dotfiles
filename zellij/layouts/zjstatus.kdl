@@ -5,7 +5,7 @@ layout {
 
     pane size=1 borderless=true {
         plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-            format_left  "{mode}#[fg=black,bg=blue,bold]{session}  #[fg=blue,bg=#181825]{tabs}"
+            format_left  "{mode} #[fg=black,bg=blue,bold]{session}  #[fg=blue,bg=#181825]{tabs}"
             format_right "#[fg=#181825,bg=#b1bbfa]{datetime}"
             format_space "#[bg=#181825]"
 

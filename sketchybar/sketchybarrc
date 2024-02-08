@@ -26,12 +26,12 @@ bar=(
   # border_width=3
   shadow=off
   position=bottom
-  sticky=on
+  sticky=off
   padding_right=10
   padding_left=10
   y_offset=0
   margin=5
-  topmost=window
+  topmost=off
   corner_radius=8
 )
 
@@ -83,7 +83,7 @@ source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/calendar.sh"
 # source "$ITEM_DIR/brew.sh"
 # source "$ITEM_DIR/github.sh"
-# source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/volume.sh"
 # source "$ITEM_DIR/cpu.sh"
 # source "$ITEM_DIR/svim.sh"
 

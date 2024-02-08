@@ -83,13 +83,14 @@ ins_left {
         return ' '
     end,
     color = { fg = colors.blue },      -- Sets highlighting of component
-    padding = { left = 0, right = 1 }, -- We don't need space before this
+    padding = { left = 0, right = 0 }, -- We don't need space before this
 }
 
 ins_left {
     -- mode component
     function()
-        return '  '
+        -- return '  '
+        return ''
     end,
     color = function()
         -- auto change color according to neovims mode
@@ -138,7 +139,7 @@ ins_left {
 ins_left {
     'diff',
     -- Is it me or the symbol for modified us really weird
-    symbols = { added = ' ', modified = ' ', removed = ' ' },
+    symbols = { added = ' ', modified = ' ', removed = ' ' },
     diff_color = {
         added = { fg = colors.green },
         modified = { fg = colors.orange },
@@ -188,7 +189,7 @@ ins_left {
         return msg
     end,
     icon = ' ',
-    color = { fg = '#ffffff', gui = 'bold' },
+    color = { fg = '#ffafcc', gui = 'bold' },
 }
 
 -- Add components to right sections

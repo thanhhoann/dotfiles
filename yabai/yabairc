@@ -46,6 +46,7 @@ yabai -m config external_bar               all:0:40     \
                 window_gap                 8
 
 yabai -m rule --add label="Finder" app="^Finder$" manage=off
+yabai -m rule --add label="Messages" app="^Messages$" manage=off
 yabai -m rule --add label="Font Book" app="^Font Book$" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 # yabai -m rule --add app="^Live Wallaper$" manage=off

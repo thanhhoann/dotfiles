@@ -1,32 +1,37 @@
 local wezterm = require 'wezterm'
-local config = {}
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-  config = wezterm.config_builder()
-end
+return {
+    -- FONTS
+    font = wezterm.font 'GoMono Nerd Font Mono',
+    font_size = 16.0,
 
--- FONTS
-config.font = wezterm.font 'GoMono Nerd Font Mono'
-config.font_size = 15.0
+    -- COLOR SCHEME
+    color_scheme = 'tokyonight_night',
 
--- COLOR SCHEME
-config.color_scheme = 'tokyonight_night'
+    -- WINDOW
+    enable_tab_bar = false,
+    window_decorations = "RESIZE",
+    window_background_opacity = 0.9,
+    macos_window_background_blur = 30,
 
--- WINDOW
+    window_padding = {
+        left = 10,
+        right = 10,
+        top = 10,
+        bottom = 0,
+    },
 
-config.enable_tab_bar = false
+    -- KEY CONTROLS
+    keys = {
+        { key = 'f', mods = 'CTRL', action = wezterm.action.ToggleFullScreen },
+    },
+    mouse_bindings = {
+        -- Ctrl-click will open the link under the mouse cursor
+        {
+            event = { Up = { streak = 1, button = 'Left' } },
+            mods = 'CTRL',
+            action = wezterm.action.OpenLinkAtMouseCursor,
+        },
+    },
 
-config.window_decorations = "RESIZE"
-
-config.window_background_opacity = 0.85
-
-config.window_padding = {
-  left = 15,
-  right = 15,
-  top = 15,
-  bottom = 0,
 }
-
-return config

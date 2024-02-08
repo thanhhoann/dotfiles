@@ -258,8 +258,7 @@ default_shell "fish"
 
 pane_frames false
 
-
-default_layout "zjstatus"
+default_layout "zjstatus_slanted"
 
 mouse_mode true
 
