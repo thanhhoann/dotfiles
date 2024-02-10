@@ -5,13 +5,13 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#ffffff",
+          "foreground": "#79D95C",
           "style": "plain",
           "template": "\n ",
           "type": "session"
         },
         {
-          "foreground": "#ffcad4",
+          "foreground": "#ffffff",
           "properties": {
             "folder_separator_icon": "  ",
             "style": "full"

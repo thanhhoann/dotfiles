@@ -68,8 +68,14 @@ require("telescope").setup({
         },
 
         ["ui-select"] = {
-            require 'telescope.themes'.get_dropdown {}
-        }
+            require 'telescope.themes'.get_dropdown {
+                codeactions = true
+            }
+        },
+
+        live_grep_args = {
+            auto_quoting = true, -- enable/disable auto-quoting
+        },
     },
 })
 
@@ -78,4 +84,6 @@ require("telescope").load_extension "adjacent"
 require("telescope").load_extension "undo"
 require("telescope").load_extension "menu"
 require("telescope").load_extension "ui-select"
+require("telescope").load_extension "noice"
+require("telescope").load_extension "live_grep_args"
 -- require("telescope").load_extension "flutter"

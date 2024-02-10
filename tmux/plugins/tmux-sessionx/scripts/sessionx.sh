@@ -134,7 +134,7 @@ handle_args() {
 
     RENAME_SESSION='ctrl-r:execute(printf >&2 "New name: ";read name; tmux rename-session -t {} ${name};)+reload(tmux list-sessions | sed -E "s/:.*$//")'
 
-    HEADER="$bind_accept=󰿄  $bind_kill_session=󱂧  C-r=󰑕  $bind_configuration_mode=󱃖  $bind_window_mode=   $bind_new_window=󰇘  $bind_back=󰌍  $bind_tree_mode=󰐆   $bind_scroll_up=  $bind_scroll_down= "
+    HEADER="$bind_accept='Accept'  $bind_kill_session='Kill'  C-r='Rename'  $bind_configuration_mode='~/.config'  $bind_window_mode='Window Mode'   $bind_new_window='New Window'  $bind_back=󰌍  $bind_tree_mode='Tree Mode'   $bind_scroll_up=  $bind_scroll_down= "
 
 
     args=(

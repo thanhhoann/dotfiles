@@ -24,4 +24,6 @@ vim.opt.conceallevel = 1
 
 vim.opt.cursorline = true
 
+vim.opt.swapfile = false
+
 -- vim.opt.colorcolumn = "80"

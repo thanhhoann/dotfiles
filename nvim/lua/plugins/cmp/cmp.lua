@@ -32,6 +32,7 @@ cmp.setup({
             mode = 'symbol_text',  -- 'text', 'text_symbol', 'symbol_text', 'symbol'
             maxwidth = 55,         -- prevent the popup from showing more than provided characters
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+            symbol_map = { Codeium = "", }
         })
     },
 
@@ -43,7 +44,7 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
 
         -- select up
-        ["<C-p"] = cmp.mapping(function(fallback)
+        ["<C-n"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
                 -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
@@ -58,7 +59,7 @@ cmp.setup({
         end, { "i", "s" }),
 
         -- select down
-        ["<C-n>"] = cmp.mapping(function(fallback)
+        ["<C-p>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -74,6 +75,7 @@ cmp.setup({
             { name = 'nvim_lsp' },
             { name = 'nvim_lua' },
             { name = 'buffer' },
+            { name = 'codeium' },
             { name = 'cmdline' },
             { name = 'luasnip_choice' },
             {

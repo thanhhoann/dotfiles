@@ -2,6 +2,8 @@
 # fast focus desktop
 lalt - tab : yabai -m space --focus recent
 
+
+
 # Show date
 # alt - d : osascript ~/.config/skhd/applescripts/pop.scpt
 
@@ -60,10 +62,10 @@ shift + lalt - n : yabai -m space --create && \
 
 # -- CTRL ALT --
 # Resize windows
-ctrl + lalt - h    : yabai -m window --resize right:-100:0 || yabai -m window --resize left:-100:0
-ctrl + lalt - l : yabai -m window --resize right:100:0 || yabai -m window --resize left:100:0
-ctrl + lalt - j    : yabai -m window --resize bottom:0:100 || yabai -m window --resize top:0:100
-ctrl + lalt - k    : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
+ctrl + lalt - h    : yabai -m window --resize right:-50:0 || yabai -m window --resize left:-50:0
+ctrl + lalt - l : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0
+ctrl + lalt - j    : yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:50
+ctrl + lalt - k    : yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:-50
 
 # -- Starting/Stopping/Restarting Yabai --
 # stop/start/restart yabai

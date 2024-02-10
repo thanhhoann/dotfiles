@@ -26,7 +26,7 @@ lsp.on_attach(function(client, bufnr)
         preserve_mappings = false
     })
     local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+    vim.keymap.set('n', 'cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set('n', 'ca', '<cmd> lua vim.lsp.buf.code_action()<cr>', opts)
     vim.keymap.set('n', 'ch', '<cmd> lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', 'cf', '<cmd> lua vim.diagnostic.setqflist()<cr>', opts)
@@ -42,7 +42,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = false }),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-k>"] = cmp.mapping.complete(),
 })
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil

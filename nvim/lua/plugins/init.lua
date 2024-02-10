@@ -13,6 +13,7 @@ local UI = 'plugins.ui.'
 local FILE_MOTIONS = 'plugins.file_motions.'
 local GIT = 'plugins.git.'
 local DEVELOPMENT = 'plugins.development.'
+local FOLKE = 'plugins.folke.'
 
 require(CMP .. 'cmp')
 require(CMP .. 'cmp-sources')
@@ -23,6 +24,10 @@ require(LSP .. 'mason-config')
 require(LSP .. 'treesitter')
 require(LSP .. 'fugitive')
 require(LSP .. 'goto-preview')
+
+require(FOLKE .. 'trouble')
+require(FOLKE .. 'noice')
+require(FOLKE .. 'notify')
 
 require(UI .. 'alpha')
 
@@ -41,9 +46,10 @@ require(EDITING_SUPPORT .. 'null-ls')
 require(EDITING_SUPPORT .. 'prettier')
 require(EDITING_SUPPORT .. 'comment')
 require(EDITING_SUPPORT .. 'formatter')
+require(EDITING_SUPPORT .. 'nvim-spider')
 -- require(EDITING_SUPPORT .. 'conform')
 
-require(NOTE_TAKING .. 'obsidian')
+-- require(NOTE_TAKING .. 'obsidian')
 
 require(STATUS_LINE .. 'lualine')
 require(STATUS_LINE .. 'barbecue') -- winbar

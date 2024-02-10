@@ -78,7 +78,8 @@ local LSP = {
     { 'williamboman/mason-lspconfig.nvim' },
 
     { 'rmagatti/goto-preview' }, -- previewing definitions using floating windows
-    { 'lvimuser/lsp-inlayhints.nvim' }
+    { 'lvimuser/lsp-inlayhints.nvim' },
+    { 'folke/lsp-colors.nvim' }
 }
 
 -- ---------------------------------------
@@ -115,8 +116,8 @@ local TELESCOPE = {
     { "MaximilianLloyd/adjacent.nvim" }, -- find files in same dir
     { "tsakirist/telescope-lazy.nvim" },
     { 'octarect/telescope-menu.nvim' },
-    { 'nvim-telescope/telescope-ui-select.nvim' }
-
+    { 'nvim-telescope/telescope-ui-select.nvim' },
+    { "nvim-telescope/telescope-live-grep-args.nvim" }
 }
 
 -- ---------------------------------------
@@ -153,7 +154,20 @@ local UTILS = {
         config = function()
             require('fidget').setup()
         end,
-    }
+    },
+    { 'rcarriga/nvim-notify' },
+
+    {
+        "Exafunction/codeium.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            require("codeium").setup({
+            })
+        end
+    },
 }
 
 -- ---------------------------------------
@@ -198,7 +212,22 @@ local FOLKE = {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-    }
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
+    },
 
 }
 
@@ -212,7 +241,6 @@ local EDITING_SUPPORT = {
     },
     { 'windwp/nvim-ts-autotag' },
     { 'gbprod/yanky.nvim' },
-    { 'tpope/vim-surround' },
     { "cpea2506/relative-toggle.nvim" },
     { "folke/twilight.nvim",          opts = {} },
     {
@@ -245,7 +273,23 @@ local EDITING_SUPPORT = {
         config = function()
             require("colortils").setup()
         end,
-    }
+    },
+    {
+        '00sapo/visual.nvim',
+        event = "VeryLazy",
+    },
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    },
+
+    { "chrisgrieser/nvim-spider", lazy = true },
 
     -- {
     --     'stevearc/conform.nvim',
@@ -322,14 +366,14 @@ local SUGGESTION = {
 -- ---------------------------------------
 
 local NOTE_TAKING = {
-    {
-        "epwalsh/obsidian.nvim",
-        version = "*", -- recommended, use latest release instead of latest commit
-        lazy = true,
-        ft = "markdown",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {},
-    },
+    -- {
+    --     "epwalsh/obsidian.nvim",
+    --     version = "*", -- recommended, use latest release instead of latest commit
+    --     lazy = true,
+    --     ft = "markdown",
+    --     dependencies = { "nvim-lua/plenary.nvim" },
+    --     opts = {},
+    -- },
 }
 
 -- ---------------------------------------

@@ -1,42 +1,64 @@
-local keymap_set = vim.keymap.set
-
+local key = vim.keymap.set
 vim.g.mapleader = " "
 
--- NORMAL MODE
+-- INFO: TMUX
 -- -------------------------------------
+--
+-- send "R" window "1" to hot restart. for simulators, bc web i had dashmon :)
+key('n', '<leader>fr', ':w<cr>:LspZeroFormat<cr>:! tmux send-keys -t "1" R<cr><cr>')
+
+-- INFO: NORMAL MODE
+-- -------------------------------------
+--
 -- format and save
-keymap_set('n', 'W', ':Prettier<CR>:w<CR>')
-
+key('n', 'W', ':Prettier<CR>:w<CR>')
+key('n', 'W', ':Prettier<CR>:w<CR>')
 -- format
-keymap_set('n', '<leader>f', ':LspZeroFormat<CR>:w<CR>')
-
--- copy to clipboard
-keymap_set({ "n", "v" }, "<leader>y", [["+y]])
-
+key('n', '<leader>f', ':LspZeroFormat<CR>:w<CR>')
 -- replace selected word with regex
-keymap_set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
+key("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- format -> save -> source
-keymap_set('n', "<leader>n", ':LspZeroFormat<CR>:w<CR>:so<CR>')
-
+key('n', "<leader>n", ':LspZeroFormat<CR>:w<CR>:so<CR>')
 -- select all
-keymap_set('n', "<leader>a", "ggVG")
-
+key('n', "<leader>a", "ggVG")
 -- quit
-keymap_set('n', 'Z', ':quitall<CR>')
-
+key('n', 'Z', ':wq<CR>')
 -- maximize the buffer
-keymap_set('n', '<leader>bm', "<C-w>T<cr>")
+key('n', '<leader>bm', "<C-w>T<cr>")
 -- after maximize the buffer, return to splits
-keymap_set('n', '<Leader>br', "mAZZ<C-w>S`A")
+key('n', '<Leader>br', "mAZZ<C-w>S`A")
+-- repeating macro ',', instead of '@@'
+key('n', ',', '@@')
 
--- VISUAL MODE
+-- INFO: VISUAL MODE
 -- -------------------------------------
+--
 -- moving strings
-keymap_set("v", "J", ":m '>+1<CR>gv=gv")
-keymap_set("v", "K", ":m '<-2<CR>gv=gv")
+key("v", "J", ":m '>+1<CR>gv=gv")
+key("v", "K", ":m '<-2<CR>gv=gv")
+-- indenting
+key('v', '>', '>gv')
+key('v', '<', '<gv')
+-- copy on exits
+key('v', '<C-c>', '"+y')
 
--- INSERT MODE
+-- INFO: INSERT MODE
 -- -------------------------------------
--- esc when inserting
-keymap_set("i", "<C-c>", "<Esc>")
+--
+-- escaping
+key("i", "<C-c>", "<Esc>")
+-- moving
+key("i", "<C-k>", "<C-o>gk") -- up
+key("i", "<C-j>", "<C-o>gj") -- down
+key("i", "<C-h>", "<Left>")
+key("i", "<C-l>", "<Right>")
+
+-- INFO: COMMON
+-- -------------------------------------
+--
+-- clipboard
+key({ "n", "v" }, "<leader>y", [["+y]])
+key({ "n", "v" }, "<leader>p", [["+p]])
+-- backspace
+key('n', '<BS>', 'x')
+key('v', '<BS>', '<BS>x')

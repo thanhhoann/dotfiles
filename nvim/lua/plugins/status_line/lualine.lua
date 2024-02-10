@@ -55,7 +55,29 @@ local config = {
         lualine_z = {},
         -- These will be filled later
         lualine_c = {},
-        lualine_x = {},
+        lualine_x = {
+            {
+                require("noice").api.status.message.get_hl,
+                cond = require("noice").api.status.message.has,
+                color = { fg = "#FEE164", bg = "#FFFFFF" },
+            },
+            -- {
+            --     require("noice").api.status.command.get_hl,
+            --     cond = require("noice").api.status.command.has,
+            --     color = { fg = "#ff9e64" },
+            -- },
+            {
+                require("noice").api.status.mode.get,
+                cond = require("noice").api.status.mode.has,
+                color = { fg = "#FEE164" },
+            },
+            -- {
+            --     require("noice").api.status.search.get,
+            --     cond = require("noice").api.status.search.has,
+            --     color = { fg = "#ff9e64" },
+            -- },
+
+        },
     },
     inactive_sections = {
         -- these are to remove the defaults
@@ -165,11 +187,6 @@ ins_left { 'location', icon = '' }
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
-ins_left {
-    function()
-        return '%='
-    end,
-}
 
 ins_left {
     -- Lsp server name .
@@ -208,11 +225,11 @@ ins_left {
 -- }
 
 
-ins_right {
-    'filesize',
-    icon = '',
-    cond = conditions.buffer_not_empty,
-}
+-- ins_right {
+--     'filesize',
+--     icon = '',
+--     cond = conditions.buffer_not_empty,
+-- }
 
 ins_right {
     function()
