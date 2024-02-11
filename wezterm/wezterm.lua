@@ -11,7 +11,7 @@ return {
     -- WINDOW
     enable_tab_bar = false,
     window_decorations = "RESIZE",
-    window_background_opacity = 1,
+    window_background_opacity = 0.8,
     macos_window_background_blur = 30,
 
     window_padding = {

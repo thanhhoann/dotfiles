@@ -56,11 +56,11 @@ local config = {
         -- These will be filled later
         lualine_c = {},
         lualine_x = {
-            {
-                require("noice").api.status.message.get_hl,
-                cond = require("noice").api.status.message.has,
-                color = { fg = "#FEE164", bg = "#202328" },
-            },
+            -- {
+            --     require("noice").api.status.message.get_hl,
+            --     cond = require("noice").api.status.message.has,
+            --     color = { fg = "#FEE164", bg = "#402328" },
+            -- },
             -- {
             --     require("noice").api.status.command.get_hl,
             --     cond = require("noice").api.status.command.has,
@@ -71,7 +71,6 @@ local config = {
             --     cond = require("noice").api.status.mode.has,
             --     color = { fg = "#FEE164" },
             -- },
-            -- {
             --     require("noice").api.status.search.get,
             --     cond = require("noice").api.status.search.has,
             --     color = { fg = "#ff9e64" },
@@ -100,77 +99,77 @@ local function ins_right(component)
     table.insert(config.sections.lualine_x, component)
 end
 
-ins_left {
-    function()
-        return ' '
-    end,
-    color = { fg = colors.blue },      -- Sets highlighting of component
-    padding = { left = 0, right = 0 }, -- We don't need space before this
-}
+-- ins_left {
+--     function()
+--         return ' '
+--     end,
+--     color = { fg = colors.blue },      -- Sets highlighting of component
+--     padding = { left = 0, right = 0 }, -- We don't need space before this
+-- }
 
-ins_left {
-    -- mode component
-    function()
-        -- return '  '
-        return ''
-    end,
-    color = function()
-        -- auto change color according to neovims mode
-        local mode_color = {
-            n = colors.red,
-            i = colors.reen,
-            v = colors.blue,
-            [''] = colors.blue,
-            V = colors.blue,
-            c = colors.magenta,
-            no = colors.red,
-            s = colors.orange,
-            S = colors.orange,
-            [''] = colors.orange,
-            ic = colors.yellow,
-            R = colors.violet,
-            Rv = colors.violet,
-            cv = colors.red,
-            ce = colors.red,
-            r = colors.cyan,
-            rm = colors.cyan,
-            ['r?'] = colors.cyan,
-            ['!'] = colors.red,
-            t = colors.red,
-        }
-        return { fg = mode_color[vim.fn.mode()] }
-    end,
-    padding = { right = 1 },
-}
+-- ins_left {
+--     -- mode component
+--     function()
+--         -- return '  '
+--         return ''
+--     end,
+--     color = function()
+--         -- auto change color according to neovims mode
+--         local mode_color = {
+--             n = colors.red,
+--             i = colors.reen,
+--             v = colors.blue,
+--             [''] = colors.blue,
+--             V = colors.blue,
+--             c = colors.magenta,
+--             no = colors.red,
+--             s = colors.orange,
+--             S = colors.orange,
+--             [''] = colors.orange,
+--             ic = colors.yellow,
+--             R = colors.violet,
+--             Rv = colors.violet,
+--             cv = colors.red,
+--             ce = colors.red,
+--             r = colors.cyan,
+--             rm = colors.cyan,
+--             ['r?'] = colors.cyan,
+--             ['!'] = colors.red,
+--             t = colors.red,
+--         }
+--         return { fg = mode_color[vim.fn.mode()] }
+--     end,
+--     padding = { right = 1 },
+-- }
 
 
-ins_left {
-    'filename',
-    cond = conditions.buffer_not_empty,
-    icon = '',
-    color = { fg = colors.magenta, gui = 'bold' },
-}
-
-ins_left {
-    'branch',
-    cond = conditions.buffer_not_empty,
-    icon = '',
-    color = { fg = colors.orange, gui = 'bold' },
-}
-
-ins_left {
-    'diff',
-    -- Is it me or the symbol for modified us really weird
-    symbols = { added = ' ', modified = ' ', removed = ' ' },
-    diff_color = {
-        added = { fg = colors.green },
-        modified = { fg = colors.orange },
-        removed = { fg = colors.red },
-    },
-    cond = conditions.hide_in_width,
-}
-
-ins_left { 'location', icon = '' }
+-- ins_left {
+--     'filename',
+--     cond = conditions.buffer_not_empty,
+--     icon = '',
+--     color = { fg = colors.magenta, gui = 'bold' },
+-- }
+--
+-- ins_left {
+--     'branch',
+--     cond = conditions.buffer_not_empty,
+--     icon = '',
+--     color = { fg = colors.orange, gui = 'bold' },
+-- }
+--
+-- ins_left {
+--     'diff',
+--     -- Is it me or the symbol for modified us really weird
+--     symbols = { added = ' ', modified = ' ', removed = ' ' },
+--     diff_color = {
+--         added = { fg = colors.green },
+--         modified = { fg = colors.orange },
+--         removed = { fg = colors.red },
+--     },
+--     cond = conditions.hide_in_width,
+-- }
+--
+-- ins_left { 'location', icon = '' }
 
 -- ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
@@ -205,7 +204,7 @@ ins_left {
         end
         return msg
     end,
-    icon = ' ',
+    icon = '',
     color = { fg = '#ffafcc', gui = 'bold' },
 }
 
@@ -231,13 +230,13 @@ ins_left {
 --     cond = conditions.buffer_not_empty,
 -- }
 
-ins_right {
-    function()
-        return ''
-    end,
-    color = { fg = colors.blue },
-    padding = { left = 1 },
-}
+-- ins_right {
+--     function()
+--         return ''
+--     end,
+--     color = { fg = colors.blue },
+--     padding = { left = 1 },
+-- }
 
 -- Now don't forget to initialize lualine
 lualine.setup(config)

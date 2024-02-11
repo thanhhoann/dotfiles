@@ -198,3 +198,36 @@ require("noice").setup({
     ---@type NoiceFormatOptions
     format = {}, --- @see section on formatting
 })
+
+
+require("noice").setup({
+    cmdline = {
+        format = {
+            cmdline = { icon = ">" },
+            search_down = { icon = "🔍⌄" },
+            search_up = { icon = "🔍⌃" },
+            filter = { icon = "$" },
+            lua = { icon = "☾" },
+            help = { icon = "" },
+        },
+    },
+    format = {
+        level = {
+            icons = {
+                error = "✖",
+                warn = "▼",
+                info = "●",
+            },
+        },
+    },
+    popupmenu = {
+        kind_icons = true,
+    },
+    inc_rename = {
+        cmdline = {
+            format = {
+                IncRename = { icon = "⟳" },
+            },
+        },
+    },
+})

@@ -1,6 +1,6 @@
 require 'notify'.setup({
     background_colour = "#000000",
-    fps = 30,
+    fps = 60,
     icons = {
         DEBUG = "",
         ERROR = "",
@@ -9,14 +9,14 @@ require 'notify'.setup({
         WARN = ""
     },
     level = 2,
-    minimum_width = 50,
-    maximum_width = 100,
-    render = "compact",
-    stages = "fade_in_slide_out",
+    -- maximum_width = 5,
+    -- maximum_height = 15,
+    render = "minimal",
+    stages = "fade",
     time_formats = {
         notification = "%T",
         notification_history = "%FT%T"
     },
-    timeout = 1000,
-    top_down = true
+    timeout = 2000,
+    top_down = false
 })
