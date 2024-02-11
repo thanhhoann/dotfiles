@@ -1,38 +1,28 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
+        lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- ---------------------------------------
 
 local CMP = {
-    {
-        'hrsh7th/nvim-cmp',
-        event = { "InsertEnter", "CmdlineEnter" },
-    },
-
+    { 'hrsh7th/nvim-cmp',         event = { "InsertEnter", "CmdlineEnter" } },
+    -- sources
+    { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-nvim-lua' },
-    { 'saadparwaiz1/cmp_luasnip' },
     { 'doxnit/cmp-luasnip-choice' },
-
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-cmdline' },
-
     { 'mtoohey31/cmp-fish' },
     { 'amarakon/nvim-cmp-fonts' },
 }
 
 -- ---------------------------------------
+
 local DEVELOPMENT = {
     {
         'akinsho/flutter-tools.nvim',
@@ -50,10 +40,7 @@ local DEVELOPMENT = {
 -- ---------------------------------------
 
 local SNIPPETS = {
-    {
-        'L3MON4D3/LuaSnip',
-        dependencies = { "rafamadriz/friendly-snippets" },
-    },
+    { 'L3MON4D3/LuaSnip',            dependencies = { "rafamadriz/friendly-snippets" } },
     { "honza/vim-snippets" },
     { 'rafamadriz/friendly-snippets' },
 }
@@ -67,51 +54,46 @@ local GIT = {
 
 -- ---------------------------------------
 
-local LSP = {
-    { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
+local TREE_SITTER = {
+    { "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
+    { 'nvim-tree/nvim-web-devicons' },
+    { 'JoosepAlviste/nvim-ts-context-commentstring' },
+    -- { "nvim-treesitter/nvim-treesitter-context", build = ":TSUpdate" },
+}
 
+-- ---------------------------------------
+
+local LSP = {
     { 'neovim/nvim-lspconfig' },
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-    { 'onsails/lspkind.nvim' },
-
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
-
-    { 'rmagatti/goto-preview' }, -- previewing definitions using floating windows
+    -- sources
+    { 'onsails/lspkind.nvim' },
     { 'lvimuser/lsp-inlayhints.nvim' },
     { 'folke/lsp-colors.nvim' }
 }
 
 -- ---------------------------------------
 
-local SESSION = {
-    { 'tpope/vim-obsession' }
-}
-
--- ---------------------------------------
-
 local DATABASE = {
-    {
-        "tpope/vim-dadbod",
-        opt = true,
-        requires = {
-            "kristijanhusak/vim-dadbod-ui",
-            "kristijanhusak/vim-dadbod-completion",
-        },
-    },
-    { 'kristijanhusak/vim-dadbod-ui' },
-    { 'kristijanhusak/vim-dadbod-completion' },
+    -- {
+    --     "tpope/vim-dadbod",
+    --     opt = true,
+    --     requires = {
+    --         "kristijanhusak/vim-dadbod-ui",
+    --         "kristijanhusak/vim-dadbod-completion",
+    --     },
+    -- },
+    -- { 'kristijanhusak/vim-dadbod-ui' },
+    -- { 'kristijanhusak/vim-dadbod-completion' },
 }
 
 -- ---------------------------------------
 
 local TELESCOPE = {
-    {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-
+    { 'nvim-telescope/telescope.nvim',               tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
+    -- sources
     { "debugloop/telescope-undo.nvim" },
     { "MaximilianLloyd/adjacent.nvim" }, -- find files in same dir
     { "tsakirist/telescope-lazy.nvim" },
@@ -122,72 +104,29 @@ local TELESCOPE = {
 
 -- ---------------------------------------
 
-local UTILS = {
-    { 'nvim-tree/nvim-web-devicons' },
-
+local UI = {
     { "MunifTanjim/nui.nvim" },
-    { "karb94/neoscroll.nvim" },
-    {
-        'goolord/alpha-nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require 'alpha'.setup(require 'alpha.themes.startify'.config)
-        end
-    },
-
-    {
-        "AckslD/nvim-neoclip.lua",
-        requires = {
-            -- you'll need at least one of these
-            -- {'nvim-telescope/telescope.nvim'},
-            -- {'ibhagwan/fzf-lua'},
-        },
-        config = function()
-            require('neoclip').setup()
-        end,
-    },
-    { 'xiyaowong/nvim-transparent' },
-
-    {
-        "j-hui/fidget.nvim",
-        opts = {},
-        config = function()
-            require('fidget').setup()
-        end,
-    },
+    { 'goolord/alpha-nvim',  dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    { "j-hui/fidget.nvim" },
     { 'rcarriga/nvim-notify' },
-
-    {
-        "Exafunction/codeium.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({
-            })
-        end
-    },
+    { "folke/noice.nvim",    event = "VeryLazy",                              opts = {}, dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } },
 }
 
 -- ---------------------------------------
 
 local FILE_MOTIONS = {
-    {
-        'stevearc/oil.nvim',
-        opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-    },
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
+    { 'stevearc/oil.nvim',    opts = {},           dependencies = { "nvim-tree/nvim-web-devicons" } },
+    { "ThePrimeagen/harpoon", branch = "harpoon2", dependencies = { "nvim-lua/plenary.nvim" } },
 }
 
 -- ---------------------------------------
 
-local FOLKE = {
+local DEBUG = {
+    { "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
+}
+
+-- ---------------------------------------
+local UTILS = {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -197,125 +136,51 @@ local FOLKE = {
         end,
         opts = {}
     },
-
-    { -- https://github.com/folke/todo-comments.nvim
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {}
-    },
-
+    { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+    { 'nvimtools/none-ls.nvim' }, -- null-ls alternative
     {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
+        "Exafunction/codeium.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
+        config = function() require("codeium").setup({}) end
     },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- add any options here
-        },
-        dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
-        }
-    },
-
 }
 
 -- ---------------------------------------
 
 local EDITING_SUPPORT = {
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        opts = {}
-    },
+    { 'windwp/nvim-autopairs',               event = "InsertEnter", opts = {} },
     { 'windwp/nvim-ts-autotag' },
-    { 'gbprod/yanky.nvim' },
     { "cpea2506/relative-toggle.nvim" },
-    { "folke/twilight.nvim",          opts = {} },
-    {
-        'numToStr/Comment.nvim',
-        opts = {},
-        lazy = false,
-    },
-
-    {
-        "roobert/search-replace.nvim",
-        config = function()
-            require("search-replace").setup({
-                -- optionally override defaults
-                default_replace_single_buffer_options = "gcI",
-                default_replace_multi_buffer_options = "egcI",
-            })
-        end,
-    },
-    {
-        'declancm/maximize.nvim',
-        config = function() require('maximize').setup() end
-    },
-    { 'jose-elias-alvarez/null-ls.nvim' },
+    { 'numToStr/Comment.nvim',               opts = {},             lazy = false },
+    { "roobert/search-replace.nvim" },
     { 'MunifTanjim/prettier.nvim' },
     { "mhartington/formatter.nvim" },
     { 'NvChad/nvim-colorizer.lua' },
+    { "chrisgrieser/nvim-spider",            lazy = true },
+    { "karb94/neoscroll.nvim" },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl",          opts = {} },
     {
-        "max397574/colortils.nvim",
-        cmd = "Colortils",
-        config = function()
-            require("colortils").setup()
-        end,
+        'Wansmer/treesj',
+        keys = { '<space>m', '<space>j', '<space>s' },
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function() require('treesj').setup({}) end,
     },
     {
-        '00sapo/visual.nvim',
-        event = "VeryLazy",
+        'ggandor/leap.nvim',
+        dependencies = { "tpope/vim-repeat" },
+        config = function() require('leap').create_default_mappings() end
     },
-    {
-        "kylechui/nvim-surround",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
-    },
-
-    { "chrisgrieser/nvim-spider", lazy = true },
-
-    -- {
-    --     'stevearc/conform.nvim',
-    --     opts = {},
-    -- }
 }
 
 -- ---------------------------------------
 
 local TMUX = {
-    -- {
-    --     'christoomey/vim-tmux-navigator',
-    --     lazy = false
-    -- }
-    {
-        'numToStr/Navigator.nvim',
-        config = function()
-            require('Navigator').setup()
-        end
-    }
+    { 'numToStr/Navigator.nvim', config = function() require('Navigator').setup() end }
 }
 
 -- ---------------------------------------
 
 local EDUCATION = {
-    { 'ThePrimeagen/vim-be-good' },
     {
         "kawre/leetcode.nvim",
         build = ":TSUpdate html",
@@ -332,81 +197,33 @@ local EDUCATION = {
 
 -- ---------------------------------------
 
-local ENTERTAIN = {
-    { 'eandrju/cellular-automaton.nvim' },
-    { 'echasnovski/mini.nvim',          version = '*' },
-}
-
--- ---------------------------------------
-
 local STATUS_LINE = {
     { 'nvim-lualine/lualine.nvim' },
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
         version = "*",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
-        },
+        dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
         opts = {},
     }
 }
 
 -- ---------------------------------------
 
-local SUGGESTION = {
-    {
-        "m4xshen/hardtime.nvim",
-        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        opts = {}
-    },
-}
-
--- ---------------------------------------
-
-local NOTE_TAKING = {
-    -- {
-    --     "epwalsh/obsidian.nvim",
-    --     version = "*", -- recommended, use latest release instead of latest commit
-    --     lazy = true,
-    --     ft = "markdown",
-    --     dependencies = { "nvim-lua/plenary.nvim" },
-    --     opts = {},
-    -- },
-}
-
--- ---------------------------------------
-
 local COLOR_SCHEMES = {
-    { 'zaldih/themery.nvim' }, -- theme picker update realtime
-
-    -- reference : https://github.com/linrongbin16/colorbox.nvim/blob/main/COLORSCHEMES.md
+    { 'zaldih/themery.nvim' }, -- realtime theme picker
+    -- sources
     { "folke/tokyonight.nvim" },
     { 'marko-cerovac/material.nvim' },
     { 'catppuccin/nvim' },
     { 'rebelot/kanagawa.nvim' },
-    { 'nlknguyen/papercolor-theme' },
-    { 'sainnhe/everforest' },
-    { 'cocopon/iceberg.vim' },
-    { 'junegunn/seoul256.vim' },
     { 'sainnhe/gruvbox-material' },
     { 'rose-pine/neovim' },
     { 'ku1ik/vim-monokai' },
     { 'sainnhe/sonokai' },
     { 'dracula/vim' },
     { 'navarasu/onedark.nvim' },
-    { 'jacoborus/tender.vim' },
-    { 'lifepillar/vim-solarized8' },
-    { 'mhartington/oceanic-next' },
-    { 'projekt0n/github-nvim-theme' },
-    { 'ellisonleao/gruvbox.nvim' },
-    { 'tomasiser/vim-code-dark' },
-    { 'jnurmine/zenburn' },
-    { 'romainl/apprentice' },
-    { 'nyoom-engineering/oxocarbon.nvim' },
-    { 'sainnhe/edge' },
-    { 'raphamorim/lucario' },
+    { "oxfist/night-owl.nvim" },
 }
 
 -- ---------------------------------------
@@ -414,8 +231,9 @@ local COLOR_SCHEMES = {
 require("lazy").setup({
     COLOR_SCHEMES,
     DEVELOPMENT,
-    SESSION,
+    TREE_SITTER,
     TELESCOPE,
+    UI,
     DATABASE,
     GIT,
     SNIPPETS,
@@ -423,11 +241,9 @@ require("lazy").setup({
     CMP,
     FILE_MOTIONS,
     UTILS,
-    FOLKE,
     EDITING_SUPPORT,
     TMUX,
     STATUS_LINE,
     EDUCATION,
-    ENTERTAIN,
-    NOTE_TAKING
+    DEBUG
 })

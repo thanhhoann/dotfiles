@@ -72,30 +72,6 @@ require("themery").setup({
 
         --------------------------------------
         {
-            name = "paper_color",
-            colorscheme = "PaperColor"
-        },
-
-        --------------------------------------
-        {
-            name = "everforest",
-            colorscheme = "everforest"
-        },
-
-        --------------------------------------
-        {
-            name = "iceberg",
-            colorscheme = "everforest"
-        },
-
-        --------------------------------------
-        {
-            name = "seoul256",
-            colorscheme = "seoul256"
-        },
-
-        --------------------------------------
-        {
             name = "gruvbox-material",
             colorscheme = "gruvbox-material"
         },
@@ -137,69 +113,6 @@ require("themery").setup({
             name = "onedark",
             colorscheme = "onedark"
         },
-
-        --------------------------------------
-        {
-            name = "tender",
-            colorscheme = "tender"
-        },
-
-        --------------------------------------
-        {
-            name = "solarized8",
-            colorscheme = "solarized8"
-        },
-        {
-            name = "solarized8_flat",
-            colorscheme = "solarized8_flat"
-        },
-        {
-            name = "solarized8_high",
-            colorscheme = "solarized8_high"
-        },
-        {
-            name = "solarized8_low",
-            colorscheme = "solarized8_low"
-        },
-
-        --------------------------------------
-        {
-            name = "oceanic-next",
-            colorscheme = "OceanicNext"
-        },
-
-        --------------------------------------
-        {
-            name = "github_dark",
-            colorscheme = "github_dark"
-        },
-        {
-            name = "github_dark_colorblind",
-            colorscheme = "github_dark_colorblind"
-        },
-        {
-            name = "github_dark_default",
-            colorscheme = "github_dark_default"
-        },
-        {
-            name = "github_dark_dimmed",
-            colorscheme = "github_dark_dimmed"
-        },
-        {
-            name = "github_dark_high_contrast",
-            colorscheme = "github_dark_high_contrast"
-        },
-        {
-            name = "github_dark_tritanopia",
-            colorscheme = "github_dark_tritanopia"
-        },
-
-        --------------------------------------
-        {
-            name = "github_dark",
-            colorscheme = "github_dark"
-        },
-
         --------------------------------------
         {
             name = "gruvbox",
@@ -208,38 +121,8 @@ require("themery").setup({
 
         --------------------------------------
         {
-            name = "codedark",
-            colorscheme = "codedark"
-        },
-
-        --------------------------------------
-        {
-            name = "zenburn",
-            colorscheme = "zenburn"
-        },
-
-        --------------------------------------
-        {
-            name = "apprentice",
-            colorscheme = "apprentice"
-        },
-
-        --------------------------------------
-        {
-            name = "oxocarbon",
-            colorscheme = "oxocarbon"
-        },
-
-        --------------------------------------
-        {
-            name = "edge",
-            colorscheme = "edge"
-        },
-
-        --------------------------------------
-        {
-            name = "lucario",
-            colorscheme = "lucario"
-        },
+            name = 'night-owl',
+            colorscheme = 'night-owl'
+        }
     },
 })

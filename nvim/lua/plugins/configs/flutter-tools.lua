@@ -5,11 +5,11 @@ require("flutter-tools").setup {
     },
     closing_tags = {
         highlight = "InfoMsg",
-        -- prefix = " ",
+        prefix = " ",
         -- prefix = ' ',
         -- prefix = ' ',
         -- prefix = ' ',
-        prefix = '󰑃 ',
+        -- prefix = '󰑃 ',
         enabled = true
     },
     lsp = {

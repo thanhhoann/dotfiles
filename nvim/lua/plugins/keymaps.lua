@@ -8,12 +8,12 @@ key({ 'n', 'o', 'x' }, 'b', "<cmd>lua require('spider').motion('b')<cr>", { desc
 
 -- INFO: folke/trouble.nvim
 -----------------------------------------------------------------------------------
-key("n", "<leader>xx", function() require("trouble").toggle() end)
-key("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-key("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-key("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-key("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-key("n", "gR", function() require("trouble").toggle("lsp_references") end)
+key("n", "<leader>xx", function() require("lua.plugins.configs.trouble").toggle() end)
+key("n", "<leader>xw", function() require("lua.plugins.configs.trouble").toggle("workspace_diagnostics") end)
+key("n", "<leader>xd", function() require("lua.plugins.configs.trouble").toggle("document_diagnostics") end)
+key("n", "<leader>xq", function() require("lua.plugins.configs.trouble").toggle("quickfix") end)
+key("n", "<leader>xl", function() require("lua.plugins.configs.trouble").toggle("loclist") end)
+key("n", "gR", function() require("lua.plugins.configs.trouble").toggle("lsp_references") end)
 
 -- INFO: nvim-telescope/telescope.nvim
 -----------------------------------------------------------------------------------
@@ -24,6 +24,9 @@ key('n', '<leader>fc', require('telescope.builtin').colorscheme, {})
 key('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, {})
 key('n', '<leader>fl', require('telescope.builtin').lsp_references, {})
 key("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+key("n", "<leader>ft", ":Telescope ")
+-- lazy
+key("n", "<leader>fl", ":Telescope lazy<CR>")
 -- adjacent : find files in same dir
 key("n", "<leader>fff", "<cmd>Telescope adjacent<cr>", { noremap = true, silent = false })
 -- undo
@@ -48,13 +51,14 @@ key('n', '<leader>ls', ':Leet submit<CR>')
 
 -- INFO: ThePrimeagen/harpoon
 -----------------------------------------------------------------------------------
-key("n", "<leader>ha", function() require 'harpoon':list():append() end)
-key("n", "<leader>h", function() require 'harpoon'.ui:toggle_quick_menu(require 'harpoon':list()) end)
+key("n", "<leader>ha", function() require 'lua.plugins.configs.harpoon':list():append() end)
+key("n", "<leader>h",
+    function() require 'lua.plugins.configs.harpoon'.ui:toggle_quick_menu(require 'lua.plugins.configs.harpoon':list()) end)
 
-key("n", "<leader>1", function() require 'harpoon':list():select(1) end)
-key("n", "<leader>2", function() require 'harpoon':list():select(2) end)
-key("n", "<leader>3", function() require 'harpoon':list():select(3) end)
-key("n", "<leader>4", function() require 'harpoon':list():select(4) end)
+key("n", "<leader>1", function() require 'lua.plugins.configs.harpoon':list():select(1) end)
+key("n", "<leader>2", function() require 'lua.plugins.configs.harpoon':list():select(2) end)
+key("n", "<leader>3", function() require 'lua.plugins.configs.harpoon':list():select(3) end)
+key("n", "<leader>4", function() require 'lua.plugins.configs.harpoon':list():select(4) end)
 
 -- INFO: rmagatti/goto-preview
 -----------------------------------------------------------------------------------
@@ -71,7 +75,3 @@ key("n", "<leader>rbo", "<CMD>SearchReplaceMultiBufferOpen<CR>", opts)
 key('v', '<leader>)', ":s/)/),/gcI<cr>a<cr>") -- put comma behind every bracket
 -- show the effects of a search / replace in a live preview window
 vim.o.inccommand = "split"
-
--- eandrju/cellular-automaton.nvim
------------------------------------------------------------------------------------
--- key_set('n', '<leader><leader><leader>', ':CellularAutomaton make_it_rain<CR>')

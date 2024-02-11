@@ -59,18 +59,18 @@ local config = {
             {
                 require("noice").api.status.message.get_hl,
                 cond = require("noice").api.status.message.has,
-                color = { fg = "#FEE164", bg = "#FFFFFF" },
+                color = { fg = "#FEE164", bg = "#202328" },
             },
             -- {
             --     require("noice").api.status.command.get_hl,
             --     cond = require("noice").api.status.command.has,
             --     color = { fg = "#ff9e64" },
             -- },
-            {
-                require("noice").api.status.mode.get,
-                cond = require("noice").api.status.mode.has,
-                color = { fg = "#FEE164" },
-            },
+            -- {
+            --     require("noice").api.status.mode.get,
+            --     cond = require("noice").api.status.mode.has,
+            --     color = { fg = "#FEE164" },
+            -- },
             -- {
             --     require("noice").api.status.search.get,
             --     cond = require("noice").api.status.search.has,

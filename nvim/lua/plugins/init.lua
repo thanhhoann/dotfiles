@@ -1,63 +1,34 @@
-require('plugins.keymaps')
+require 'plugins.keymaps'
+local CONF = 'plugins.configs.'
 
-local LSP = 'plugins.lsp.'
-local UTILS = 'plugins.utils.'
-local EDITING_SUPPORT = 'plugins.editing_support.'
-local STATUS_LINE = 'plugins.status_line.'
-local NOTE_TAKING = 'plugins.note_taking.'
-local ENTERTAIN = 'plugins.entertain.'
-local COLOR_SCHEMES = 'plugins.color_schemes.'
-local EDUCATION = 'plugins.education.'
-local CMP = 'plugins.cmp.'
-local UI = 'plugins.ui.'
-local FILE_MOTIONS = 'plugins.file_motions.'
-local GIT = 'plugins.git.'
-local DEVELOPMENT = 'plugins.development.'
-local FOLKE = 'plugins.folke.'
-
-require(CMP .. 'cmp')
-require(CMP .. 'cmp-sources')
-
-require(LSP .. 'lsp')
-require(LSP .. 'lsp-inlayhints')
-require(LSP .. 'mason-config')
-require(LSP .. 'treesitter')
-require(LSP .. 'fugitive')
-require(LSP .. 'goto-preview')
-
-require(FOLKE .. 'trouble')
-require(FOLKE .. 'noice')
-require(FOLKE .. 'notify')
-
-require(UI .. 'alpha')
-
-require(DEVELOPMENT .. 'flutter-tools')
-
-require(GIT .. 'gitsigns')
-
-require(FILE_MOTIONS .. 'harpoon')
-require(FILE_MOTIONS .. 'oil')
-
-require(UTILS .. 'telescope')
-require(UTILS .. 'neoscroll')
-require(UTILS .. 'fidget')
-
-require(EDITING_SUPPORT .. 'null-ls')
-require(EDITING_SUPPORT .. 'prettier')
-require(EDITING_SUPPORT .. 'comment')
-require(EDITING_SUPPORT .. 'formatter')
-require(EDITING_SUPPORT .. 'nvim-spider')
--- require(EDITING_SUPPORT .. 'conform')
-
--- require(NOTE_TAKING .. 'obsidian')
-
-require(STATUS_LINE .. 'lualine')
-require(STATUS_LINE .. 'barbecue') -- winbar
-
-require(EDUCATION .. 'leetcode')
-
-require(ENTERTAIN .. 'mini-animate')
-
-require(COLOR_SCHEMES .. 'themery') -- theme picker
-require(COLOR_SCHEMES .. 'material')
-require(COLOR_SCHEMES .. 'tokyonight')
+require(CONF .. 'cmp')
+require(CONF .. 'cmp-sources')
+require(CONF .. 'lsp')
+require(CONF .. 'lsp-inlayhints')
+require(CONF .. 'mason-config')
+require(CONF .. 'fugitive')
+require(CONF .. 'treesitter')
+require(CONF .. 'trouble')
+require(CONF .. 'noice')
+require(CONF .. 'notify')
+require(CONF .. 'alpha')
+require(CONF .. 'flutter-tools')
+require(CONF .. 'gitsigns')
+require(CONF .. 'harpoon')
+require(CONF .. 'oil')
+require(CONF .. 'telescope')
+require(CONF .. 'neoscroll')
+require(CONF .. 'fidget')
+require(CONF .. 'null-ls')
+require(CONF .. 'prettier')
+require(CONF .. 'comment')
+require(CONF .. 'formatter')
+require(CONF .. 'nvim-spider')
+require(CONF .. 'indent-blankline')
+require(CONF .. 'lualine')
+require(CONF .. 'barbecue')
+require(CONF .. 'leetcode')
+require(CONF .. 'themery')
+require(CONF .. 'material')
+require(CONF .. 'tokyonight')
+require(CONF .. 'night-owl')
