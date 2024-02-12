@@ -24,6 +24,7 @@ key('n', '<leader>fc', require('telescope.builtin').colorscheme, {})
 key('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, {})
 key('n', '<leader>fl', require('telescope.builtin').lsp_references, {})
 key("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+-- command
 key("n", "<leader>ft", ":Telescope ")
 -- lazy
 key("n", "<leader>fl", ":Telescope lazy<CR>")
@@ -44,28 +45,17 @@ key('n', '<leader>ls', ':Leet submit<CR>')
 --   ThePrimeagen/harpoon
 -----------------------------------------------------------------------------------
 key("n", "<leader>ha", function() require 'harpoon':list():append() end)
-key("n", "<leader>h",
-    function() require 'harpoon'.ui:toggle_quick_menu(require 'harpoon':list()) end)
-
+key("n", "<leader>h", function() require 'harpoon'.ui:toggle_quick_menu(require 'harpoon':list()) end)
 key("n", "<leader>1", function() require 'harpoon':list():select(1) end)
 key("n", "<leader>2", function() require 'harpoon':list():select(2) end)
 key("n", "<leader>3", function() require 'harpoon':list():select(3) end)
 key("n", "<leader>4", function() require 'harpoon':list():select(4) end)
 
---   rmagatti/goto-preview
------------------------------------------------------------------------------------
-key("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
-
---   tpope/vim-fugitive
------------------------------------------------------------------------------------
-key('n', '<leader>gs', vim.cmd.Git)
-
 --   roobert/search-replace.nvim
 -----------------------------------------------------------------------------------
-key("v", "<C-s>", "<CMD>SearchReplaceWithinVisualSelection<CR>", opts)
-key("n", "<leader>rbo", "<CMD>SearchReplaceMultiBufferOpen<CR>", opts)
+key("v", "<C-s>", "<CMD>SearchReplaceWithinVisualSelection<CR>")
+key("n", "<leader>rbo", "<CMD>SearchReplaceMultiBufferOpen<CR>")
 key('v', '<leader>)', ":s/)/),/gcI<cr>a<cr>") -- put comma behind every bracket
--- show the effects of a search / replace in a live preview window
 
 --   windows.nvim
 -----------------------------------------------------------------------------------
@@ -80,7 +70,6 @@ vim.keymap.set('n', '<c-w>=', '<cmd>WindowsEqualize<cr>')
 key('n', '<leader>jd', function()
     require("flash").jump({
         matcher = function(win)
-            ---@param diag Diagnostic
             return vim.tbl_map(function(diag)
                 return {
                     pos = { diag.lnum + 1, diag.col },
@@ -109,3 +98,8 @@ end)
 key('n', '<leader>j.', function()
     require("flash").jump({ pattern = vim.fn.expand("<cword>") })
 end)
+
+--  lspsaga
+-----------------------------------------------------------------------------------
+vim.keymap.set('n', '[e', '<cmd>Lspsaga diagnostic_jump_next<cr>')
+vim.keymap.set('n', '[c', '<cmd>Lspsaga code_action<cr>')

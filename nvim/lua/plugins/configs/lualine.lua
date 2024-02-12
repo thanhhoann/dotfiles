@@ -143,12 +143,14 @@ end
 -- }
 
 
--- ins_left {
---     'filename',
---     cond = conditions.buffer_not_empty,
---     icon = '',
---     color = { fg = colors.magenta, gui = 'bold' },
--- }
+ins_right {
+    'filename',
+    path = 2,
+    file_status = true,
+    cond = conditions.buffer_not_empty,
+    icon = '',
+    color = { fg = colors.white, gui = 'bold' },
+}
 --
 -- ins_left {
 --     'branch',
