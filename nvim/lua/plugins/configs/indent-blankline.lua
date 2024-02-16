@@ -3,7 +3,7 @@ local highlight = {
     "Whitespace",
 }
 require("ibl").setup {
-    indent = { char = "󱞩" },
+    indent = { char = "⋱" },
     whitespace = {
         remove_blankline_trail = false,
     },

@@ -1,4 +1,5 @@
 require("obsidian").setup({
+    ft = 'markdown',
     workspaces = {
         {
             name = "Notes",

@@ -126,20 +126,22 @@ tmux_set status-right-fg "$G12"
 tmux_set status-right-length 150
 # RS="#[fg=$G06]$larrow#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$larrow#[fg=$G04,bg=$TC] $date_icon $date_format "
 RS=""
-if "$show_download_speed"; then
-    RS="#[fg=$G05,bg=$BG]$larrow#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} $RS"
-fi
-if "$show_web_reachable"; then
-    RS=" #{web_reachable_status} $RS"
-fi
+# if "$show_download_speed"; then
+#     RS="#[fg=$G05,bg=$BG]$larrow#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} $RS"
+# fi
+# if "$show_web_reachable"; then
+#     RS=" #{web_reachable_status} $RS"
+# fi
 if [[ $prefix_highlight_pos == 'R' || $prefix_highlight_pos == 'LR' ]]; then
     RS="#{prefix_highlight}$RS"
 fi
 tmux_set status-right "$RS"
+# tmux_set status-right "Continuum status: #{continuum_status}"
 
 # Window status format
-tmux_set window-status-format         "#[fg=$BG,bg=$G06]$rarrow#[fg=$TC,bg=$G06] [#I] #[fg=$TC,bg=$G06]#W #[fg=$G06,bg=$BG]$rarrow"
-tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$rarrow#[fg=$BG,bg=$TC,bold] [#I] #W #[fg=$TC,bg=$BG,nobold]$rarrow"
+# tmux_set window-status-format         "#[fg=$BG,bg=$G06]$rarrow#[fg=$TC,bg=$G06] #I.#[fg=$TC,bg=$G06]#W #[fg=$G06,bg=$BG]$rarrow"
+tmux_set window-status-format         "#[fg=$BG,bg=$G06]$rarrow#[fg=$TC,bg=$G06] #[fg=$TC,bg=$G06]#W #[fg=$G06,bg=$BG]$rarrow"
+tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$rarrow#[fg=$BG,bg=$TC,bold] #W #[fg=$TC,bg=$BG,nobold]$rarrow"
 
 # Window status style
 tmux_set window-status-style          "fg=$TC,bg=$BG,none"

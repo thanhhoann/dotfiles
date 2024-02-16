@@ -6,11 +6,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require 'lazy'.setup({
-
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           CMP                           │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'hrsh7th/nvim-cmp',         event = { 'InsertEnter', 'CmdlineEnter' } },
+    {
+        'hrsh7th/nvim-cmp',
+        event = { 'InsertEnter', 'CmdlineEnter' },
+        dependencies = { 'L3MON4D3/LuaSnip' },
+    },
     -- sources
     { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
@@ -38,11 +41,31 @@ require 'lazy'.setup({
     -- { 'robertbrunhage/dart-tools.nvim' }
 
     --          ╭─────────────────────────────────────────────────────────╮
+    --          │                          DEBUG                          │
+    --          ╰─────────────────────────────────────────────────────────╯
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    },
+
+    --          ╭─────────────────────────────────────────────────────────╮
     --          │                         SNIPPETS                         │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'L3MON4D3/LuaSnip',                           dependencies = { 'rafamadriz/friendly-snippets' } },
+    { 'L3MON4D3/LuaSnip',            dependencies = { 'rafamadriz/friendly-snippets' } },
     { 'honza/vim-snippets' },
     { 'rafamadriz/friendly-snippets' },
+    {
+        "chrisgrieser/nvim-scissors",
+        dependencies = "nvim-telescope/telescope.nvim", -- optional
+        opts = {
+            snippetDir = "~/.config/nvim/snippets",
+        }
+    },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           GIT                           │
@@ -50,10 +73,12 @@ require 'lazy'.setup({
     { 'tpope/vim-fugitive' },
     { 'lewis6991/gitsigns.nvim' },
 
+    --          ╭─────────────────────────────────────────────────────────╮
+    --          │                       TREESITTER                        │
+    --          ╰─────────────────────────────────────────────────────────╯
     { 'nvim-treesitter/nvim-treesitter',            build = ':TSUpdate' },
     { 'nvim-tree/nvim-web-devicons' },
     { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    -- { 'nvim-treesitter/nvim-treesitter-context', build = ':TSUpdate' },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           LSP                           │
@@ -64,12 +89,38 @@ require 'lazy'.setup({
     { 'williamboman/mason-lspconfig.nvim' },
     -- sources
     { 'onsails/lspkind.nvim' },
-    { 'lvimuser/lsp-inlayhints.nvim' },
+    -- { 'lvimuser/lsp-inlayhints.nvim' },
     { 'folke/lsp-colors.nvim' },
     {
         'nvimdev/lspsaga.nvim',
         config = function() require('lspsaga').setup({}) end,
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }
+    },
+    -- hover.diagnostic.
+    {
+        "soulis-1256/eagle.nvim",
+        config = function()
+            require 'eagle'.setup()
+        end
+    },
+    {
+        "lvimuser/lsp-inlayhints.nvim",
+        branch = "anticonceal",
+        event = "LspAttach",
+        opts = {},
+        config = function(_, opts)
+            require("lsp-inlayhints").setup(opts)
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("LspAttach_inlayhints", {}),
+                callback = function(args)
+                    if not (args.data and args.data.client_id) then
+                        return
+                    end
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    require("lsp-inlayhints").on_attach(client, args.buf)
+                end,
+            })
+        end,
     },
 
     --          ╭─────────────────────────────────────────────────────────╮
@@ -89,37 +140,62 @@ require 'lazy'.setup({
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                        TELESCOPE                        │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'nvim-telescope/telescope.nvim',               tag = '0.1.5',                                    dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'nvim-telescope/telescope.nvim',               tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
     -- sources
-    { 'debugloop/telescope-undo.nvim' },
+    -- { 'debugloop/telescope-undo.nvim' },
     { 'MaximilianLloyd/adjacent.nvim' }, -- find files in same dir
     { 'tsakirist/telescope-lazy.nvim' },
     { 'octarect/telescope-menu.nvim' },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },
+    {
+        "AckslD/nvim-neoclip.lua",
+        dependencies = { { 'nvim-telescope/telescope.nvim' } },
+        config = function() require('neoclip').setup() end,
+    },
 
     --          ╭─────────────────────────────────────────────────────────╮
-    --          │                           UI                            │
+    --          │                           _UI                            │
     --          ╰─────────────────────────────────────────────────────────╯
     { 'MunifTanjim/nui.nvim' },
-    { 'goolord/alpha-nvim',                          dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    { 'goolord/alpha-nvim',  dependencies = { 'nvim-tree/nvim-web-devicons' } },
     { 'j-hui/fidget.nvim' },
     { 'rcarriga/nvim-notify' },
-    -- { 'folke/noice.nvim',    event = 'VeryLazy',                              opts = {}, dependencies = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' } },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {},
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    },
+    { 'xiyaowong/transparent.nvim' },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                      FILE_MOTIONS                       │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'stevearc/oil.nvim',                           opts = {},                                        dependencies = { 'nvim-tree/nvim-web-devicons' } },
-    { 'ThePrimeagen/harpoon',                        branch = 'harpoon2',                              dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'stevearc/oil.nvim',            opts = {},           dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    { 'ThePrimeagen/harpoon',         branch = 'harpoon2', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'kevinhwang91/rnvimr' },
 
     --          ╭─────────────────────────────────────────────────────────╮
-    --          │                          DEBUG                          │
+    --          │                         WINDOWS                         │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'folke/trouble.nvim',                          dependencies = { 'nvim-tree/nvim-web-devicons' }, opts = {} },
+    { "nvim-zh/colorful-winsep.nvim", config = true,       event = { "WinNew" } }, -- window separator
+    {
+        'anuvyklack/windows.nvim',
+        dependencies = { 'anuvyklack/middleclass', 'anuvyklack/animation.nvim' },
+        config = function()
+            vim.o.winwidth = 10
+            vim.o.winminwidth = 10
+            vim.o.equalalways = false
+            require('windows').setup()
+        end
+    },
 
     --          ╭─────────────────────────────────────────────────────────╮
-    --          │                          UTILS                          │
+    --          │                          _UTILS                          │
     --          ╰─────────────────────────────────────────────────────────╯
     {
         'folke/which-key.nvim',
@@ -137,29 +213,32 @@ require 'lazy'.setup({
         dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/nvim-cmp' },
         config = function() require('codeium').setup({}) end
     },
-    { 'xiyaowong/transparent.nvim' },
+    { "LudoPinelli/comment-box.nvim" }, -- commentstring drawings
     {
-        'anuvyklack/windows.nvim',
-        dependencies = { 'anuvyklack/middleclass', 'anuvyklack/animation.nvim' },
+        'gen740/SmoothCursor.nvim',
         config = function()
-            vim.o.winwidth = 10
-            vim.o.winminwidth = 10
-            vim.o.equalalways = false
-            require('windows').setup()
+            require('smoothcursor').setup()
         end
     },
-    { 'brenoprata10/nvim-highlight-colors', config = function() require('nvim-highlight-colors').setup({}) end },
+
+    { 'mrjones2014/legendary.nvim',  priority = 10000, lazy = false },
+    { "stefanlogue/hydrate.nvim",    version = "*",    opts = {} },
+    { 'itchyny/calendar.vim' },
     {
-        'mrjones2014/legendary.nvim',
-        priority = 10000,
-        lazy = false,
-        -- sqlite is only needed if you want to use frecency sorting
-        dependencies = { 'kkharji/sqlite.lua' }
+        "chrishrb/gx.nvim",
+        keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+        cmd = { "Browse" },
+        init = function()
+            vim.g.netrw_nogx = 1 -- disable netrw gx
+        end,
+        dependencies = { "nvim-lua/plenary.nvim" },
+        submodules = false, -- not needed, submodules are required only for tests
+        config = true
     },
-    { "LudoPinelli/comment-box.nvim" },
+    { 'mbbill/undotree' },
 
     --          ╭─────────────────────────────────────────────────────────╮
-    --          │                     EDITING SUPPORT                     │
+    --          │                     _EDITING SUPPORT                     │
     --          ╰─────────────────────────────────────────────────────────╯
     { 'windwp/nvim-autopairs',        event = 'InsertEnter', opts = {} },
     { 'windwp/nvim-ts-autotag' },
@@ -177,7 +256,15 @@ require 'lazy'.setup({
     { 'MunifTanjim/prettier.nvim' },
     { 'mhartington/formatter.nvim' },
     { 'NvChad/nvim-colorizer.lua' },
-    { 'chrisgrieser/nvim-spider',            lazy = true },
+    {
+        'chrisgrieser/nvim-spider',
+        lazy = true,
+        keys = {
+            { 'w', "<cmd>lua require('spider').motion('w')<cr>", mode = { 'n', 'x', 'o' }, desc = "Spider W" },
+            { 'e', "<cmd>lua require('spider').motion('e')<cr>", mode = { 'n', 'x', 'o' }, desc = "Spider E" },
+            { 'b', "<cmd>lua require('spider').motion('b')<cr>", mode = { 'n', 'x', 'o' }, desc = "Spider B" },
+        },
+    },
     { 'karb94/neoscroll.nvim' },
     { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
     {
@@ -189,9 +276,7 @@ require 'lazy'.setup({
     {
         "folke/flash.nvim",
         event = "VeryLazy",
-        ---@type Flash.Config
         opts = {},
-        -- stylua: ignore
         keys = {
             { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
             { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
@@ -200,21 +285,76 @@ require 'lazy'.setup({
             { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
     },
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({})
+        end
+    },
+    {
+        "ziontee113/icon-picker.nvim",
+        config = function()
+            require("icon-picker").setup({ disable_legacy_commands = true })
+
+            local opts = { noremap = true, silent = true }
+
+            vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
+            vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
+            -- vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+        end
+    },
 
     --          ╭─────────────────────────────────────────────────────────╮
-    --          │                        EDUCATION                        │
+    --          │                        _EDUCATION                        │
     --          ╰─────────────────────────────────────────────────────────╯
     {
         'kawre/leetcode.nvim',
         build = ':TSUpdate html',
         dependencies = {
-            'nvim-telescope/telescope.nvim',
-            'nvim-lua/plenary.nvim',
-            'MunifTanjim/nui.nvim',
-            'nvim-treesitter/nvim-treesitter',
-            'nvim-tree/nvim-web-devicons',
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "rcarriga/nvim-notify",
+            "nvim-tree/nvim-web-devicons",
         },
         opts = {},
+    },
+    {
+        "epwalsh/pomo.nvim",
+        version = "*",
+        event = "VeryLazy",
+        cmd = { "TimerStart", "TimerRepeat" },
+        dependencies = { "rcarriga/nvim-notify" },
+        opts = {},
+    },
+    {
+        "TobinPalmer/Tip.nvim",
+        event = "VimEnter",
+        init = function()
+            -- Default config
+            --- @type Tip.config
+            require("tip").setup({
+                seconds = 5,
+                title = "⭐ Tip ⭐",
+                url = "https://vtip.43z.one",
+                -- url = "https://vimiscool.tech/neotip"
+            })
+        end,
+    },
+    {
+        "roobert/surround-ui.nvim",
+        dependencies = {
+            "kylechui/nvim-surround",
+            "folke/which-key.nvim",
+        },
+        config = function()
+            require("surround-ui").setup({
+                root_key = "S"
+            })
+        end,
     },
 
     --          ╭─────────────────────────────────────────────────────────╮
@@ -227,6 +367,11 @@ require 'lazy'.setup({
         version = '*',
         dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons' },
         opts = {},
+    },
+    {
+        'b0o/incline.nvim',
+        opts = {},
+        event = 'VeryLazy',
     },
 
     --          ╭─────────────────────────────────────────────────────────╮
@@ -244,4 +389,40 @@ require 'lazy'.setup({
     { 'sainnhe/sonokai' },
     { 'dracula/vim' },
     { 'oxfist/night-owl.nvim' },
+    { "bluz71/vim-nightfly-colors" },
+    { "tiagovla/tokyodark.nvim" },
+    { "zootedb0t/citruszest.nvim" },
+    { "sekke276/dark_flat.nvim" },
+
+    --          ╭─────────────────────────────────────────────────────────╮
+    --          │                       _NOTE TAKING                       │
+    --          ╰─────────────────────────────────────────────────────────╯
+    { "epwalsh/obsidian.nvim",      version = "*",                                       lazy = true, dependencies = { "nvim-lua/plenary.nvim" } },
+    { 'godlygeek/tabular' },
+    { 'preservim/vim-markdown' },
+    { 'AckslD/nvim-FeMaco.lua',     config = function() require('femaco').setup() end },
+    { 'NFrid/due.nvim',             config = function() require('due_nvim').setup {} end },
+    -- { -- translate markdown to mindmap
+    --     "Zeioth/markmap.nvim",
+    --     build = "yarn global add markmap-cli",
+    --     cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
+    --     opts = {
+    --         html_output = "/tmp/markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
+    --         hide_toolbar = false,      -- (default)
+    --         grace_period = 3600000     -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
+    --     },
+    --     config = function(_, opts) require("markmap").setup(opts) end
+    -- },
+
+    --          ╭─────────────────────────────────────────────────────────╮
+    --          │                         COLORS                          │
+    --          ╰─────────────────────────────────────────────────────────╯
+    {
+        "max397574/colortils.nvim",
+        cmd = "Colortils",
+        config = function()
+            require("colortils").setup()
+        end,
+    },
+    { 'brenoprata10/nvim-highlight-colors', config = function() require('nvim-highlight-colors').setup({}) end },
 })

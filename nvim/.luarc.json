@@ -1,7 +1,9 @@
 {
     "diagnostics.globals": [
         "vim",
-        "ey"
+        "ey",
+        "add_plugin",
+        "global"
     ],
     "diagnostics.disable": [
         "assign-type-mismatch",

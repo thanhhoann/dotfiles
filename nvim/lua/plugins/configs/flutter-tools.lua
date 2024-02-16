@@ -4,7 +4,7 @@ require("flutter-tools").setup {
         enabled = true
     },
     closing_tags = {
-        highlight = "InfoMsg",
+        highlight = "ErrorMsg",
         prefix = " ",
         -- prefix = ' ',
         -- prefix = ' ',

@@ -1,0 +1,1 @@
+{"icb":{"body":"local ls = require(\"luasnip\")","prefix":"icb"},"abc":{"prefix":"abc","body":"require 'lazy'.setup({"}}

@@ -20,6 +20,9 @@ return {
             graphql = {
                 require("formatter.filetypes.graphql").prettier,
             },
+            markdown = {
+                require("formatter.filetypes.markdown").prettier,
+            },
             ["*"] = {
                 -- "formatter.filetypes.any" defines default configurations for any
                 -- filetype
@@ -62,4 +65,5 @@ return {
         end)
     end,
 }
+
 

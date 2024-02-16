@@ -11,7 +11,6 @@ require('mason-lspconfig').setup({
 lsp.set_preferences({
     suggest_lsp_servers = true,
 })
-
 lsp.set_sign_icons({
     error = '✘',
     warn = '▲',
@@ -71,17 +70,65 @@ require 'lspconfig'.dartls.setup {
 }
 
 require 'lspconfig'.lua_ls.setup {
+    mason = false,
+    cmd = { "lua-language-server" },
+    single_file_support = true,
     on_init = function(client)
         local path = client.workspace_folders[1].name
         if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
             client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
                 Lua = {
-                    runtime = {
-                        version = 'LuaJIT'
+                    -- runtime = {
+                    --     version = 'LuaJIT'
+                    -- },
+                    workspace = {
+                        checkThirdParty = false,
+                    },
+                    completion = {
+                        workspaceWord = true,
+                        callSnippet = "Both",
+                    },
+                    misc = {
+                        parameters = {
+                            "--log-level=trace",
+                        },
                     },
                     diagnostics = {
-                        globals = { 'vim' }
-                    }
+                        globals = { 'vim' },
+                        disable = { "incomplete-signature-doc" },
+                        -- enable = false,
+                        groupSeverity = {
+                            strong = "Warning",
+                            strict = "Warning",
+                        },
+                        groupFileStatus = {
+                            ["ambiguity"] = "Opened",
+                            ["await"] = "Opened",
+                            ["codestyle"] = "None",
+                            ["duplicate"] = "Opened",
+                            ["global"] = "Opened",
+                            ["luadoc"] = "Opened",
+                            ["redefined"] = "Opened",
+                            ["strict"] = "Opened",
+                            ["strong"] = "Opened",
+                            ["type-check"] = "Opened",
+                            ["unbalanced"] = "Opened",
+                            ["unused"] = "Opened",
+                        },
+                        unusedLocalExclude = { "_*" },
+                    },
+                    format = {
+                        enable = false,
+                        defaultConfig = {
+                            indent_style = "space",
+                            indent_size = "2",
+                            continuation_indent_size = "2",
+                        },
+                    },
+                    hint = {
+                        enable = true,
+                        setType = true,
+                    },
                 }
             })
 

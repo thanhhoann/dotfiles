@@ -19,8 +19,7 @@ require("themery").setup({
             name = "tokyo_night_Storm",
             colorscheme = "tokyonight-storm",
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "material_Darker",
             colorscheme = "material-darker",
@@ -37,8 +36,7 @@ require("themery").setup({
             name = "material_Deep Ocean",
             colorscheme = "material-deep-ocean",
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "catppuccin_Default",
             colorscheme = "catppuccin",
@@ -55,8 +53,7 @@ require("themery").setup({
             name = "catppuccin_Mocha",
             colorscheme = "catppuccin-mocha",
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "kanagawa",
             colorscheme = "kanagawa",
@@ -69,14 +66,12 @@ require("themery").setup({
             name = "kanagawa_Wave",
             colorscheme = "kanagawa-wave",
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "gruvbox-material",
             colorscheme = "gruvbox-material"
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "rose-pine",
             colorscheme = "rose-pine"
@@ -89,40 +84,46 @@ require("themery").setup({
             name = "rose-pine-moon",
             colorscheme = "rose-pine-moon"
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "monokai",
             colorscheme = "monokai"
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "sonokai",
             colorscheme = "sonokai"
         },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = "dracula",
             colorscheme = "dracula"
         },
-
-        --------------------------------------
-        {
-            name = "onedark",
-            colorscheme = "onedark"
-        },
-        --------------------------------------
-        {
-            name = "gruvbox",
-            colorscheme = "gruvbox"
-        },
-
-        --------------------------------------
+        --   ──────────────────────────────────────────────────────────────────────
         {
             name = 'night-owl',
             colorscheme = 'night-owl'
-        }
+        },
+        --   ──────────────────────────────────────────────────────────────────────
+        {
+            name = 'nightfly',
+            colorscheme = 'nightfly'
+        },
+        --   ──────────────────────────────────────────────────────────────────────
+        {
+            name = 'tokyodark',
+            colorscheme = 'tokyodark'
+        },
+        --   ──────────────────────────────────────────────────────────────────────
+        {
+            name = 'citruszest',
+            colorscheme = 'citruszest'
+        },
+        --   ──────────────────────────────────────────────────────────────────────
+        {
+            name = 'dark_flat',
+            colorscheme = 'dark_flat'
+        },
+
     },
 })

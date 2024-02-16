@@ -8,21 +8,11 @@ require 'flash'.setup({
         forward = true,
         -- when `false`, find only matches in the given direction
         wrap = true,
-        ---@type Flash.Pattern.Mode
-        -- Each mode will take ignorecase and smartcase into account.
-        -- * exact: exact match
-        -- * search: regular search
-        -- * fuzzy: fuzzy search
-        -- * fun(str): custom function that returns a pattern
-        --   For example, to only match at the beginning of a word:
-        --   mode = function(str)
-        --     return "\\<" .. str
-        --   end,
-        mode = "exact",
-        -- behave like `incsearch`
+        mode = function(str)
+            return "\\<" .. str
+        end,
+        -- mode = "exact",
         incremental = false,
-        -- Excluded filetypes and custom window filters
-        ---@type (string|fun(win:window))[]
         exclude = {
             "notify",
             "cmp_menu",
@@ -48,9 +38,9 @@ require 'flash'.setup({
         -- jump position
         pos = "start", ---@type "start" | "end" | "range"
         -- add pattern to search history
-        history = false,
+        history = true,
         -- add pattern to search register
-        register = false,
+        register = true,
         -- clear highlight after jump
         nohlsearch = true,
         -- automatically jump when there is only one match
@@ -91,7 +81,7 @@ require 'flash'.setup({
         rainbow = {
             enabled = true,
             -- number between 1 and 9
-            shade = 5,
+            shade = 7,
         },
         -- With `format`, you can change how the label is rendered.
         -- Should return a list of `[text, highlight]` tuples.
@@ -126,7 +116,7 @@ require 'flash'.setup({
     -- initial pattern to use when opening flash
     pattern = "",
     -- When `true`, flash will try to continue the last search
-    continue = false,
+    continue = true,
     -- Set config to a function to dynamically change the config
     config = nil, ---@type fun(opts:Flash.Config)|nil
     -- You can override the default options for a specific mode.

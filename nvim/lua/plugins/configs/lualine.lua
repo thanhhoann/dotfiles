@@ -43,7 +43,7 @@ local config = {
             -- We are going to use lualine_c an lualine_x as left and
             -- right section. Both are highlighted by c theme .  So we
             -- are just setting default looks o statusline
-            normal = { c = { fg = colors.fg, bg = colors.bg } },
+            normal = { c = { fg = colors.fg, bg = '' } },
             inactive = { c = { fg = colors.fg, bg = colors.bg } },
         },
     },
@@ -143,21 +143,38 @@ end
 -- }
 
 
-ins_right {
-    'filename',
-    path = 2,
-    file_status = true,
-    cond = conditions.buffer_not_empty,
-    icon = '',
-    color = { fg = colors.white, gui = 'bold' },
-}
---
--- ins_left {
---     'branch',
+-- ins_right {
+--     'filename',
+--     path = 3,
+--     file_status = true,
 --     cond = conditions.buffer_not_empty,
---     icon = '',
---     color = { fg = colors.orange, gui = 'bold' },
+--     icon = '',
+--     color = { fg = 'orange', gui = 'bold' },
 -- }
+
+ins_left {
+    function()
+        local ok, pomo = pcall(require, "pomo")
+        if not ok then
+            return "!"
+        end
+
+        local timer = pomo.get_first_to_finish()
+        if timer == nil then
+            return ""
+        end
+
+        return "󰄉 " .. tostring(timer)
+    end,
+}
+
+
+ins_left {
+    'branch',
+    cond = conditions.buffer_not_empty,
+    icon = '',
+    color = { fg = colors.red, gui = 'bold' },
+}
 --
 -- ins_left {
 --     'diff',
@@ -192,7 +209,7 @@ ins_right {
 ins_left {
     -- Lsp server name .
     function()
-        local msg = 'No Active Lsp'
+        local msg = 'nothing_ls'
         local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
         local clients = vim.lsp.get_active_clients()
         if next(clients) == nil then

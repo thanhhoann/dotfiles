@@ -7,7 +7,7 @@ require("oil").setup({
     columns = {
         "icon",
         -- "permissions",
-        "size",
+        -- "size",
         -- "mtime",
     },
     -- Buffer-local options to use for oil buffers
@@ -27,15 +27,22 @@ require("oil").setup({
         concealcursor = "nvic",
     },
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-    delete_to_trash = true,
-    -- Skip the confirmation popup for simple operations
-    skip_confirm_for_simple_edits = true,
+    delete_to_trash = false,
+    -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
+    skip_confirm_for_simple_edits = false,
     -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
-    prompt_save_on_select_new_entry = false,
+    -- (:help prompt_save_on_select_new_entry)
+    prompt_save_on_select_new_entry = true,
     -- Oil will automatically delete hidden buffers after this delay
     -- You can set the delay to false to disable cleanup entirely
     -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
     cleanup_delay_ms = 2000,
+    -- Set to true to autosave buffers that are updated with LSP willRenameFiles
+    -- Set to "unmodified" to only save unmodified buffers
+    lsp_rename_autosave = true,
+    -- Constrain the cursor to the editable parts of the oil buffer
+    -- Set to `false` to disable, or "name" to keep it on the file names
+    constrain_cursor = "editable",
     -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
     -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
     -- Additionally, if it is a string that matches "actions.<name>",
@@ -43,16 +50,16 @@ require("oil").setup({
     -- Set to `false` to remove a keymap
     -- See :help oil-actions for a list of all available actions
     keymaps = {
-        ["h"] = "actions.show_help",
+        ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
-        ["<C-s>"] = "actions.select_vsplit",
-        ["<C-h>"] = "actions.select_split",
+        ["<C-v>"] = "actions.select_vsplit",
+        ["<C-s>"] = "actions.select_split",
         ["<C-t>"] = "actions.select_tab",
         ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
-        ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
-        ["_"] = "actions.open_cwd",
+        ["<C-r>"] = "actions.refresh",
+        ["<C-h>"] = "actions.parent",
+        ["<C-l>"] = "actions.open_cwd",
         ["`"] = "actions.cd",
         ["~"] = "actions.tcd",
         ["gs"] = "actions.change_sort",
@@ -64,7 +71,7 @@ require("oil").setup({
     use_default_keymaps = true,
     view_options = {
         -- Show files and directories that start with "."
-        show_hidden = true,
+        show_hidden = false,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
             return vim.startswith(name, ".")
@@ -83,12 +90,12 @@ require("oil").setup({
     -- Configuration for the floating window in oil.open_float
     float = {
         -- Padding around the floating window
-        padding = 10,
-        max_width = 100,
-        max_height = 30,
+        padding = 2,
+        max_width = 70,
+        max_height = 20,
         border = "rounded",
         win_options = {
-            winblend = 8,
+            winblend = 0,
         },
         -- This is the config that will be passed to nvim_open_win.
         -- Change values here to customize the layout
@@ -136,6 +143,5 @@ require("oil").setup({
         },
     },
 })
-
 
 vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })

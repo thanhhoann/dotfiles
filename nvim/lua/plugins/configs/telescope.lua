@@ -79,11 +79,13 @@ require("telescope").setup({
     },
 })
 
-require("telescope").load_extension "lazy"
-require("telescope").load_extension "adjacent"
-require("telescope").load_extension "undo"
-require("telescope").load_extension "menu"
-require("telescope").load_extension "ui-select"
-require("telescope").load_extension "live_grep_args"
+require "telescope".load_extension "lazy"
+require "telescope".load_extension "adjacent"
+require "telescope".load_extension "menu"
+require "telescope".load_extension "ui-select"
+require "telescope".load_extension "live_grep_args"
+require "telescope".load_extension "neoclip"
+
+-- require("telescope").load_extension "undo"
 -- require("telescope").load_extension "noice"
 -- require("telescope").load_extension "flutter"

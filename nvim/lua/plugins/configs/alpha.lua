@@ -6,16 +6,13 @@ dashboard.section.buttons.val = {
     -- dashboard.button("e", "New file", ":ene <BAR> startinsert <CR>"),
     -- dashboard.button("f", "Find files", ":Telescope find_files<CR>"),
     -- dashboard.button("o", "Recent", ":Telescope oldfiles<CR>"),
-    -- dashboard.button("l", "Open lazy.lua", ":e lua/configs/lazy.lua<CR>"),
     -- dashboard.button("t", "Choose a theme", "<leader>t"),
     -- dashboard.button("q", "Quit NVIM", ":qa<CR>"),
+    dashboard.button("l", "lazy.lua", ":e ~/.config/nvim/lua/configs/lazy.lua<CR>"),
+    dashboard.button("o", "Obsidian", ":e ~/core_machine/desktop/studies<CR>"),
 }
 
 dashboard.section.header.val = {
-    [[]],
-    [[]],
-    [[]],
-    [[]],
     [[]],
     [[ 2024 GOALS]],
     [[]],

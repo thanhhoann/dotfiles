@@ -32,6 +32,7 @@ require("lsp-inlayhints").setup({
     debug_mode = false,
 })
 
+require("lsp-inlayhints").setup()
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
     group = "LspAttach_inlayhints",
@@ -45,3 +46,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
         require("lsp-inlayhints").on_attach(client, bufnr)
     end,
 })
+
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     callback = function(event)
+--         local client_id = event.data.client_id
+--         local client = vim.lsp.get_client_by_id(client_id)
+--
+--         if client.server_capabilities.inlayHintProvider then
+--             vim.lsp.buf.inlay_hint(0, true)
+--             vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = 'red' })
+--         end
+--     end,
+-- })

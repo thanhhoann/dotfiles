@@ -78,13 +78,7 @@ cmp.setup({
             { name = 'codeium' },
             { name = 'cmdline' },
             { name = 'luasnip_choice' },
-            {
-                name = 'luasnip',
-                option = {
-                    -- { use_show_condition = false },
-                    { show_autosnippets = true }
-                }
-            },
+            { name = 'luasnip' },
             { name = 'path' },
             -- { name = 'fish' },
             -- { name = "fonts",   option = { space_filter = "-" } }

@@ -9,14 +9,17 @@ require 'notify'.setup({
         WARN = ""
     },
     level = 2,
-    -- maximum_width = 5,
-    -- maximum_height = 15,
-    render = "minimal",
-    stages = "fade",
+    render = "wrapped-compact",
+    stages = "slide",
     time_formats = {
         notification = "%T",
         notification_history = "%FT%T"
     },
-    timeout = 2000,
-    top_down = false
+    timeout = 3000,
+    top_down = true,
+    max_width = 30, -- max number of cols for msg
+    -- max_height = 50, -- max number of lines for msg
+    nvim_open_win = {
+        opacity = 40
+    }
 })
