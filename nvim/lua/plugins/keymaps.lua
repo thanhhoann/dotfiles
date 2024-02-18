@@ -112,7 +112,7 @@ require 'legendary'.setup({
         {
             "<leader>ha",
             function()
-                require("harppon"):list():append()
+                require "harpoon":list():append()
             end,
             mode = { 'n' },
             desc = "Harppon : Add",
@@ -151,6 +151,14 @@ require 'legendary'.setup({
             mode = { 'n' },
             desc = "Harpoon : Select item 3",
         },
+
+        -- copilot.lua
+        {
+            "<C-y>",
+            require("copilot.suggestion").accept_line(),
+            mode = { 'o' },
+            desc = "Copilot : Accept Line"
+        }
 
     }
 })

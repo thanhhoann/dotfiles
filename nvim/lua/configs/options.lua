@@ -26,7 +26,11 @@ vim.g.vim_markdown_new_list_item_indent = 2
 vim.opt.conceallevel = 2
 vim.g.vim_markdown_no_extensions_in_markdown = 1
 vim.g.vim_markdown_autowrite = 1
-
 vim.o.compatible = false
 vim.cmd('filetype plugin on')
 vim.cmd('syntax on')
+
+-- copilot
+vim.g.copilot_node_command = '/Users/thanhhoann/.local/share/nvm/v20.8.0/bin/node'
+vim.g.copilot_lua_command = '/usr/local/bin/lua'
+vim.g.no_tab_map = true

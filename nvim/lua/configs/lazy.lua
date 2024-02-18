@@ -24,6 +24,27 @@ require 'lazy'.setup({
     { 'hrsh7th/cmp-cmdline' },
     { 'mtoohey31/cmp-fish' },
     { 'amarakon/nvim-cmp-fonts' },
+    { "zbirenbaum/copilot-cmp",   config = function() require("copilot_cmp").setup() end },
+
+
+    --          ╭─────────────────────────────────────────────────────────╮
+    --          │                           AI                            │
+    --          ╰─────────────────────────────────────────────────────────╯
+    -- { 'github/copilot.vim' },
+    {
+        'Exafunction/codeium.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/nvim-cmp' },
+        config = function() require('codeium').setup({}) end
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({})
+        end,
+    },
+
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                       DEVELOPMENT                       │
@@ -209,20 +230,14 @@ require 'lazy'.setup({
     { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
     { 'nvimtools/none-ls.nvim' }, -- null-ls alternative
     {
-        'Exafunction/codeium.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/nvim-cmp' },
-        config = function() require('codeium').setup({}) end
-    },
-    { "LudoPinelli/comment-box.nvim" }, -- commentstring drawings
-    {
         'gen740/SmoothCursor.nvim',
         config = function()
             require('smoothcursor').setup()
         end
     },
 
-    { 'mrjones2014/legendary.nvim',  priority = 10000, lazy = false },
-    { "stefanlogue/hydrate.nvim",    version = "*",    opts = {} },
+    { 'mrjones2014/legendary.nvim', priority = 10000, lazy = false },
+    { "stefanlogue/hydrate.nvim",   version = "*",    opts = {} },
     { 'itchyny/calendar.vim' },
     {
         "chrishrb/gx.nvim",
@@ -240,10 +255,12 @@ require 'lazy'.setup({
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                     _EDITING SUPPORT                     │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'windwp/nvim-autopairs',        event = 'InsertEnter', opts = {} },
+    { 'windwp/nvim-autopairs',        event = 'InsertEnter',                                  opts = {} },
     { 'windwp/nvim-ts-autotag' },
     { 'cpea2506/relative-toggle.nvim' },
-    { 'numToStr/Comment.nvim',        opts = {},             lazy = false },
+    { 'numToStr/Comment.nvim',        opts = {},                                              lazy = false },
+    { 'terrortylor/nvim-comment',     config = function() require('nvim_comment').setup() end }, -- for keymapping
+    { "LudoPinelli/comment-box.nvim" },                                                          -- commentstring drawings
     {
         'roobert/search-replace.nvim',
         config = function()

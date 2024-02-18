@@ -44,6 +44,7 @@ add_plugin('trouble')
 add_plugin('lsp')
 -- add_plugin('lsp-inlayhints')
 add_plugin('lspsaga')
+add_plugin('lsp-kind')
 
 -- colorschemes
 add_plugin('material')
@@ -54,3 +55,5 @@ add_plugin('catppuccin')
 -- utils
 add_plugin('hydrate')
 
+-- AI
+add_plugin('copilot')

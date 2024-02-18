@@ -18,15 +18,23 @@ key('n', 'WQ', ':wq!<CR>')
 key('n', 'Q', ':q!<CR>')
 
 -- format
-key('n', '<leader>f', ':LspZeroFormat<CR>:w<CR>')
+key('n', '<leader>f', function()
+    if vim.api.nvim_buf_get_option(0, 'filetype') == 'javascript' then
+        vim.api.nvim_command(":Prettier")
+    else
+        vim.api.nvim_command(":LspZeroFormat")
+    end
+end)
+
+-- yank -> select line -> comment -> paste
+key('n', "ys", "yy" .. "V" .. ":CommentToggle<cr>" .. "p")
+
 -- replace selected word with regex
 key("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- format -> save -> source
 key('n', "<leader>n", ':LspZeroFormat<CR>:w<CR>:so<CR>')
 -- select all
 key('n', "<leader>a", "ggVG")
--- quit
-key('n', 'Z', ':wq<CR>')
 -- maximize the buffer
 key('n', '<leader>bm', "<C-w>T<cr>")
 -- after maximize the buffer, return to splits

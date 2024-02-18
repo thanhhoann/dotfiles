@@ -32,7 +32,12 @@ cmp.setup({
             mode = 'symbol_text',  -- 'text', 'text_symbol', 'symbol_text', 'symbol'
             maxwidth = 55,         -- prevent the popup from showing more than provided characters
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
-            symbol_map = { Codeium = "", }
+            symbol_map =
+            {
+                Codeium = "",
+                Copilot = "🤖"
+            }
+
         })
     },
 
@@ -72,6 +77,7 @@ cmp.setup({
 
     sources = cmp.config.sources(
         {
+            { name = 'copilot' },
             { name = 'nvim_lsp' },
             { name = 'nvim_lua' },
             { name = 'buffer' },
@@ -83,6 +89,24 @@ cmp.setup({
             -- { name = 'fish' },
             -- { name = "fonts",   option = { space_filter = "-" } }
         }),
+
+    sorting = {
+        priority_weight = 2,
+        comparators = {
+            require("copilot_cmp.comparators").prioritize,
+            -- Below is the default comparitor list and order for nvim-cmp
+            cmp.config.compare.offset,
+            -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.locality,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
 
 })
 
@@ -130,8 +154,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(event)
         local opts = { buffer = event.buf }
-
-
         vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
         vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
         vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
