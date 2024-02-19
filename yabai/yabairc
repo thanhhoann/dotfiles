@@ -50,6 +50,8 @@ yabai -m rule --add label="Simulator" app="^Simulator$" manage=on
 yabai -m rule --add label="Messages" app="^Messages$" manage=off
 yabai -m rule --add label="Font Book" app="^Font Book$" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Logi Options+" app="Logi Options+" manage=off
+yabai -m rule --add label="Karabiner-Elements" app="Karabiner-Elements" manage=off
 # yabai -m rule --add app="^Live Wallaper$" manage=off
 
 yabai -m config layout bsp

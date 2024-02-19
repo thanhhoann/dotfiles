@@ -3,7 +3,7 @@ require('leetcode').setup({
     arg = "leetcode.nvim",
 
     ---@type lc.lang
-    lang = "cpp",
+    lang = "javascript",
 
     cn = { -- leetcode.cn
         enabled = false, ---@type boolean

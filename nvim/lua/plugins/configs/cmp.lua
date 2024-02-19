@@ -166,3 +166,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set({ 'n', 'x' }, 'gf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     end
 })
+
+-- vim.cmd [[autocmd FileType javascript lua require('cmp').setup.buffer { enabled = false }]]

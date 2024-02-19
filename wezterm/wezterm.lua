@@ -23,9 +23,9 @@ return {
     },
 
     -- KEY CONTROLS
-    keys = {
-        { key = 'f', mods = 'CTRL', action = wezterm.action.ToggleFullScreen },
-    },
+    -- keys = {
+    --     { key = 'f', mods = 'CTRL', action = wezterm.action.ToggleFullScreen },
+    -- },
     mouse_bindings = {
         -- Ctrl-click will open the link under the mouse cursor
         {

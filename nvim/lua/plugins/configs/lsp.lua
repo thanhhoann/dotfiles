@@ -69,6 +69,27 @@ require 'lspconfig'.dartls.setup {
     }
 }
 
+require 'lspconfig'.tsserver.setup {
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    init_options = {
+        single_file_support = false,
+        settings = {
+            javascript = {
+                inlayHints = {
+                    includeInlayParameterNameHints = "all",
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                    includeInlayFunctionParameterTypeHints = true,
+                    includeInlayVariableTypeHints = true,
+                    includeInlayPropertyDeclarationTypeHints = true,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayEnumMemberValueHints = true,
+                },
+            },
+        }
+    }
+
+}
+
 require 'lspconfig'.lua_ls.setup {
     mason = false,
     cmd = { "lua-language-server" },

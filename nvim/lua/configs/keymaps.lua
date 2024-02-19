@@ -2,6 +2,11 @@ local key = vim.keymap.set
 vim.g.mapleader = " "
 
 --          ╭─────────────────────────────────────────────────────────╮
+--          │                          UNMAP                          │
+--          ╰─────────────────────────────────────────────────────────╯
+-- vim.keymap.del('i', '<C-n')
+
+--          ╭─────────────────────────────────────────────────────────╮
 --          │                          TMUX                           │
 --          ╰─────────────────────────────────────────────────────────╯
 
@@ -16,6 +21,14 @@ key('n', '<leader>fr', ':w<cr>:LspZeroFormat<cr>:! tmux send-keys -t "1" R<cr><c
 key('n', 'W', ':w!<CR>')
 key('n', 'WQ', ':wq!<CR>')
 key('n', 'Q', ':q!<CR>')
+
+-- toggle todo check in markdown
+key('n', '<c-x>', '0lllxix<C-c>0')
+-- key('n', '<c-x>', function()
+--     if vim.api.nvim_buf_get_option(0, 'filetype') == 'markdown' then
+--         return '0lllxix<C-c>0'
+--     end
+-- end)
 
 -- format
 key('n', '<leader>f', function()
@@ -66,6 +79,22 @@ key("i", "<C-k>", "<C-o>gk") -- up
 key("i", "<C-j>", "<C-o>gj") -- down
 key("i", "<C-h>", "<Left>")
 key("i", "<C-l>", "<Right>")
+
+-- format
+key('i', '<C-f>', function()
+    if vim.api.nvim_buf_get_option(0, 'filetype') == 'javascript' then
+        vim.api.nvim_command(":Prettier")
+    else
+        vim.api.nvim_command(":LspZeroFormat")
+    end
+end)
+
+-- delete line (then go back to insert mode)
+key('i', '<c-d>', '<c-c>Vdd<c-c>o<c-c>ki')
+
+-- esc -> go to eol
+key('i', '<c-A>', '<c-c>A')
+
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                         COMMON                          │
