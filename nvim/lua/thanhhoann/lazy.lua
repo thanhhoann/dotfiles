@@ -44,12 +44,12 @@ require 'lazy'.setup({
         dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/nvim-cmp' },
         config = function() require('codeium').setup({}) end
     },
-    {
-        "robitx/gp.nvim",
-        config = function()
-            require("gp").setup()
-        end,
-    },
+    -- {
+    --     "robitx/gp.nvim",
+    --     config = function()
+    --         require("gp").setup()
+    --     end,
+   -- },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                       DEVELOPMENT                       │
@@ -119,16 +119,15 @@ require 'lazy'.setup({
     { 'folke/lsp-colors.nvim' },
     {
         'nvimdev/lspsaga.nvim',
-        config = function() require('lspsaga').setup({}) end,
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }
     },
     -- hover.diagnostic.
-    {
-        "soulis-1256/eagle.nvim",
-        config = function()
-            require 'eagle'.setup()
-        end
-    },
+    -- {
+    --     "soulis-1256/eagle.nvim",
+    --     config = function()
+    --         require 'eagle'.setup()
+    --     end
+    -- },
     {
         "lvimuser/lsp-inlayhints.nvim",
         branch = "anticonceal",

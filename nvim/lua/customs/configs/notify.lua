@@ -1,6 +1,6 @@
 require 'notify'.setup({
     background_colour = "#000000",
-    fps = 60,
+    fps = 30,
     icons = {
         DEBUG = "",
         ERROR = "",
@@ -8,8 +8,9 @@ require 'notify'.setup({
         TRACE = "✎",
         WARN = ""
     },
-    level = 2,
-    render = "wrapped-compact",
+    level = 1,
+    -- render = "wrapped-compact",
+    render = "default",
     stages = "slide",
     time_formats = {
         notification = "%T",
