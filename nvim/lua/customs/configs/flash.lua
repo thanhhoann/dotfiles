@@ -8,10 +8,10 @@ require 'flash'.setup({
         forward = true,
         -- when `false`, find only matches in the given direction
         wrap = true,
-        mode = function(str)
-            return "\\<" .. str
-        end,
-        -- mode = "exact",
+        -- mode = function(str)
+        --     return "\\<" .. str
+        -- end,
+        mode = "exact",
         incremental = false,
         exclude = {
             "notify",

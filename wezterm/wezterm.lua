@@ -4,7 +4,7 @@ return {
     -- FONTS
     -- font = wezterm.font 'GoMono Nerd Font Mono',
     font = wezterm.font 'ComicShannsMono Nerd Font Mono',
-    font_size = 19.0,
+    font_size = 17.0,
 
     -- COLOR SCHEME
     color_scheme = 'tokyonight',
@@ -12,7 +12,7 @@ return {
     -- WINDOW
     enable_tab_bar = false,
     window_decorations = "RESIZE",
-    window_background_opacity = 0.9,
+    window_background_opacity = 0.6,
     macos_window_background_blur = 30,
 
     window_padding = {

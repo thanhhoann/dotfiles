@@ -168,6 +168,11 @@ ins_left {
     end,
 }
 
+-- ins_left {
+--     function()
+--         return vim.api.nvim_call_function("codeium#GetStatusString", {})
+--  end,
+-- }
 
 ins_left {
     'branch',

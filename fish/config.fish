@@ -5,11 +5,12 @@ end
 # EXPORTS
 # ---------------------------------------------------------------
 
-# brew
+# commons
 export HOMEBREW_NO_AUTO_UPDATE=1
 export VISUAL=nvim
 export EDITOR=nvim
-# export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export OPENAI_API_KEY="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"
+export NODE_OPTIONS=--openssl-legacy-provider
 
 # ranger
 export FZF_FZM_OPTS="--reverse --height 75% --min-height 30 --cycle +m --ansi --bind=ctrl-o:accept,ctrl-t:toggle --select-1"
@@ -24,6 +25,8 @@ set -x NNN_PLUG_WORK 'j:work/prettyjson;d:work/foobar'
 set -x NNN_PLUG_INLINE 'e:!go run "$nnn"*'
 set -x NNN_PLUG_DEFAULT '1:ipinfo;p:preview-tui;o:fzz;b:nbak'
 set -x NNN_PLUG "$NNN_PLUG_PERSONAL;$NNN_PLUG_WORK;$NNN_PLUG_DEFAULT;$NNN_PLUG_INLINE"
+
+# nvm
 
 # ALIAS
 # ---------------------------------------------------------------

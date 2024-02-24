@@ -152,12 +152,11 @@ require 'legendary'.setup({
             desc = "Harpoon : Select item 3",
         },
 
-        -- copilot.lua
+        -- search-replace
         {
-            "<C-y>",
-            require("copilot.suggestion").accept_line(),
-            mode = { 'o' },
-            desc = "Copilot : Accept Line"
+            "<leader>ro",
+            "<CMD>SearchReplaceWithinVisualSelection<CR>",
+            mode = { 'v' }
         }
 
     }

@@ -30,9 +30,11 @@ key('n', '<c-x>', '0lllxix<C-c>0')
 --     end
 -- end)
 
--- format
+-- format on normal
 key('n', '<leader>f', function()
     if vim.api.nvim_buf_get_option(0, 'filetype') == 'javascript' then
+        vim.api.nvim_command(":Prettier")
+    elseif vim.api.nvim_buf_get_option(0, 'filetype') == 'javascriptreact' then
         vim.api.nvim_command(":Prettier")
     else
         vim.api.nvim_command(":LspZeroFormat")
@@ -40,7 +42,7 @@ key('n', '<leader>f', function()
 end)
 
 -- yank -> select line -> comment -> paste
-key('n', "ys", "yy" .. "V" .. ":CommentToggle<cr>" .. "p")
+key('n', "y/", "yy" .. "V" .. ":CommentToggle<cr>" .. "p")
 
 -- replace selected word with regex
 key("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -80,7 +82,7 @@ key("i", "<C-j>", "<C-o>gj") -- down
 key("i", "<C-h>", "<Left>")
 key("i", "<C-l>", "<Right>")
 
--- format
+-- format on insert
 key('i', '<C-f>', function()
     if vim.api.nvim_buf_get_option(0, 'filetype') == 'javascript' then
         vim.api.nvim_command(":Prettier")

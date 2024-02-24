@@ -31,20 +31,25 @@ require 'lazy'.setup({
     --          │                           AI                            │
     --          ╰─────────────────────────────────────────────────────────╯
     -- { 'github/copilot.vim' },
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({})
+    --     end,
+    -- },
     {
         'Exafunction/codeium.nvim',
         dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/nvim-cmp' },
         config = function() require('codeium').setup({}) end
     },
     {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
+        "robitx/gp.nvim",
         config = function()
-            require("copilot").setup({})
+            require("gp").setup()
         end,
     },
-
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                       DEVELOPMENT                       │
@@ -196,14 +201,24 @@ require 'lazy'.setup({
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                      FILE_MOTIONS                       │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'stevearc/oil.nvim',            opts = {},           dependencies = { 'nvim-tree/nvim-web-devicons' } },
-    { 'ThePrimeagen/harpoon',         branch = 'harpoon2', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'stevearc/oil.nvim',         opts = {},           dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    { 'ThePrimeagen/harpoon',      branch = 'harpoon2', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'kevinhwang91/rnvimr' },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        }
+    },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                         WINDOWS                         │
     --          ╰─────────────────────────────────────────────────────────╯
-    { "nvim-zh/colorful-winsep.nvim", config = true,       event = { "WinNew" } }, -- window separator
+    { "nvim-zh/colorful-winsep.nvim", config = true,                              event = { "WinNew" } }, -- window separator
     {
         'anuvyklack/windows.nvim',
         dependencies = { 'anuvyklack/middleclass', 'anuvyklack/animation.nvim' },
@@ -227,7 +242,7 @@ require 'lazy'.setup({
         end,
         opts = {}
     },
-    { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
+    { 'folke/todo-comments.nvim',     dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
     { 'nvimtools/none-ls.nvim' }, -- null-ls alternative
     {
         'gen740/SmoothCursor.nvim',
