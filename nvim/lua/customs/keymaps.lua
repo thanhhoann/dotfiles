@@ -1,3 +1,5 @@
+local ls = require "luasnip"
+
 require 'legendary'.setup({
     keymaps = {
         {
@@ -154,10 +156,57 @@ require 'legendary'.setup({
 
         -- search-replace
         {
-            "<leader>ro",
+            "<leader>rs",
             "<CMD>SearchReplaceWithinVisualSelection<CR>",
-            mode = { 'v' }
-        }
+            mode = { 'v' },
+            desc = "SearchReplace : Visual Selection",
+        },
+        {
+            "<leader>rm",
+            "<CMD>SearchReplaceMultiBufferCWord<CR>",
+            mode = { 'v' },
+            desc = "SearchReplace : Multi Buffer",
+        },
+
+        -- luasnip
+        {
+            "<C-K>",
+            function()
+                if ls.expand_or_jumpable() then
+                    ls.expand_or_jump()
+                end
+            end,
+            mode = { 'i' },
+            desc = "LuaSnip : Expand Snippet",
+            opts = { silent = true }
+        },
+        {
+            "<C-J>",
+            function() ls.jump(-1) end,
+            mode = { 'i', 's' },
+            desc = "LuaSnip : Jump Previous Snippet",
+            opts = { silent = true }
+
+        },
+        {
+            "<C-L>",
+            function() ls.jump(1) end,
+            mode = { 'i', 's' },
+            desc = "LuaSnip : Jump Next Snippet",
+            opts = { silent = true }
+
+        },
+        {
+            "<C-E>",
+            function()
+                if ls.choice_active() then
+                    ls.change_choice(1)
+                end
+            end,
+            mode = { 'i', 's' },
+            desc = "LuaSnip : Change Choice",
+            opts = { silent = true }
+        },
 
     }
 })

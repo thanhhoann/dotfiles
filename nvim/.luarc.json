@@ -7,6 +7,7 @@
     ],
     "diagnostics.disable": [
         "assign-type-mismatch",
-        "undefined-doc-name"
+        "undefined-doc-name",
+        "unused-local"
     ]
 }
