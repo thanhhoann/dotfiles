@@ -18,6 +18,9 @@ s('hydrate')
 -- luasnip
 s('luasnip')
 
+-- telescope & telescope-related
+-- s('projections')
+
 -- misc
 s('cmp')
 s('cmp-sources')

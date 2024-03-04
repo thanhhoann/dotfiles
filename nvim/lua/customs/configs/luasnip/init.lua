@@ -31,6 +31,13 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
+local f = ls.function_node
+
+local same = function(index)
+    return f(function(arg)
+        return arg[1]
+    end, { index })
+end
 
 
 ls.filetype_extend("all", { "_" })

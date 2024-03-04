@@ -1,5 +1,6 @@
 local key = vim.keymap.set
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                          UNMAP                          │
@@ -56,6 +57,11 @@ key('n', '<leader>bm', "<C-w>T<cr>")
 key('n', '<Leader>br', "mAZZ<C-w>S`A")
 -- repeating macro ',', instead of '@@'
 key('n', ',', '@@')
+
+key('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+key('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+key('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+key('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       VISUAL MODE                       │

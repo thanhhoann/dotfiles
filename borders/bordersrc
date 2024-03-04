@@ -2,12 +2,12 @@
 
 options=(
 	style=round
-	width=2.0
+	width=3.0
 	hidpi=on # the border will be drawn with retina resolution.
     ax_focus=on # improves compatibility with other tools modifying window properties on a system level (e.g. yabai).
     blur_radius=90.0
-    active_color=0xFF9ef01a
-    inactive_color=0xFF6d6875
+    active_color=0xff9ef01b
+    # inactive_color=0xff6d6876
 )
 
 borders "${options[@]}"

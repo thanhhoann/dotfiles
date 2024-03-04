@@ -46,6 +46,12 @@ require 'legendary'.setup({
             mode = { 'n' },
             desc = "Telescope : LSP References",
         },
+        {
+            "<Leader>fp",
+            ':Telescope projections<cr>',
+            mode = { 'n' },
+            desc = "Telescope : Projects",
+        },
 
         -- windows.nvim
         {

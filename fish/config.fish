@@ -36,6 +36,9 @@ alias ls="exa --icons -F -H --group-directories-first --git -1"
 # ---------------------------------------------------------------
 # brew
 abbr --add bs brew services
+abbr --add bsa brew services start
+abbr --add bso brew services stop
+abbr --add bsr brew services restart
 
 # vim
 abbr --add v nvim

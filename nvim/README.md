@@ -1,29 +1,76 @@
-# File Structure
-
-<img width="308" alt="image" src="https://github.com/thanhhoann/nvim/assets/74335400/f7a21df8-76f8-4efe-b0af-343ac3296db7">
-
-# Plugins
-
-- harpoon 
-- lazy.nvim
-- nvim-treesitter 
-- telescope.nvim 
-- tokyonight.nvim 
-- vim-fugitive 
-- which-key.nvim 
-- nvim-autopairs
-- nvim-lspconfig 
-- oil.nvim 
-- mason-lspconfig.nvim 
-- mason.nvim 
-
-- cmp-nvim-lsp 
-- lsp-zero.nvim 
-- LuaSnip 
-- nvim-cmp 
-- nvim-web-devicons 
-- plenary.nvim 
-
-
-
-
+.
+├── README.md
+├── Session.vim
+├── init.lua
+├── lazy-lock.json
+├── lua
+│   ├── customs
+│   │   ├── configs
+│   │   │   ├── alpha.lua
+│   │   │   ├── barbecue.lua
+│   │   │   ├── catppuccin.lua
+│   │   │   ├── chatgpt.lua
+│   │   │   ├── cmp-sources.lua
+│   │   │   ├── cmp.lua
+│   │   │   ├── comment.lua
+│   │   │   ├── copilot.lua
+│   │   │   ├── fidget.lua
+│   │   │   ├── flash.lua
+│   │   │   ├── flutter-tools.lua
+│   │   │   ├── formatter.lua
+│   │   │   ├── fugitive.lua
+│   │   │   ├── gitsigns.lua
+│   │   │   ├── goto-preview.lua
+│   │   │   ├── harpoon.lua
+│   │   │   ├── hydrate.lua
+│   │   │   ├── incline.lua
+│   │   │   ├── indent-blankline.lua
+│   │   │   ├── leetcode.lua
+│   │   │   ├── legendary.lua
+│   │   │   ├── lsp-inlayhints.lua
+│   │   │   ├── lsp-kind.lua
+│   │   │   ├── lsp.lua
+│   │   │   ├── lspsaga.lua
+│   │   │   ├── lualine.lua
+│   │   │   ├── luasnip
+│   │   │   │   └── init.lua
+│   │   │   ├── mason-config.lua
+│   │   │   ├── mason-lspconfig.lua
+│   │   │   ├── material.lua
+│   │   │   ├── mini-animate.lua
+│   │   │   ├── navigator.lua
+│   │   │   ├── neoclip.lua
+│   │   │   ├── neoscroll.lua
+│   │   │   ├── night-owl.lua
+│   │   │   ├── nightfly.lua
+│   │   │   ├── noice.lua
+│   │   │   ├── notify.lua
+│   │   │   ├── null-ls.lua
+│   │   │   ├── nvim-spider.lua
+│   │   │   ├── obsidian.lua
+│   │   │   ├── oil.lua
+│   │   │   ├── pomo.lua
+│   │   │   ├── prettier.lua
+│   │   │   ├── projections.lua
+│   │   │   ├── rnvimr.lua
+│   │   │   ├── smooth-cursor.lua
+│   │   │   ├── smp.lua
+│   │   │   ├── telekasten.lua
+│   │   │   ├── telescope.lua
+│   │   │   ├── themery.lua
+│   │   │   ├── tokyodark.lua
+│   │   │   ├── tokyonight.lua
+│   │   │   ├── treesitter.lua
+│   │   │   └── trouble.lua
+│   │   ├── init.lua
+│   │   └── keymaps.lua
+│   ├── thanhhoann
+│   │   ├── autocmds.lua
+│   │   ├── functions.lua
+│   │   ├── init.lua
+│   │   ├── keymaps.lua
+│   │   ├── lazy.lua
+│   │   └── options.lua
+│   └── utils
+│       └── init.lua
+└── test.md

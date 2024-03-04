@@ -5,12 +5,13 @@ local dashboard = require 'alpha.themes.dashboard'
 dashboard.section.buttons.val = {
     dashboard.button("e", "𝞢. New Dratf", ":ene <BAR> startinsert <CR>"),
     dashboard.button("o", "𝒇. Open Obsidian", ":e ~/core_machine/desktop/studies<CR>"),
-    dashboard.button("l", "𝞴. [CONFIG] lazy.lua", ":e ~/.config/nvim/lua/configs/lazy.lua<CR>"),
+    dashboard.button("l", "𝞴. [CONFIG] lazy.lua", ":e ~/.config/nvim/lua/thanhhoann/lazy.lua<CR>"),
     dashboard.button("p", "𝞫. [CONFIG] plugins", ":e ~/.config/nvim/lua/customs/init.lua<CR>"),
     -- dashboard.button("","",""),
     dashboard.button("1", "𝞨. [CONFIG] yabai", ":e ~/.config/yabai/yabairc<CR>"),
     dashboard.button("2", "𝓈. [CONFIG] sketchybar", ":e ~/.config/sketchybar/sketchybarrc<CR>"),
     dashboard.button("3", "𝔃. [CONFIG] skhd", ":e ~/.config/skhd/skhdrc<CR>"),
+    dashboard.button("4", "𝛬. [CONFIG] borders", ":e ~/.config/borders/bordersrc<CR>"),
 }
 
 dashboard.section.header.val = {

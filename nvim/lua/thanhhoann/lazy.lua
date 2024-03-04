@@ -49,7 +49,7 @@ require 'lazy'.setup({
     --     config = function()
     --         require("gp").setup()
     --     end,
-   -- },
+    -- },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                       DEVELOPMENT                       │
@@ -178,6 +178,16 @@ require 'lazy'.setup({
         dependencies = { { 'nvim-telescope/telescope.nvim' } },
         config = function() require('neoclip').setup() end,
     },
+    -- {
+    --     'gnikdroy/projections.nvim',
+    --     config = function()
+    --         require 'projections'.setup({
+    --             workspaces = {
+    --                 { '~/.config/nvim/', {} }
+    --             }
+    --         })
+    --     end
+    -- },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           _UI                            │
@@ -336,6 +346,7 @@ require 'lazy'.setup({
             -- vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
         end
     },
+    { 'tpope/vim-sleuth' },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                        _EDUCATION                        │
@@ -424,15 +435,16 @@ require 'lazy'.setup({
     { "tiagovla/tokyodark.nvim" },
     { "zootedb0t/citruszest.nvim" },
     { "sekke276/dark_flat.nvim" },
+    { 'dasupradyumna/midnight.nvim', lazy = false,                                        priority = 1000 },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                       _NOTE TAKING                       │
     --          ╰─────────────────────────────────────────────────────────╯
-    { "epwalsh/obsidian.nvim",      version = "*",                                       lazy = true, dependencies = { "nvim-lua/plenary.nvim" } },
+    { "epwalsh/obsidian.nvim",       version = "*",                                       lazy = true,    dependencies = { "nvim-lua/plenary.nvim" } },
     { 'godlygeek/tabular' },
     { 'preservim/vim-markdown' },
-    { 'AckslD/nvim-FeMaco.lua',     config = function() require('femaco').setup() end },
-    { 'NFrid/due.nvim',             config = function() require('due_nvim').setup {} end },
+    { 'AckslD/nvim-FeMaco.lua',      config = function() require('femaco').setup() end },
+    { 'NFrid/due.nvim',              config = function() require('due_nvim').setup {} end },
     -- { -- translate markdown to mindmap
     --     "Zeioth/markmap.nvim",
     --     build = "yarn global add markmap-cli",
@@ -456,4 +468,11 @@ require 'lazy'.setup({
         end,
     },
     { 'brenoprata10/nvim-highlight-colors', config = function() require('nvim-highlight-colors').setup({}) end },
+
+    --          ╭─────────────────────────────────────────────────────────╮
+    --          │                          misc                           │
+    --          ╰─────────────────────────────────────────────────────────╯
+    {
+        'eandrju/cellular-automaton.nvim'
+    }
 })

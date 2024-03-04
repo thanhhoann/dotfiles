@@ -2,8 +2,8 @@ local wezterm = require 'wezterm'
 
 return {
     -- FONTS
-    -- font = wezterm.font 'GoMono Nerd Font Mono',
-    font = wezterm.font 'ComicShannsMono Nerd Font Mono',
+    -- font = wezterm.font 'MartianMono Nerd Font',
+    font = wezterm.font 'ComicShannsMono Nerd Font',
     font_size = 17.0,
 
     -- COLOR SCHEME
