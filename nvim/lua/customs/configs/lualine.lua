@@ -143,30 +143,30 @@ end
 -- }
 
 
--- ins_right {
---     'filename',
---     path = 3,
---     file_status = true,
---     cond = conditions.buffer_not_empty,
---     icon = '',
---     color = { fg = 'orange', gui = 'bold' },
--- }
-
 ins_left {
-    function()
-        local ok, pomo = pcall(require, "pomo")
-        if not ok then
-            return "!"
-        end
-
-        local timer = pomo.get_first_to_finish()
-        if timer == nil then
-            return ""
-        end
-
-        return "󰄉 " .. tostring(timer)
-    end,
+    'filename',
+    path = 1,
+    file_status = true,
+    cond = conditions.buffer_not_empty,
+    icon = '𝛄',
+    color = { fg = 'orange', gui = 'bold' },
 }
+
+-- ins_left {
+--     function()
+--         local ok, pomo = pcall(require, "pomo")
+--         if not ok then
+--             return "!"
+--         end
+--
+--         local timer = pomo.get_first_to_finish()
+--         if timer == nil then
+--             return ""
+--         end
+--
+--         return "󰄉 " .. tostring(timer)
+--     end,
+-- }
 
 -- ins_left {
 --     function()
@@ -177,7 +177,7 @@ ins_left {
 ins_left {
     'branch',
     cond = conditions.buffer_not_empty,
-    icon = '',
+    icon = '',
     color = { fg = colors.red, gui = 'bold' },
 }
 --
@@ -228,7 +228,7 @@ ins_left {
         end
         return msg
     end,
-    icon = '',
+    icon = '󱠦',
     color = { fg = '#ffafcc', gui = 'bold' },
 }
 

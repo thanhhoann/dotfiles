@@ -1,10 +1,10 @@
 require 'hydrate'.setup({
     -- The interval between notifications in minutes
-    minute_interval = 20,
+    minute_interval = 30,
 
     -- The render style for notifications
     -- Accepted values are "default", "minimal", "simple" or "compact"
-    render_style = "compact",
+    render_style = "minimal",
 
     -- Loads time of last drink on startup
     -- Useful if you don't have long-running neovim instances

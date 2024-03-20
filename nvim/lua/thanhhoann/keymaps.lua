@@ -31,11 +31,10 @@ key('n', '<c-x>', '0lllxix<C-c>0')
 --     end
 -- end)
 
--- format on normal
+-- format on save
 key('n', '<leader>f', function()
-    if vim.api.nvim_buf_get_option(0, 'filetype') == 'javascript' then
-        vim.api.nvim_command(":Prettier")
-    elseif vim.api.nvim_buf_get_option(0, 'filetype') == 'javascriptreact' then
+    local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    if ft == 'javascript' or ft == 'typescriptreact' then
         vim.api.nvim_command(":Prettier")
     else
         vim.api.nvim_command(":LspZeroFormat")

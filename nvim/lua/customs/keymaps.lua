@@ -213,6 +213,46 @@ require 'legendary'.setup({
             desc = "LuaSnip : Change Choice",
             opts = { silent = true }
         },
+        -- cd-project
+        {
+            "<leader>d",
+            ":CdProject<CR>",
+            mode = { 'n' },
+            desc = "CdProject",
+        },
+        -- leetcode.nvim
+        {
+            "<leader>lr",
+            ":Leet run<CR>",
+            mode = { 'n' },
+            desc = "Leet : Run",
+        },
+        {
+            "<leader>ls",
+            ":Leet submit<CR>",
+            mode = { 'n' },
+            desc = "Leet : Submit",
+        },
+        -- trouble
+        {
+            "<leader>x",
+            ":Trouble<CR>",
+            mode = { 'n' },
+            desc = "Trouble : Toggle"
+        },
+        -- typescript-tools
+        {
+            "<leader>to",
+            ":TSToolsOrganizeImports<CR>",
+            mode = { 'n' },
+            desc = "Typescript Tools : Organize Imports"
+        },
+        {
+            "<leader>ti",
+            ":TSToolsAddMissingImports<CR>",
+            mode = { 'n' },
+            desc = "Typescript Tools : Add Missing Imports"
+        },
 
     }
 })

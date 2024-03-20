@@ -33,10 +33,7 @@ cmp.setup({
             maxwidth = 55,         -- prevent the popup from showing more than provided characters
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
             symbol_map =
-            {
-                Codeium = "",
-                Copilot = "🤖"
-            }
+            { Codeium = "𝕷 " }
 
         })
     },
@@ -77,23 +74,24 @@ cmp.setup({
 
     sources = cmp.config.sources(
         {
-            { name = 'copilot' },
-            { name = 'nvim_lsp' },
-            { name = 'nvim_lua' },
-            { name = 'buffer' },
             { name = 'codeium' },
+            { name = 'luasnip' },
+            -- { name = 'copilot' },
+            { name = 'nvim_lsp' },
+            -- { name = 'nvim_lua' },
+            -- { name = 'buffer' },
             { name = 'cmdline' },
             { name = 'luasnip_choice' },
-            { name = 'luasnip' },
             { name = 'path' },
             -- { name = 'fish' },
             -- { name = "fonts",   option = { space_filter = "-" } }
         }),
 
+
     sorting = {
         priority_weight = 2,
         comparators = {
-            require("copilot_cmp.comparators").prioritize,
+            -- require("copilot_cmp.comparators").prioritize,
             -- Below is the default comparitor list and order for nvim-cmp
             cmp.config.compare.offset,
             -- cmp.config.compare.scopes, --this is commented in nvim-cmp too

@@ -5,6 +5,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local colorscheme_lazy_utils = {
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+
+}
+
 require 'lazy'.setup({
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           CMP                           │
@@ -22,62 +28,20 @@ require 'lazy'.setup({
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-cmdline' },
-    { 'mtoohey31/cmp-fish' },
-    { 'amarakon/nvim-cmp-fonts' },
-    { "zbirenbaum/copilot-cmp",   config = function() require("copilot_cmp").setup() end },
-
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           AI                            │
     --          ╰─────────────────────────────────────────────────────────╯
-    -- { 'github/copilot.vim' },
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     cmd = "Copilot",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("copilot").setup({})
-    --     end,
-    -- },
     {
         'Exafunction/codeium.nvim',
         dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/nvim-cmp' },
         config = function() require('codeium').setup({}) end
     },
-    -- {
-    --     "robitx/gp.nvim",
-    --     config = function()
-    --         require("gp").setup()
-    --     end,
-    -- },
-
-    --          ╭─────────────────────────────────────────────────────────╮
-    --          │                       DEVELOPMENT                       │
-    --          ╰─────────────────────────────────────────────────────────╯
-    {
-        'akinsho/flutter-tools.nvim',
-        lazy = false,
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'stevearc/dressing.nvim', -- optional for vim.ui.select
-        },
-        config = true,
-    },
-    { 'dart-lang/dart-vim-plugin' },
-    -- { 'robertbrunhage/dart-tools.nvim' }
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                          DEBUG                          │
     --          ╰─────────────────────────────────────────────────────────╯
-    {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
-    },
+    { "folke/trouble.nvim",          dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                         SNIPPETS                         │
@@ -85,31 +49,21 @@ require 'lazy'.setup({
     { 'L3MON4D3/LuaSnip',            dependencies = { 'rafamadriz/friendly-snippets' } },
     { 'honza/vim-snippets' },
     { 'rafamadriz/friendly-snippets' },
-    {
-        "chrisgrieser/nvim-scissors",
-        dependencies = "nvim-telescope/telescope.nvim", -- optional
-        opts = {
-            snippetDir = "~/.config/nvim/snippets",
-        }
-    },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           GIT                           │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'tpope/vim-fugitive' },
-    { 'lewis6991/gitsigns.nvim' },
     {
         "NeogitOrg/neogit",
         dependencies = {
-            "nvim-lua/plenary.nvim", -- required
-            "sindrets/diffview.nvim", -- optional - Diff integration
-
-            -- Only one of these is needed, not both.
+            "nvim-lua/plenary.nvim",         -- required
+            "sindrets/diffview.nvim",        -- optional - Diff integration
             "nvim-telescope/telescope.nvim", -- optional
-            "ibhagwan/fzf-lua",      -- optional
+            "ibhagwan/fzf-lua",              -- optional
         },
         config = true
     },
+    { 'mhinz/vim-signify' },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                       TREESITTER                        │
@@ -127,86 +81,27 @@ require 'lazy'.setup({
     { 'williamboman/mason-lspconfig.nvim' },
     -- sources
     { 'onsails/lspkind.nvim' },
-    -- { 'lvimuser/lsp-inlayhints.nvim' },
     { 'folke/lsp-colors.nvim' },
+    { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
     {
         'nvimdev/lspsaga.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }
     },
-    -- hover.diagnostic.
-    -- {
-    --     "soulis-1256/eagle.nvim",
-    --     config = function()
-    --         require 'eagle'.setup()
-    --     end
-    -- },
-    {
-        "lvimuser/lsp-inlayhints.nvim",
-        branch = "anticonceal",
-        event = "LspAttach",
-        opts = {},
-        config = function(_, opts)
-            require("lsp-inlayhints").setup(opts)
-            vim.api.nvim_create_autocmd("LspAttach", {
-                group = vim.api.nvim_create_augroup("LspAttach_inlayhints", {}),
-                callback = function(args)
-                    if not (args.data and args.data.client_id) then
-                        return
-                    end
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    require("lsp-inlayhints").on_attach(client, args.buf)
-                end,
-            })
-        end,
-    },
-
-    --          ╭─────────────────────────────────────────────────────────╮
-    --          │                        DATABASE                         │
-    --          ╰─────────────────────────────────────────────────────────╯
-    -- {
-    --     'tpope/vim-dadbod',
-    --     opt = true,
-    --     requires = {
-    --         'kristijanhusak/vim-dadbod-ui',
-    --         'kristijanhusak/vim-dadbod-completion',
-    --     },
-    -- },
-    -- { 'kristijanhusak/vim-dadbod-ui' },
-    -- { 'kristijanhusak/vim-dadbod-completion' },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                        TELESCOPE                        │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'nvim-telescope/telescope.nvim',               tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'nvim-telescope/telescope.nvim',               tag = '0.1.5',                                   dependencies = { 'nvim-lua/plenary.nvim' } },
     -- sources
-    -- { 'debugloop/telescope-undo.nvim' },
-    { 'MaximilianLloyd/adjacent.nvim' }, -- find files in same dir
-    { 'tsakirist/telescope-lazy.nvim' },
-    { 'octarect/telescope-menu.nvim' },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },
-    {
-        "AckslD/nvim-neoclip.lua",
-        dependencies = { { 'nvim-telescope/telescope.nvim' } },
-        config = function() require('neoclip').setup() end,
-    },
-    -- {
-    --     'gnikdroy/projections.nvim',
-    --     config = function()
-    --         require 'projections'.setup({
-    --             workspaces = {
-    --                 { '~/.config/nvim/', {} }
-    --             }
-    --         })
-    --     end
-    -- },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                           _UI                            │
     --          ╰─────────────────────────────────────────────────────────╯
     { 'MunifTanjim/nui.nvim' },
-    { 'goolord/alpha-nvim',  dependencies = { 'nvim-tree/nvim-web-devicons' } },
-    { 'j-hui/fidget.nvim' },
+    { 'goolord/alpha-nvim',                          dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    -- { 'j-hui/fidget.nvim' },
     { 'rcarriga/nvim-notify' },
     {
         "folke/noice.nvim",
@@ -224,32 +119,6 @@ require 'lazy'.setup({
     --          ╰─────────────────────────────────────────────────────────╯
     { 'stevearc/oil.nvim',         opts = {},           dependencies = { 'nvim-tree/nvim-web-devicons' } },
     { 'ThePrimeagen/harpoon',      branch = 'harpoon2', dependencies = { 'nvim-lua/plenary.nvim' } },
-    { 'kevinhwang91/rnvimr' },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-        }
-    },
-
-    --          ╭─────────────────────────────────────────────────────────╮
-    --          │                         WINDOWS                         │
-    --          ╰─────────────────────────────────────────────────────────╯
-    { "nvim-zh/colorful-winsep.nvim", config = true,                              event = { "WinNew" } }, -- window separator
-    {
-        'anuvyklack/windows.nvim',
-        dependencies = { 'anuvyklack/middleclass', 'anuvyklack/animation.nvim' },
-        config = function()
-            vim.o.winwidth = 10
-            vim.o.winminwidth = 10
-            vim.o.equalalways = false
-            require('windows').setup()
-        end
-    },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                          _UTILS                          │
@@ -263,18 +132,10 @@ require 'lazy'.setup({
         end,
         opts = {}
     },
-    { 'folke/todo-comments.nvim',     dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
+    { 'folke/todo-comments.nvim',   dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
     { 'nvimtools/none-ls.nvim' }, -- null-ls alternative
-    {
-        'gen740/SmoothCursor.nvim',
-        config = function()
-            require('smoothcursor').setup()
-        end
-    },
 
-    { 'mrjones2014/legendary.nvim', priority = 10000, lazy = false },
-    { "stefanlogue/hydrate.nvim",   version = "*",    opts = {} },
-    { 'itchyny/calendar.vim' },
+    { 'mrjones2014/legendary.nvim', priority = 10000,                           lazy = false },
     {
         "chrishrb/gx.nvim",
         keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
@@ -286,7 +147,13 @@ require 'lazy'.setup({
         submodules = false, -- not needed, submodules are required only for tests
         config = true
     },
-    { 'mbbill/undotree' },
+    { 'LintaoAmons/cd-project.nvim' },
+    { -- Garbage collector that stops inactive LSP clients to free RAM
+        "zeioth/garbage-day.nvim",
+        dependencies = "neovim/nvim-lspconfig",
+        event = "VeryLazy",
+        opts = {}
+    },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                     _EDITING SUPPORT                     │
@@ -358,7 +225,12 @@ require 'lazy'.setup({
             -- vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
         end
     },
-    { 'tpope/vim-sleuth' },
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    },
+    { 'dmmulroy/ts-error-translator.nvim' },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                        _EDUCATION                        │
@@ -375,28 +247,6 @@ require 'lazy'.setup({
             "nvim-tree/nvim-web-devicons",
         },
         opts = {},
-    },
-    {
-        "epwalsh/pomo.nvim",
-        version = "*",
-        event = "VeryLazy",
-        cmd = { "TimerStart", "TimerRepeat" },
-        dependencies = { "rcarriga/nvim-notify" },
-        opts = {},
-    },
-    {
-        "TobinPalmer/Tip.nvim",
-        event = "VimEnter",
-        init = function()
-            -- Default config
-            --- @type Tip.config
-            require("tip").setup({
-                seconds = 5,
-                title = "⭐ Tip ⭐",
-                url = "https://vtip.43z.one",
-                -- url = "https://vimiscool.tech/neotip"
-            })
-        end,
     },
     {
         "roobert/surround-ui.nvim",
@@ -422,69 +272,28 @@ require 'lazy'.setup({
         dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons' },
         opts = {},
     },
-    {
-        'b0o/incline.nvim',
-        opts = {},
-        event = 'VeryLazy',
-    },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                      COLORSCHEMES                       │
     --          ╰─────────────────────────────────────────────────────────╯
-    { 'zaldih/themery.nvim' }, -- realtime theme picker
-    -- sources
-    { 'folke/tokyonight.nvim' },
-    { 'marko-cerovac/material.nvim' },
-    { 'catppuccin/nvim' },
-    { 'rebelot/kanagawa.nvim' },
-    { 'sainnhe/gruvbox-material' },
-    { 'rose-pine/neovim' },
-    { 'ku1ik/vim-monokai' },
-    { 'sainnhe/sonokai' },
-    { 'dracula/vim' },
-    { 'oxfist/night-owl.nvim' },
-    { "bluz71/vim-nightfly-colors" },
-    { "tiagovla/tokyodark.nvim" },
-    { "zootedb0t/citruszest.nvim" },
-    { "sekke276/dark_flat.nvim" },
-    { 'dasupradyumna/midnight.nvim', lazy = false,                                        priority = 1000 },
+    {'themercorp/themer.lua'},
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                       _NOTE TAKING                       │
     --          ╰─────────────────────────────────────────────────────────╯
-    { "epwalsh/obsidian.nvim",       version = "*",                                       lazy = true,    dependencies = { "nvim-lua/plenary.nvim" } },
-    { 'godlygeek/tabular' },
+    { "epwalsh/obsidian.nvim",              version = "*",                                                     lazy = true,    dependencies = { "nvim-lua/plenary.nvim" } },
     { 'preservim/vim-markdown' },
-    { 'AckslD/nvim-FeMaco.lua',      config = function() require('femaco').setup() end },
-    { 'NFrid/due.nvim',              config = function() require('due_nvim').setup {} end },
-    -- { -- translate markdown to mindmap
-    --     "Zeioth/markmap.nvim",
-    --     build = "yarn global add markmap-cli",
-    --     cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
-    --     opts = {
-    --         html_output = "/tmp/markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
-    --         hide_toolbar = false,      -- (default)
-    --         grace_period = 3600000     -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
-    --     },
-    --     config = function(_, opts) require("markmap").setup(opts) end
-    -- },
+    { 'NFrid/due.nvim',                     config = function() require('due_nvim').setup {} end },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                         COLORS                          │
     --          ╰─────────────────────────────────────────────────────────╯
-    {
-        "max397574/colortils.nvim",
-        cmd = "Colortils",
-        config = function()
-            require("colortils").setup()
-        end,
-    },
     { 'brenoprata10/nvim-highlight-colors', config = function() require('nvim-highlight-colors').setup({}) end },
 
     --          ╭─────────────────────────────────────────────────────────╮
     --          │                          misc                           │
     --          ╰─────────────────────────────────────────────────────────╯
-    {
-        'eandrju/cellular-automaton.nvim'
-    }
+    -- {
+    --     'eandrju/cellular-automaton.nvim'
+    -- }
 })

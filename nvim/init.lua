@@ -2,10 +2,10 @@ require 'thanhhoann'
 require 'customs'
 -- require 'utils'
 
--- STARTUP Themery block
+-- STARTUP-- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme catppuccin-macchiato")
-vim.g.theme_id = 11
+-- vim.cmd("colorscheme tokyonight-storm")
+-- vim.g.theme_id = 4
 -- end themery block
 
 if vim.fn.has("persistent_undo") == 1 then
@@ -26,3 +26,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end
 })
+
+-- vim.g.lsp_zero_extend_lspconfig = 0

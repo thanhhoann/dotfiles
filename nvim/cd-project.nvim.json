@@ -1,0 +1,22 @@
+[
+    {
+        "name": " nvim",
+        "path": "~/.config/nvim"
+    },
+    {
+        "name": " tmux",
+        "path": "~/.config/tmux"
+    },
+    {
+        "name": " yabai",
+        "path": "~/.config/yabai"
+    },
+    {
+        "name": "󰏬 notes",
+        "path": "~/core_machine/desktop/studies/notes"
+    },
+    {
+        "name": "𝖕 Piz",
+        "path": "/Users/thanhhoann/awesome_web/piz"
+    }
+]

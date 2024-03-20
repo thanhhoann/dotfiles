@@ -6,7 +6,7 @@ require 'nvim-treesitter.configs'.setup {
         "vim",
         "vimdoc",
         "javascript",
-        "typescript",
+        -- "typescript",
         "markdown",
         "markdown_inline",
         "dart",

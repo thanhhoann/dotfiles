@@ -3,7 +3,7 @@ require 'trouble'.setup({
     height = 7, -- height of the trouble list when position is top or bottom
     width = 50, -- width of the list when position is left or right
     icons = true, -- use devicons for filenames
-    mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+    mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
     severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
     fold_open = "", -- icon used for open folds
     fold_closed = "", -- icon used for closed folds
@@ -16,7 +16,7 @@ require 'trouble'.setup({
     auto_open = false, -- automatically open the list when you have diagnostics
     auto_close = true, -- automatically close the list when you have no diagnostics
     auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-    auto_fold = true, -- automatically fold a file trouble list at creation
+    auto_fold = false, -- automatically fold a file trouble list at creation
     auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
     include_declaration = { "lsp_references", "lsp_implementations", "lsp_definitions" }, -- for the given modes, include the declaration of the current symbol in the results
     use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client

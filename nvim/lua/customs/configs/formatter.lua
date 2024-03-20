@@ -5,12 +5,12 @@ return {
             lua = {
                 require("formatter.filetypes.lua").stylua,
             },
-            typescriptreact = {
-                require("formatter.filetypes.typescript").prettier,
-            },
-            typescript = {
-                require("formatter.filetypes.typescript").prettier,
-            },
+            -- typescriptreact = {
+            --     require("formatter.filetypes.typescript").prettier,
+            -- },
+            -- typescript = {
+            --     require("formatter.filetypes.typescript").prettier,
+            -- },
             css = {
                 require("formatter.filetypes.css").prettier,
             },
@@ -65,5 +65,3 @@ return {
         end)
     end,
 }
-
-

@@ -99,3 +99,37 @@ ls.add_snippets("javascriptreact", {
         repeat_duplicates = true
     }))
 })
+
+ls.add_snippets("typescriptreact", {
+    s("ef", {
+        t({ "import React, { useState, useEffect } from 'react';", "" }),
+        t({ "", "export default function " }), i(1, "name"), t({ "(" }), i(2, "props"), t({ ") {" }),
+        t({ "", "   return <>" }), i(3), t({ "</>" }),
+        t({ "", "}" }),
+    }),
+    s("ue", {
+        t({ "React.useEffect(() => {", "" }),
+        t({ "   " }), i(1),
+        t({ "", "}, [" }), i(2), t({ "]", "" })
+    }),
+    s('us', fmt('const [{}, set{}] = React.useState()', { i(1), i(2) })),
+    s("for", fmt([[
+      for (let {a} = 0; {a} < {}.length - 1 ; {a}++) {{
+        {}
+      }}
+      ]], {
+        a = i(1), i(2), i(3)
+    }, {
+        repeat_duplicates = true
+    }))
+})
+
+ls.add_snippets("NeogitCommitMessage", {
+    s('feat', fmt('✨ feat({}): {}', { i(1), i(2) })),
+    s('fix', fmt('⚙️ fix({}): {}', { i(1), i(2) })),
+    -- chore: tool changes, configuration changes, and changes to things that do not actually go into production at all.
+    s('chore', fmt('🥑 chore({}): {}', { i(1), i(2) })),
+    s('refactor', fmt('⚡️ refactor({}): {}', { i(1), i(2) })),
+    s('style', fmt('🌈 style({}): {}', { i(1), i(2) })),
+    s('test', fmt('🧪 test({}): {}', { i(1), i(2) })),
+})
