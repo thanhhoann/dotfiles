@@ -52,7 +52,7 @@ abbr --add x exit
 # ranger
 abbr --add r ranger
 
-# tmux session manager
+## tmux session manager
 abbr --add tn "tmux new -s (pwd | sed 's/.*\///g')"
 
 # trash cli
@@ -119,6 +119,14 @@ end
 
 # ---------------------------
 
+function yy
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+end
 
 # ---------------------------
 

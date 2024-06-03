@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "node-gyp": "^10.0.1"
+    "node-gyp": "^10.0.1",
+    "turbo": "^1.13.0"
   }
 }

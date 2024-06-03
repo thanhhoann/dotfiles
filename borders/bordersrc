@@ -6,7 +6,7 @@ options=(
 	hidpi=on # the border will be drawn with retina resolution.
     ax_focus=on # improves compatibility with other tools modifying window properties on a system level (e.g. yabai).
     blur_radius=90.0
-    active_color=0xff9ef01b
+    active_color=0xfff72585
     # inactive_color=0xff6d6876
 )
 

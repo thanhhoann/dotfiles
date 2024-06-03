@@ -14,6 +14,11 @@ require("telescope").setup({
             layout_config = {
                 preview_width = 0.65,
             },
+        },
+        current_buffer_fuzzy_find = {
+            layout_config = {
+                height = 1.9
+            }
         }
     },
     extensions = {

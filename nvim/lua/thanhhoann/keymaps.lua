@@ -11,56 +11,74 @@ vim.g.maplocalleader = " "
 --          │                          TMUX                           │
 --          ╰─────────────────────────────────────────────────────────╯
 
--- send "R" window "1" to hot restart. for simulators, bc web i had dashmon :)
-key('n', '<leader>fr', ':w<cr>:LspZeroFormat<cr>:! tmux send-keys -t "1" R<cr><cr>')
+-- flutter : send "R" window "1" to hot restart. for simulators, bc web i had dashmon :)
+-- key('n', '<leader>fr', ':w<cr>:LspZeroFormat<cr>:! tmux send-keys -t "1" R<cr><cr>')
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       NORMAL MODE                       │
 --          ╰─────────────────────────────────────────────────────────╯
 
 -- useful !
-key('n', 'W', ':w!<CR>')
-key('n', 'WQ', ':wq!<CR>')
-key('n', 'Q', ':q!<CR>')
+-- key("n", "W", ":w!<CR>")
+-- key("n", "WQ", ":wq!<CR>")
+key("n", "Q", ":q!<CR>")
 
 -- toggle todo check in markdown
-key('n', '<c-x>', '0lllxix<C-c>0')
+key("n", "<c-x>", "0lllxix<C-c>0")
 -- key('n', '<c-x>', function()
 --     if vim.api.nvim_buf_get_option(0, 'filetype') == 'markdown' then
 --         return '0lllxix<C-c>0'
 --     end
 -- end)
 
+key("n", "<leader>f", function()
+	local ft = vim.api.nvim_buf_get_option(0, "filetype")
+	if ft == "javascript" or ft == "typescriptreact" then
+		vim.api.nvim_command(":Prettier")
+	else
+		vim.api.nvim_command(":LspZeroFormat")
+	end
+end)
+
 -- format on save
-key('n', '<leader>f', function()
-    local ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    if ft == 'javascript' or ft == 'typescriptreact' then
-        vim.api.nvim_command(":Prettier")
-    else
-        vim.api.nvim_command(":LspZeroFormat")
-    end
+key("n", "<leader>fw", function()
+	local ft = vim.api.nvim_buf_get_option(0, "filetype")
+	if ft == "javascript" or ft == "typescriptreact" or ft == "markdown" then
+		vim.api.nvim_command(":Prettier")
+		vim.cmd(":w")
+	else
+		vim.api.nvim_command(":LspZeroFormat")
+	end
 end)
 
 -- yank -> select line -> comment -> paste
-key('n', "y/", "yy" .. "V" .. ":CommentToggle<cr>" .. "p")
+key("n", "y/", "yy" .. "V" .. ":CommentToggle<cr>" .. "p")
 
 -- replace selected word with regex
 key("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- format -> save -> source
-key('n', "<leader>n", ':LspZeroFormat<CR>:w<CR>:so<CR>')
--- select all
-key('n', "<leader>a", "ggVG")
--- maximize the buffer
-key('n', '<leader>bm', "<C-w>T<cr>")
--- after maximize the buffer, return to splits
-key('n', '<Leader>br', "mAZZ<C-w>S`A")
--- repeating macro ',', instead of '@@'
-key('n', ',', '@@')
+key("n", "<leader>n", function()
+	local ft = vim.api.nvim_buf_get_option(0, "filetype")
+	if ft == "lua" then
+		vim.api.nvim_command(":LspZeroFormat")
+		vim.cmd(":w")
+		vim.cmd(":so")
+	end
+end)
 
-key('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-key('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-key('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-key('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- select all
+key("n", "<leader>a", "ggVG")
+-- maximize the buffer
+key("n", "<leader>bm", "<C-w>T<cr>")
+-- after maximize the buffer, return to splits
+key("n", "<Leader>br", "mAZZ<C-w>S`A")
+-- repeating macro ',', instead of '@@'
+key("n", ",", "@@")
+
+key("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+key("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+key("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+key("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       VISUAL MODE                       │
@@ -70,10 +88,10 @@ key('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 key("v", "J", ":m '>+1<CR>gv=gv")
 key("v", "K", ":m '<-2<CR>gv=gv")
 -- indenting
-key('v', '>', '>gv')
-key('v', '<', '<gv')
+key("v", ">", ">gv")
+key("v", "<", "<gv")
 -- copy on exits
-key('v', '<C-c>', '"+y')
+key("v", "<C-c>", '"+y')
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       INSERT MODE                       │
@@ -88,20 +106,19 @@ key("i", "<C-h>", "<Left>")
 key("i", "<C-l>", "<Right>")
 
 -- format on insert
-key('i', '<C-f>', function()
-    if vim.api.nvim_buf_get_option(0, 'filetype') == 'javascript' then
-        vim.api.nvim_command(":Prettier")
-    else
-        vim.api.nvim_command(":LspZeroFormat")
-    end
+key("i", "<C-f>", function()
+	if vim.api.nvim_buf_get_option(0, "filetype") == "javascript" then
+		vim.api.nvim_command(":Prettier")
+	else
+		vim.api.nvim_command(":LspZeroFormat")
+	end
 end)
 
 -- delete line (then go back to insert mode)
-key('i', '<c-d>', '<c-c>Vdd<c-c>o<c-c>ki')
+key("i", "<c-d>", "<c-c>Vdd<c-c>o<c-c>ki")
 
 -- esc -> go to eol
-key('i', '<c-A>', '<c-c>A')
-
+key("i", "<c-A>", "<c-c>A")
 
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                         COMMON                          │
@@ -111,5 +128,5 @@ key('i', '<c-A>', '<c-c>A')
 key({ "n", "v" }, "<leader>y", [["+y]])
 key({ "n", "v" }, "<leader>p", [["+p]])
 -- backspace
-key('n', '<BS>', 'x')
-key('v', '<BS>', '<BS>x')
+key("n", "<BS>", "x")
+key("v", "<BS>", "<BS>x")

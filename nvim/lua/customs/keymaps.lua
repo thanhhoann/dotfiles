@@ -24,7 +24,7 @@ require 'legendary'.setup({
         },
         {
             "<Leader>fo",
-            ':Telescope oldfiles<cr>',
+            ':Telescope oldfiles theme=ivy<cr>',
             mode = { 'n' },
             desc = "Telescope : Old Files",
         },
@@ -36,7 +36,7 @@ require 'legendary'.setup({
         },
         {
             "<Leader>fz",
-            ':Telescope current_buffer_fuzzy_find<cr>',
+            ':Telescope current_buffer_fuzzy_find theme=ivy<cr>',
             mode = { 'n' },
             desc = "Telescope : Current Buffer Fuzzy Find",
         },
@@ -51,6 +51,18 @@ require 'legendary'.setup({
             ':Telescope projections<cr>',
             mode = { 'n' },
             desc = "Telescope : Projects",
+        },
+        {
+            "<leader>f.",
+            ":Telescope resume<cr>",
+            mode = { 'n' },
+            desc = "Telescope : Resume"
+        },
+        {
+            "<leader>fh",
+            ":Telescope help_tags<cr>",
+            mode = { 'n' },
+            desc = "Telescope : Search Help"
         },
 
         -- windows.nvim

@@ -13,13 +13,14 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true
+-- vim.opt.cursorcolumn = true
 vim.opt.swapfile = false
-vim.wo.fillchars = 'eob: '
-vim.opt.signcolumn = 'yes:1'
+vim.wo.fillchars = "eob: "
+-- vim.opt.signcolumn = "yes:1"
 
 --  Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Make line numbers default
 vim.opt.number = true
@@ -28,7 +29,7 @@ vim.opt.number = true
 -- vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
@@ -49,7 +50,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -63,17 +64,16 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-
 
 -- markdown
 vim.g.vim_markdown_folding_disabled = 1
@@ -83,10 +83,10 @@ vim.opt.conceallevel = 2
 vim.g.vim_markdown_no_extensions_in_markdown = 1
 vim.g.vim_markdown_autowrite = 1
 vim.o.compatible = false
-vim.cmd('filetype plugin on')
-vim.cmd('syntax on')
+vim.cmd("filetype plugin on")
+vim.cmd("syntax on")
 
 -- copilot
-vim.g.copilot_node_command = '/Users/thanhhoann/.local/share/nvm/v20.8.0/bin/node'
-vim.g.copilot_lua_command = '/usr/local/bin/lua'
+vim.g.copilot_node_command = "/Users/thanhhoann/.local/share/nvm/v20.8.0/bin/node"
+vim.g.copilot_lua_command = "/usr/local/bin/lua"
 vim.g.no_tab_map = true
