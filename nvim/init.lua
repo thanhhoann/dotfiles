@@ -1,32 +1,52 @@
-require("thanhhoann")
-require("customs")
--- require 'utils'
+require("hoan_vip_pro.options")
+require("hoan_vip_pro.keymaps")
+require("hoan_vip_pro.autocmds")
 
--- STARTUP-- Themery block
--- This block will be replaced by Themery.
--- vim.cmd("colorscheme tokyonight-storm")
--- vim.g.theme_id = 4
--- end themery block
-
-if vim.fn.has("persistent_undo") == 1 then
-	local target_path = vim.fn.expand("~/.undodir")
-	-- -- Create the directory and any parent directories
-	-- -- if the location does not exist.
-	if vim.fn.isdirectory(target_path) == 0 then
-		vim.fn.mkdir(target_path, "p", 0700)
-	end
-	vim.opt.undodir = target_path
-	vim.opt.undofile = true
+-- lazy bootstrapping --
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
+-- lazy bootstrapping --
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight on yank",
-	group = vim.api.nvim_create_augroup("highlight-on-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+-- load the plugins first
+require("lazy").setup({
+	-- fundamentals
+	require("kimochi.telescope"),
+	require("kimochi.oil"),
+	require("kimochi.colorschemes"),
+	require("kimochi.lsp"),
+	require("kimochi.format"),
+	require("kimochi.autocompletion"),
+	require("kimochi.mini"),
+	require("kimochi.misc"),
+}, {
+	ui = {
+		icons = vim.g.have_nerd_font and {} or {
+			cmd = "⌘",
+			config = "🛠",
+			event = "📅",
+			ft = "📂",
+			init = "⚙",
+			keys = "🗝",
+			plugin = "🔌",
+			runtime = "💻",
+			require = "🌙",
+			source = "📄",
+			start = "🚀",
+			task = "📌",
+			lazy = "💤 ",
+		},
+	},
 })
 
--- vim.g.lsp_zero_extend_lspconfig = 0
-
-vim.cmd("colorscheme night-owl")
+-- then load the plugins' keymaps
+require("kimochi.keymaps")
