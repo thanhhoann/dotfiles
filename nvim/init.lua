@@ -19,14 +19,13 @@ vim.opt.rtp:prepend(lazypath)
 
 -- load the plugins first
 require("lazy").setup({
-	-- fundamentals
 	require("kimochi.telescope"),
-	require("kimochi.oil"),
-	require("kimochi.colorschemes"),
 	require("kimochi.lsp"),
+	require("kimochi.colorschemes"),
 	require("kimochi.format"),
+	require("kimochi.treesitter"),
+	require("kimochi.motions"),
 	require("kimochi.autocompletion"),
-	require("kimochi.mini"),
 	require("kimochi.misc"),
 }, {
 	ui = {
