@@ -3,8 +3,12 @@
 
 -- better up/down
 LazyVim.safe_keymap_set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-LazyVim.safe_keymap_set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'",
-  { desc = "Down", expr = true, silent = true })
+LazyVim.safe_keymap_set(
+  { "n", "x" },
+  "<Down>",
+  "v:count == 0 ? 'gj' : 'j'",
+  { desc = "Down", expr = true, silent = true }
+)
 LazyVim.safe_keymap_set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 LazyVim.safe_keymap_set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
@@ -135,8 +139,7 @@ LazyVim.safe_keymap_set("n", "<leader>ub", function() LazyVim.toggle("background
   { desc = "Toggle Background" })
 
 -- lazygit
-LazyVim.safe_keymap_set("n", "<leader>gg", function() LazyVim.lazygit({ cwd = LazyVim.root.git() }) end,
-  { desc = "Lazygit (Root Dir)" })
+-- LazyVim.safe_keymap_set("n", "<leader>gg", function() LazyVim.lazygit({ cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
 LazyVim.safe_keymap_set("n", "<leader>gG", function() LazyVim.lazygit() end, { desc = "Lazygit (cwd)" })
 LazyVim.safe_keymap_set("n", "<leader>gb", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
 LazyVim.safe_keymap_set("n", "<leader>gB", LazyVim.lazygit.browse, { desc = "Git Browse" })

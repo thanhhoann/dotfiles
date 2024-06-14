@@ -16,3 +16,5 @@ vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 -- Split window
 vim.keymap.set("n", "ss", ":split<Return>", opts)
 vim.keymap.set("n", "sv", ":vsplit<Return>", opts)
+
+vim.keymap.set("n", "<leader>gg", ":Neogit<CR>")

@@ -8,6 +8,7 @@ return {
       require("render-markdown").setup({})
     end,
   },
+
   {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
@@ -29,11 +30,19 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed, not both.
       "nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua", -- optional
     },
-    config = true,
   },
+
+  {
+    "sarrisv/readermode.nvim",
+    config = function()
+      require("readermode").setup({
+        enable = true,
+        keymap = "<leader>R",
+      })
+    end,
+  },
+
+  { "brenoprata10/nvim-highlight-colors", lazy = true },
 }
