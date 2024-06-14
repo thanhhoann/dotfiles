@@ -1,31 +1,14 @@
 return {
   {
-    'stevearc/oil.nvim',
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require('oil').setup({
-        -- Configuration for the floating window in oil.open_float
-        float = {
-          -- Padding around the floating window
-          padding = 9,
-          max_width = 70,
-          max_height = 50,
-          border = "rounded",
-          win_options = {
-            winblend = 0,
-          },
-          -- This is the config that will be passed to nvim_open_win.
-          -- Change values here to customize the layout
-          override = function(conf)
-            return conf
-          end,
-        },
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      table.insert(opts.routes, {
+        filter = { event = "notify", find = "No information available" },
+        opts = { skip = true },
       })
+      opts.presets.lsp_doc_border = true
     end
   },
-
   {
     "nvim-telescope/telescope.nvim",
     keys = {

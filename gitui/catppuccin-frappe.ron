@@ -1,0 +1,23 @@
+(
+    selected_tab: Reset,
+    command_fg: #c6d0f5,
+    selection_bg: #626880,
+    selection_fg: #c6d0f5,
+    cmdbar_bg: #292c3c,
+    cmdbar_extra_lines_bg: #292c3c,
+    disabled_fg: #838ba7,
+    diff_line_add: #a6d189,
+    diff_line_delete: #e78284,
+    diff_file_added: #a6d189,
+    diff_file_removed: #ea999c,
+    diff_file_moved: #ca9ee6,
+    diff_file_modified: #ef9f76,
+    commit_hash: #babbf1,
+    commit_time: #b5bfe2,
+    commit_author: #85c1dc,
+    danger_fg: #e78284,
+    push_gauge_bg: #8caaee,
+    push_gauge_fg: #303446,
+    tag_fg: #f2d5cf,
+    branch_fg: #81c8be
+)

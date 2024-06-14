@@ -40,8 +40,8 @@ abbr --add bsa brew services start
 abbr --add bso brew services stop
 abbr --add bsr brew services restart
 
-# vim
-abbr --add v nvim
+# vim 
+abbr --add v env TERM=wezterm nvim
 
 # ZELLIJ
 abbr --add ze zellij
@@ -87,31 +87,31 @@ fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 # ---------------------------------------------------------------
 
 function config
-   
- # FISH
-    if test "$argv[1]" = "fish"
+
+    # FISH
+    if test "$argv[1]" = fish
         cd ~/.config/fish
         nvim ~/.config/fish/config.fish
 
-    # NEOVIM
-    else if test "$argv[1]" = "vim"
+        # NEOVIM
+    else if test "$argv[1]" = vim
         cd ~/.config/nvim
         nvim ~/.config/nvim
 
-    # TMUX
-    else if test "$argv[1]" = "tmux"
+        # TMUX
+    else if test "$argv[1]" = tmux
         nvim ~/.tmux.conf
 
-    # KITTY
-    else if test "$argv[1]" = "kitty"
+        # KITTY
+    else if test "$argv[1]" = kitty
         nvim ~/.config/kitty/kitty.conf
 
-    # ALACRITTY
-    else if test "$argv[1]" = "alacritty"
+        # ALACRITTY
+    else if test "$argv[1]" = alacritty
         nvim ~/.config/alacritty/alacritty.toml
 
-    # ZELLIJ
-    else if test "$argv[1]" = "zellij"
+        # ZELLIJ
+    else if test "$argv[1]" = zellij
         cd ~/.config/zellij
         nvim ~/.config/zellij/config.kdl
     end
@@ -120,18 +120,18 @@ end
 # ---------------------------
 
 function yy
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		cd -- "$cwd"
-	end
-	rm -f -- "$tmp"
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 
 # ---------------------------
 
 function ff -d "Fix machine time"
-    echo 'hoan' | sudo -S sntp -S (sed -n '/^server/s/.* //p' /etc/ntp.conf)
+    echo hoan | sudo -S sntp -S (sed -n '/^server/s/.* //p' /etc/ntp.conf)
 end
 
 # ---------------------------
@@ -146,7 +146,7 @@ function mkdir -d "Create a directory and set current working directory"
                 cd $argv[(count $argv)]
                 return
         end
-   end
+    end
 end
 
 # ---------------------------
@@ -161,10 +161,10 @@ end
 # ---------------------------
 
 function flutter_run
-    tmux send-keys "flutter run $1 $2 $3 $4 --pid-file=/tmp/tf1.pid" Enter \;\
-    split-window -v \;\
-    send-keys 'npx -y nodemon -e dart -x "cat /tmp/tf1.pid | xargs kill -s USR1"' Enter \;\
-    select-pane -t 0 \;
+    tmux send-keys "flutter run $1 $2 $3 $4 --pid-file=/tmp/tf1.pid" Enter \; \
+        split-window -v \; \
+        send-keys 'npx -y nodemon -e dart -x "cat /tmp/tf1.pid | xargs kill -s USR1"' Enter \; \
+        select-pane -t 0 \;
 end
 
 # PLUGIN SETUP
@@ -182,5 +182,3 @@ oh-my-posh init fish --config ~/.config/oh-my-posh/themes/amro.omp.json | source
 # starship init fish | source
 
 zoxide init fish | source
-
-

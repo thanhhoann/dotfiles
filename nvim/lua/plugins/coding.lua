@@ -40,7 +40,6 @@ return {
       })
     end,
   },
-
   {
     "L3MON4D3/LuaSnip",
     build = (not LazyVim.is_win())
@@ -72,5 +71,6 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
-  },
+  }
+
 }

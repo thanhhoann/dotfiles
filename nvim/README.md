@@ -1,4 +1,4 @@
-# 💤 LazyVim
+# Roadmap
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+- plugins/ : create sub-folders (editor, formatting,...) like in lazyVim, then import those in init.lua. Each sub-folder contains plugins.
+

@@ -10,16 +10,23 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { "LazyVim/LazyVim",                                    import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     -- coding
     { import = "lazyvim.plugins.extras.coding.codeium" },
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
-    { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- { import = "lazyvim.plugins.extras.coding.yanky" },
+
+    -- editor
+    { import = "lazyvim.plugins.extras.editor.refactoring" },
+
+    -- lsp
+    { import = "lazyvim.plugins.extras.lsp.neoconf" },
+    { import = "lazyvim.plugins.extras.lsp.none-ls" },
 
     -- dev
-    { import = "lazyvim.plugins.extras.linting.eslint" },
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    -- { import = "lazyvim.plugins.extras.linting.eslint" },
+    -- { import = "lazyvim.plugins.extras.formatting.prettier" },
 
     -- lang
     { import = "lazyvim.plugins.extras.lang.typescript" },
@@ -31,14 +38,13 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.util.dot" },
     -- { import = "lazyvim.plugins.extras.util.gitui" },
 
-    -- editor
-    { import = "lazyvim.plugins.extras.editor.refactoring" },
-
-    -- lsp
-    { import = "lazyvim.plugins.extras.lsp.neoconf" },
-
     -- ui
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    { import = "lazyvim.plugins.extras.ui.edgy" },
+
+    -- util
+    { import = "lazyvim.plugins.extras.util.startuptime" },
+    -- { import = "lazyvim.plugins.extras.util.gitui" },
 
     -- import/override with your plugins
     { import = "plugins" },
