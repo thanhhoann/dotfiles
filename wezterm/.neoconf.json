@@ -1,0 +1,9 @@
+{
+	"lspconfig": {
+		"lua_ls": {
+			"Lua.workspace.library": [
+				"/Users/thanhhoann/.local/share/nvim/lazy/wezterm-types/types"
+			]
+		}
+	}
+}
