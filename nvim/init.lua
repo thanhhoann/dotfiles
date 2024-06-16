@@ -14,3 +14,7 @@ require("plugins.configs.colorschemes.night-owl")
 
 -- Set colorscheme
 vim.cmd("colorscheme night-owl")
+
+_G.SearchReplaceFromTo = function(fromLine, toLine, before, after)
+  vim.cmd(fromLine .. "," .. toLine .. "s/" .. before .. "/" .. after .. "/gc")
+end
