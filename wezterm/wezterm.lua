@@ -21,7 +21,8 @@ config.font_size = 16.0
 -- config.font = wezterm.font("FiraCode Nerd Font Mono")
 -- config.font = wezterm.font("Monofur Nerd Font Mono")
 -- config.font = wezterm.font("mononoki Nerd Font Mono")
-config.font = wezterm.font("0xProto Nerd Font Mono")
+-- config.font = wezterm.font("0xProto Nerd Font Mono")
+config.font = wezterm.font("MonaspiceRn Nerd Font Propo")
 config.bold_brightens_ansi_colors = true
 
 -- Colorscheme
@@ -30,8 +31,8 @@ config.color_scheme = "tokyonight"
 -- Window
 -- config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0
-config.macos_window_background_blur = 1
+config.window_background_opacity = 1
+config.macos_window_background_blur = 10
 
 -- KEY CONTROLS
 -- keys = {

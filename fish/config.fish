@@ -40,8 +40,12 @@ abbr --add bsa brew services start
 abbr --add bso brew services stop
 abbr --add bsr brew services restart
 
+
 # vim 
 abbr --add v env TERM=wezterm nvim
+
+# tmux
+abbr --add ta tmux attach
 
 # ZELLIJ
 abbr --add ze zellij
@@ -60,7 +64,6 @@ abbr --add rm trash
 
 # money
 abbr --add money node /Users/thanhhoann/core_machine/desktop/codiing/cli/monthly-finance/getMoneyCanSpend.js
-
 
 # MTMR
 abbr --add mtmr cd /Users/thanhhoann/Library/Application\ Support/MTMR

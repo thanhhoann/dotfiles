@@ -3,8 +3,14 @@
 
 local set = vim.keymap.set
 
--- Open neotree
-set("n", "-", "<CMD>Neotree toggle<CR>")
+-- neotree
+set("n", "-", "<CMD>Oil --float<CR>")
+
+-- lazygit on tmux
+set("n", "<leader>gt", "<cmd>!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { desc = "Git Go" })
+
+-- so I dont have to press ":"
+set("n", "<leader>w", ":w<CR>")
 
 -- Select all
 set("n", "<leader>a", "gg<S-v>G")

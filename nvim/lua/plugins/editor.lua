@@ -7,7 +7,7 @@ return {
         opts = { skip = true },
       })
       opts.presets.lsp_doc_border = true
-    end
+    end,
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -24,7 +24,7 @@ return {
         function()
           require("telescope.builtin").current_buffer_fuzzy_find()
         end,
-        desc = "Fuzzy Find in Buffer"
+        desc = "Fuzzy Find in Buffer",
       },
       {
         "<leader>fg",
@@ -34,8 +34,7 @@ return {
             additional_args = { "--hidden" },
           })
         end,
-        desc =
-        "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
       {
         "<leader>fd",
@@ -50,7 +49,7 @@ return {
         function()
           require("telescope.builtin").oldfiles()
         end,
-        desc = "Find Old Files"
+        desc = "Find Old Files",
       },
     },
     -- change some options
@@ -61,6 +60,13 @@ return {
         sorting_strategy = "ascending",
         winblend = 0,
       },
-    }
-  }
+    },
+  },
+
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 }

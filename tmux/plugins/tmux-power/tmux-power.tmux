@@ -142,7 +142,7 @@ tmux_set status-right "$RS"
 # Window status format
 # tmux_set window-status-format         "#[fg=$BG,bg=$G06]$rarrow#[fg=$TC,bg=$G06] #I.#[fg=$TC,bg=$G06]#W #[fg=$G06,bg=$BG]$rarrow"
 tmux_set window-status-format         "#[fg=$BG,bg=$G06]$rarrow#[fg=$TC,bg=$G06] #[fg=$TC,bg=$G06]#W #[fg=$G06,bg=$BG]$rarrow"
-tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$rarrow#[fg=$BG,bg=$TC,bold] #W #[fg=$TC,bg=$BG,nobold]$rarrow"
+tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$rarrow #[fg=$BG,bg=$TC]#[fg=$BG,bg=$TC,bold] #W #[fg=$TC,bg=$BG,nobold]$rarrow" 
 
 # Window status style
 tmux_set window-status-style          "fg=$TC,bg=$BG,none"
