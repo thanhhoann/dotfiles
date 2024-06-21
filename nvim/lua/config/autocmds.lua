@@ -118,11 +118,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- refresh codelens on TextChanged and InsertLeave as well
-vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "CursorHold", "LspAttach" }, {
-  buffer = bufnr,
-  callback = vim.lsp.codelens.refresh,
-})
+-- -- refresh codelens on TextChanged and InsertLeave as well
+-- vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "CursorHold", "LspAttach" }, {
+--   buffer = bufnr,
+--   callback = vim.lsp.codelens.refresh,
+-- })
 
--- trigger codelens refresh
-vim.api.nvim_exec_autocmds("User", { pattern = "LspAttached" })
+-- -- trigger codelens refresh
+-- vim.api.nvim_exec_autocmds("User", { pattern = "LspAttached" })

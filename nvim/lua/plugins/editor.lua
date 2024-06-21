@@ -61,6 +61,13 @@ return {
         winblend = 0,
       },
     },
+    defaults = {},
+    pickers = {
+      current_buffer_fuzzy_finder = {
+        theme = "dropdown",
+      },
+    },
+    extensions = {},
   },
 
   {
