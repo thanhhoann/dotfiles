@@ -1,47 +1,6 @@
 return {
-  { "dmmulroy/ts-error-translator.nvim" },
-  {
-    "MeanderingProgrammer/markdown.nvim",
-    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("render-markdown").setup({})
-    end,
-  },
-
-  {
-    "sarrisv/readermode.nvim",
-    config = function()
-      require("readermode").setup({
-        enable = true,
-        keymap = "<leader>R",
-      })
-    end,
-  },
-
   { "brenoprata10/nvim-highlight-colors", lazy = true },
   { "justinsgithub/wezterm-types" },
-
-  {
-    "roobert/search-replace.nvim",
-    config = function()
-      require("search-replace").setup({
-        -- optionally override defaults
-        default_replace_single_buffer_options = "gcI",
-        default_replace_multi_buffer_options = "egcI",
-      })
-    end,
-  },
-
-  { "cpea2506/relative-toggle.nvim" },
-
-  {
-    "max397574/better-escape.nvim",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
-
 
   {
     "NeogitOrg/neogit",
@@ -52,21 +11,13 @@ return {
     },
   },
 
-  -- {
-  --   "jackMort/ChatGPT.nvim",
-    -- event = "VeryLazy",
-    -- dependencies = {
-    --   "MunifTanjim/nui.nvim",
-    --   "nvim-lua/plenary.nvim",
-    --   "folke/trouble.nvim",
-    --   "nvim-telescope/telescope.nvim",
-    -- },
-  --   config = function()
-  --     require("chatgpt").setup({
-  --       api_key_cmd = "op read op://private/OpenAI/credential --no-newline"
-  --     })
-  --   end,
-  -- },
-
-
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown", -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 }

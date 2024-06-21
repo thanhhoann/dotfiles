@@ -44,7 +44,7 @@ return {
     "L3MON4D3/LuaSnip",
     build = (not LazyVim.is_win())
         and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
-        or nil,
+      or nil,
     dependencies = {
       {
         "rafamadriz/friendly-snippets",
@@ -71,6 +71,26 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
-  }
+  },
 
+  { "dmmulroy/ts-error-translator.nvim" },
+
+  -- {
+  --   "MeanderingProgrammer/markdown.nvim",
+  --   name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  --   config = function()
+  --     require("render-markdown").setup({})
+  --   end,
+  -- },
+
+  { "preservim/vim-markdown" },
+
+  {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+  { "cpea2506/relative-toggle.nvim" },
 }

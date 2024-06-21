@@ -1,16 +1,13 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-
 local set = vim.keymap.set
 
--- neotree
-set("n", "-", "<CMD>Oil --float<CR>")
-
+-- PERSONAL
 -- lazygit on tmux
-set("n", "<leader>gt", "<cmd>!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { desc = "Git Go" })
+-- set("n", "<leader>gt", "<cmd>!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { desc = "Git Go" })
 
 -- so I dont have to press ":"
 set("n", "<leader>w", ":w<CR>")
+
+set("n", "<leader>f", ":w<CR>:lua vim.lsp.buf.format { async = true }<CR>")
 
 -- Select all
 set("n", "<leader>a", "gg<S-v>G")
@@ -18,6 +15,20 @@ set("n", "<leader>a", "gg<S-v>G")
 -- Split window
 set("n", "ss", ":split<Return>")
 set("n", "sv", ":vsplit<Return>")
+
+-- quick quit
+set("n", "<leader>q", ":q!<CR>")
+
+-- PLUGINS
+-- neotree
+set("n", "-", "<CMD>Oil --float<CR>")
+
+-- open a tmux popup for noting todos
+set(
+  "n",
+  "<leader>m",
+  "<CMD>!tmux display-popup -w 80 -h 30 -E 'env TERM=wezterm nvim /Users/thanhhoann/core_machine/desktop/studies/TODOs.md'<CR>"
+)
 
 -- neogit https://github.com/NeogitOrg/neogit
 set("n", "<leader>gg", ":Neogit<CR>")

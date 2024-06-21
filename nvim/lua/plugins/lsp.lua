@@ -1,11 +1,3 @@
-vim.diagnostic.config({
-  virtual_text = true,
-  underline = true,
-  signs = true,
-  update_in_insert = true,
-  severity_sort = true,
-})
-
 return {
   {
     "neovim/nvim-lspconfig",
@@ -164,11 +156,9 @@ return {
           end, "vtsls")
           -- copy typescript settings to javascript
           opts.settings.javascript =
-              vim.tbl_deep_extend("force", {}, opts.settings.typescript, opts.settings.javascript or {})
+            vim.tbl_deep_extend("force", {}, opts.settings.typescript, opts.settings.javascript or {})
         end,
       },
     },
-
   },
-
 }

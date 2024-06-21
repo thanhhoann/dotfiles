@@ -13,17 +13,6 @@ return {
    ▄█    ███     ███       ███    ███ ███  ███    ███   ███    ███ 
  ▄████████▀     ▄████▀     ███    ███ █▀    ▀██████▀    ██████████ 
 
-  DSA
-  Docker 
-  Flutter 
-
-  Porfolio (Three.js)
-
-  Algorithms Visualizer (Sortings, Path-finder)
-  A Programming Language
-  Ecom 
-  Social Media 
-  SaaS
 ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -134,15 +123,15 @@ return {
             end,
             size = { height = 0.5 },
           },
-          {
-            title = "Neo-Tree Git",
-            ft = "neo-tree",
-            filter = function(buf)
-              return vim.b[buf].neo_tree_source == "git_status"
-            end,
-            pinned = true,
-            open = "Neotree position=right git_status",
-          },
+          -- {
+          --   title = "Neo-Tree Git",
+          --   ft = "neo-tree",
+          --   filter = function(buf)
+          --     return vim.b[buf].neo_tree_source == "git_status"
+          --   end,
+          --   pinned = true,
+          --   open = "Neotree position=right git_status",
+          -- },
           "neo-tree",
         },
         keys = {
