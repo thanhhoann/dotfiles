@@ -71,12 +71,6 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-  {
     "roobert/search-replace.nvim",
     config = function()
       require("search-replace").setup({

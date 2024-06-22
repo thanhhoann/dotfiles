@@ -31,8 +31,8 @@ config.color_scheme = "tokyonight"
 -- Window
 -- config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 1
-config.macos_window_background_blur = 10
+config.window_background_opacity = 0.7
+config.macos_window_background_blur = 0
 
 -- KEY CONTROLS
 -- keys = {

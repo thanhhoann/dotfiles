@@ -11,6 +11,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 export OPENAI_API_KEY="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"
 export NODE_OPTIONS=--openssl-legacy-provider
+export WALK_REMOVE_CMD=trash
 
 # ranger
 export FZF_FZM_OPTS="--reverse --height 75% --min-height 30 --cycle +m --ansi --bind=ctrl-o:accept,ctrl-t:toggle --select-1"
@@ -168,6 +169,12 @@ function flutter_run
         split-window -v \; \
         send-keys 'npx -y nodemon -e dart -x "cat /tmp/tf1.pid | xargs kill -s USR1"' Enter \; \
         select-pane -t 0 \;
+end
+
+# ---------------------------
+
+function lk
+    set loc (walk $argv); and cd $loc
 end
 
 # PLUGIN SETUP

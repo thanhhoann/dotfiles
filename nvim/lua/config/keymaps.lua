@@ -21,7 +21,7 @@ set("n", "<leader>q", ":q!<CR>")
 
 -- PLUGINS
 -- neotree
-set("n", "-", "<CMD>Oil --float<CR>")
+-- set("n", "-", "<CMD>Oil --float<CR>")
 
 -- open a tmux popup for noting todos
 set(

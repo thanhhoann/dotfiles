@@ -4,16 +4,21 @@ return {
     lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
     opts = function()
       local logo = [[
-   ▄████████     ███        ▄████████  ▄█   ▄█    █▄     ▄████████ 
-  ███    ███ ▀█████████▄   ███    ███ ███  ███    ███   ███    ███ 
-  ███    █▀     ▀███▀▀██   ███    ███ ███▌ ███    ███   ███    █▀  
-  ███            ███   ▀  ▄███▄▄▄▄██▀ ███▌ ███    ███  ▄███▄▄▄     
-▀███████████     ███     ▀▀███▀▀▀▀▀   ███▌ ███    ███ ▀▀███▀▀▀     
-         ███     ███     ▀███████████ ███  ███    ███   ███    █▄  
-   ▄█    ███     ███       ███    ███ ███  ███    ███   ███    ███ 
- ▄████████▀     ▄████▀     ███    ███ █▀    ▀██████▀    ██████████ 
-
-]]
+  "  ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆        ",
+  "   ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦      ",
+  "     ⠈   ⠈⢿⣿⣟⠦⠄⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄    ",
+  "          ⣸⣿⣿⢧⠄⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄   ",
+  "         ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀  ",
+  "  ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿  ",
+  " ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷⠄  ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄  ",
+  "⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄ ",
+  "⠙⠃   ⣼⣿⡟⠌ ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿⠐⣿⣿⡇ ⠛⠻⢷⣄",
+  "     ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆   ⠁",
+  "      ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣀⣤⣾⡿⠃    ",
+  "⢀⣀⠀⣠⣀⣠⣾⣿⣿⡿⠛⠋⠉⠉⠉   ⠉⠉⠉⠉⠛⠻⣿⣿⣷⣄⣀⢿⡽⢻⣦",
+  "⠻⠶⠾⠿⠿⠿⠋⠉   N E O V I M   ⠉⠻⠿⠿⠿⠿⠿⠋",
+              @thanhhoan
+      ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
 
@@ -28,7 +33,7 @@ return {
           header = vim.split(logo, "\n"),
           -- stylua: ignore
           center = {
-            { action = ':term env TERM=wezterm nvim ~/.config/nvim/init.lua', desc = " Edit init.lua", icon = "  ", key = "s" },
+            -- { action = ':term env TERM=wezterm nvim ~/.config/nvim/init.lua', desc = " Edit init.lua", icon = "  ", key = "s" },
             { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit", icon = " ", key = "q" },
           },
           footer = function()
