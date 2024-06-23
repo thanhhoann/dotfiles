@@ -20,8 +20,15 @@ set("n", "sv", ":vsplit<Return>")
 set("n", "<leader>q", ":q!<CR>")
 
 -- PLUGINS
--- neotree
--- set("n", "-", "<CMD>Oil --float<CR>")
+
+-- neoscroll
+set("n", "<C-j>", function()
+  require("neoscroll").ctrl_d({ duration = 250 })
+end)
+
+set("n", "<C-k>", function()
+  require("neoscroll").ctrl_u({ duration = 250 })
+end)
 
 -- open a tmux popup for noting todos
 set(

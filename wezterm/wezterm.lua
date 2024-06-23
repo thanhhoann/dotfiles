@@ -26,7 +26,8 @@ config.font = wezterm.font("MonaspiceRn Nerd Font Propo")
 config.bold_brightens_ansi_colors = true
 
 -- Colorscheme
-config.color_scheme = "tokyonight"
+-- config.color_scheme = "Night Owl (Gogh)"
+config.color_scheme = "3024 (dark) (terminal.sexy)"
 
 -- Window
 -- config.enable_tab_bar = false

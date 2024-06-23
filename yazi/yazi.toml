@@ -4,8 +4,8 @@
 
 [manager]
 ratio          = [ 2, 2, 4 ]
-sort_by        = "alphabetical"
-sort_sensitive = false
+sort_by        = "natural"
+sort_sensitive = true
 sort_reverse   = false
 sort_dir_first = true
 linemode       = "size"
@@ -26,7 +26,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = '${EDITOR:=vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = 'env TERM=wezterm nvim "$@"', desc = "$EDITOR", block = true, for = "unix" },
 	{ run = 'code "%*"',    orphan = true, desc = "code",         for = "windows" },
 	{ run = 'code -w "%*"', block = true,  desc = "code (block)", for = "windows" },
 ]
@@ -116,22 +116,22 @@ cd_origin = "top-center"
 cd_offset = [ 0, 2, 50, 3 ]
 
 # create
-create_title  = "Create:"
+create_title  = "Creativity is intelligence having fun."
 create_origin = "top-center"
 create_offset = [ 0, 2, 50, 3 ]
 
 # rename
-rename_title  = "Rename:"
+rename_title  = "Give a new name !"
 rename_origin = "hovered"
 rename_offset = [ 0, 1, 50, 3 ]
 
 # trash
-trash_title 	= "Move {n} selected file{s} to trash? (y/N)"
+trash_title 	= "Trash Deletion (y/N)"
 trash_origin	= "top-center"
 trash_offset	= [ 0, 2, 50, 3 ]
 
 # delete
-delete_title 	= "Delete {n} selected file{s} permanently? (y/N)"
+delete_title 	= "Permanent Deletion (y/N)"
 delete_origin	= "top-center"
 delete_offset	= [ 0, 2, 50, 3 ]
 
@@ -151,7 +151,7 @@ search_origin = "top-center"
 search_offset = [ 0, 2, 50, 3 ]
 
 # shell
-shell_title  = [ "Shell:", "Shell (block):" ]
+shell_title  = [ "What is your command, my Master ?", "What is your command (block) ?" ]
 shell_origin = "top-center"
 shell_offset = [ 0, 2, 50, 3 ]
 

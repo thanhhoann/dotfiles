@@ -5,5 +5,5 @@ night_owl.setup({
   italics = true,
   underline = true,
   undercurl = true,
-  transparent_background = false,
+  transparent_background = true,
 })

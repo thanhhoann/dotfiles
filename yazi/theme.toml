@@ -15,10 +15,10 @@
 
 [manager]
 
-cwd = { fg = "#8bd5ca" }
+cwd = { fg = "#1be1cb" }
 
 # Hovered
-hovered = { fg = "#24273a", bg = "#8aadf4" }
+hovered = { fg = "black", bg = "#D90368" }
 preview_hovered = { underline = true }
 
 # Find
@@ -45,7 +45,7 @@ border_symbol = "│"
 border_style = { fg = "#8087a2" }
 
 # Highlighting
-syntect_theme = ""
+syntect_theme = "/Users/thanhhoann/.config/yazi/themes/TokyoNight.tmTheme"
 
 # : }}}
 
@@ -55,12 +55,12 @@ syntect_theme = ""
 [status]
 separator_open  = ""
 separator_close = ""
-separator_style = { fg = "gray", bg = "gray" }
+separator_style = { fg = "white", bg = "white" }
 
 # Mode
-mode_normal = { fg = "#24273a", bg = "#8aadf4", bold = true }
+mode_normal = { fg = "white", bg = "black", bold = true }
 mode_select = { fg = "#24273a", bg = "#a6da95", bold = true }
-mode_unset = { fg = "#24273a", bg = "#f0c6c6", bold = true }
+mode_unset = { fg = "#24273a", bg = "black", bold = true }
 
 
 # Progress
@@ -73,7 +73,7 @@ permissions_t = { fg = "green" }
 permissions_r = { fg = "yellow" }
 permissions_w = { fg = "red" }
 permissions_x = { fg = "cyan" }
-permissions_s = { fg = "darkgray" }
+permissions_s = { fg = "cyan" }
 
 # : }}}
 
@@ -91,7 +91,7 @@ inactive = {}
 # : Input {{{
 
 [input]
-border   = { fg = "blue" }
+border   = { fg = "#FB1072" }
 title    = {}
 value    = {}
 selected = { reversed = true }
@@ -185,7 +185,7 @@ rules = [
 
 	# Fallback
 	# { name = "*", fg = "white" },
-	{ name = "*/", fg = "blue" }
+	{ name = "*/", fg = "white" }
 ]
 
 [icon]
@@ -323,7 +323,7 @@ rules = [
 	{ name = "LICENSE"      , text = "󰿃", fg = "#d0bf41" },
 
 	# Directories
-	{ name = ".config/"    , text = "" },
+	{ name = ".config/"    , text = "" },
 	{ name = ".git/"       , text = "" },
 	{ name = "Desktop/"    , text = "" },
 	{ name = "Development/", text = "" },
