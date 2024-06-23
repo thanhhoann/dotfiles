@@ -25,7 +25,11 @@ return {
     },
     ---@type YaziConfig
     opts = {
-      open_for_directories = false,
+      open_for_directories = true,
+      -- the floating window scaling factor. 1 means 100%, 0.9 means 90%, etc.
+      floating_window_scaling_factor = 1,
+      -- the transparency of the yazi floating window (0-100). See :h winblend
+      yazi_floating_window_winblend = 0,
     },
   },
   -- {

@@ -33,7 +33,7 @@ return {
           header = vim.split(logo, "\n"),
           -- stylua: ignore
           center = {
-            -- { action = ':term env TERM=wezterm nvim ~/.config/nvim/init.lua', desc = " Edit init.lua", icon = "  ", key = "s" },
+            { action = '<CMD>enew<CR>', desc = " New file", icon = "  ", key = "s" },
             { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit", icon = " ", key = "q" },
           },
           footer = function()

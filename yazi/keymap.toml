@@ -2,6 +2,59 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
+# Smart enter: enter for directory, open for file
+[[manager.prepend_keymap]]
+on   = [ "l" ]
+run  = "plugin --sync smart-enter"
+desc = "Enter the child directory, or open the file"
+
+# Smart paste: paste files without entering the directory
+[[manager.prepend_keymap]]
+on   = [ "p" ]
+run  = "plugin --sync smart-paste"
+desc = "Paste into the hovered directory or CWD"
+
+# Copy selected files to the system clipboard while yanking
+[[manager.prepend_keymap]]
+on  = [ "y" ]
+run = [ "yank", '''
+	shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
+''' ]
+
+# Smart filter: continuous filtering, automatically enter unique directory, open file on submitting
+[[manager.prepend_keymap]]
+on   = [ "F" ]
+run  = "plugin smart-filter"
+desc = "Smart filter"
+
+# searchjump
+[[manager.prepend_keymap]]
+on   = [ "i" ]
+run = "plugin searchjump"
+desc = "searchjump mode"
+[[manager.prepend_keymap]]
+on   = [ "i" ]
+run = "plugin searchjump --args='autocd'"
+desc = "searchjump mode(auto cd select folder)"
+
+# bookmarks-persistence
+[[manager.prepend_keymap]]
+on = [ "u", "a" ]
+run = "plugin bookmarks-persistence --args=save"
+desc = "Save current position as a bookmark"
+[[manager.prepend_keymap]]
+on = [ "u", "g" ]
+run = "plugin bookmarks-persistence --args=jump"
+desc = "Jump to a bookmark"
+[[manager.prepend_keymap]]
+on = [ "u", "d" ]
+run = "plugin bookmarks-persistence --args=delete"
+desc = "Delete a bookmark"
+[[manager.prepend_keymap]]
+on = [ "u", "D" ]
+run = "plugin bookmarks-persistence --args=delete_all"
+desc = "Delete all bookmarks"
+
 [manager]
 
 keymap = [
@@ -263,6 +316,11 @@ keymap = [
 	# Help
 	{ on = [ "~" ], run = "help", desc = "Open help" }
 ]
+
+[[input.prepend_keymap]]
+on   = [ "<Esc>" ]
+run  = "close"
+desc = "Cancel input"
 
 [completion]
 
