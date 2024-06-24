@@ -187,7 +187,7 @@ end
 # THEME
 # ---------------------------------------------------------------
 
-oh-my-posh init fish --config ~/.config/oh-my-posh/themes/amro.omp.json | source
+oh-my-posh init fish --config ~/.config/oh-my-posh/themes/thanhhoan.omp.json | source
 
 # starship init fish | source
 

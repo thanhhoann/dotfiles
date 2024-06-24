@@ -28,12 +28,12 @@ require("plugins.config.neo-tree")
 require("customs.font-picker")
 
 -- Colorschemes Configurations
-require("plugins.config.colorschemes.night-owl")
--- require("plugins.config.colorschemes.tokyonight")
+-- require("plugins.config.colorschemes.night-owl")
+require("plugins.config.colorschemes.tokyonight")
 -- require("plugins.config.colorschemes.rose-pine")
 -- require("plugins.config.colorschemes.catppuccin")
 -- require("plugins.config.colorschemes.kanagawa")
 -- require("plugins.config.colorschemes.cyberdream")
 
 -- Set colorscheme
-vim.cmd("colorscheme night-owl")
+vim.cmd("colorscheme tokyonight")
