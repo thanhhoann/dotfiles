@@ -6,7 +6,10 @@ source "$CONFIG_DIR/icons.sh" # Loads all defined icons
 ITEM_DIR="$CONFIG_DIR/items" # Directory where the items are configured
 PLUGIN_DIR="$CONFIG_DIR/plugins" # Directory where all the plugin scripts are stored
 
-FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+FONT="MonaspiceKr Nerd Font Mono" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+# SF Pro
+# MonaspiceKr Nerd Font Mono
+# MartianMono Nerd Font
 PADDINGS=3 # All paddings use this value (icon, label, background)
 
 # Setting up and starting the helper process
@@ -63,7 +66,7 @@ defaults=(
 )
 
 sketchybar --default "${defaults[@]}"
-sketchybar --add alias "EVKey,Item-0" right 
+sketchybar --add alias "EVKey,Item-0" left 
 
 
 # Left

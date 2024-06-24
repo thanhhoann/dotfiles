@@ -21,21 +21,16 @@ set("n", "<leader>q", ":q!<CR>")
 
 -- PLUGINS
 
--- neoscroll
-set("n", "<C-j>", function()
-  require("neoscroll").ctrl_d({ duration = 250 })
-end)
-
-set("n", "<C-k>", function()
-  require("neoscroll").ctrl_u({ duration = 250 })
-end)
-
 -- open a tmux popup for noting todos
 set(
   "n",
   "<leader>m",
   "<CMD>!tmux display-popup -w 80 -h 30 -E 'env TERM=wezterm nvim /Users/thanhhoann/core_machine/desktop/studies/TODOs.md'<CR>"
 )
+
+-- telescope
+local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor)
 
 -- neogit https://github.com/NeogitOrg/neogit
 set("n", "<leader>gg", ":Neogit<CR>")

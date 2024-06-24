@@ -1,20 +1,33 @@
+-- NOTE:
+-- Keep it FAST & SIMPLE:
+--  Remove unused plugins & mappings
+--  Create mappings to reduce keystrokes
+--  Keep plugins loaded on start < 20
+
+-- TODO:
+-- Config telescope live-grep-args, browser-bookmarks
+
 -- Bootstrap lazy.nvim & LazyVim
 require("config.lazy")
 
--- load Personal Configurations
+-- Personal Configurations
 require("config.user_cmds")
 
--- and Plugins Configurations
+-- Plugins Configurations
 require("plugins.config.luasnip")
 require("plugins.config.neogit")
 require("plugins.config.highlight-colors")
--- require("plugins.config.oil")
 require("plugins.config.obsidian")
 require("plugins.config.lsp")
 require("plugins.config.cmp")
 require("plugins.config.neo-tree")
+-- require("plugins.config.telescope")
+-- require("plugins.config.browser-bookmarks")
 
--- and Colorschemes Configurations
+-- Custom Plugins
+require("customs.font-picker")
+
+-- Colorschemes Configurations
 require("plugins.config.colorschemes.night-owl")
 -- require("plugins.config.colorschemes.tokyonight")
 -- require("plugins.config.colorschemes.rose-pine")
@@ -24,6 +37,3 @@ require("plugins.config.colorschemes.night-owl")
 
 -- Set colorscheme
 vim.cmd("colorscheme night-owl")
-
--- TODO:
--- create a mapping to quickly navigate to obsidian

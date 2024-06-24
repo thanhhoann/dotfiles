@@ -9,8 +9,15 @@ return {
       opts.presets.lsp_doc_border = true
     end,
   },
+
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        version = "^1.0.0",
+      },
+    },
     keys = {
       -- add a keymap to browse plugin files
       -- stylua: ignore
@@ -69,6 +76,8 @@ return {
     },
     extensions = {},
   },
+
+  { "nvim-telescope/telescope-ui-select.nvim" },
 
   {
     "roobert/search-replace.nvim",
