@@ -30,6 +30,8 @@ export BG0=0xff1e1e2e
 export BG1=0x603c3e4f
 export BG2=0x60494d64
 
+export CUSTOM_PINK=0xdb00b6bb
+
 # General bar colors
 export BAR_COLOR=$BG0
 export BAR_BORDER_COLOR=$BG2

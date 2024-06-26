@@ -6,6 +6,8 @@
 
 -- TODO:
 -- Config telescope live-grep-args, browser-bookmarks
+-- dit (delete in tag, function)
+-- wrap string in ""
 
 -- Bootstrap lazy.nvim & LazyVim
 require("config.lazy")
