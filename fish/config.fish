@@ -12,6 +12,7 @@ export EDITOR=nvim
 export OPENAI_API_KEY="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"
 export NODE_OPTIONS=--openssl-legacy-provider
 export WALK_REMOVE_CMD=trash
+export NIX_PATH=nixpkgs=https://nixos.org/channels/nixos-unstable
 
 # ranger
 export FZF_FZM_OPTS="--reverse --height 75% --min-height 30 --cycle +m --ansi --bind=ctrl-o:accept,ctrl-t:toggle --select-1"

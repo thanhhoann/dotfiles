@@ -23,6 +23,7 @@ require("plugins.config.obsidian")
 require("plugins.config.lsp")
 require("plugins.config.cmp")
 require("plugins.config.neo-tree")
+require("plugins.config.mini-surround")
 -- require("plugins.config.telescope")
 -- require("plugins.config.browser-bookmarks")
 

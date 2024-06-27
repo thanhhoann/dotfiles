@@ -23,7 +23,7 @@ require("lazy").setup({
 
     -- coding
     { import = "lazyvim.plugins.extras.coding.codeium" },
-     -- { import = "lazyvim.plugins.extras.coding.copilot-chat" },
+    -- { import = "lazyvim.plugins.extras.coding.copilot-chat" },
 
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
     -- { import = "lazyvim.plugins.extras.coding.yanky" },
@@ -56,6 +56,8 @@ require("lazy").setup({
     -- util
     { import = "lazyvim.plugins.extras.util.startuptime" },
     -- { import = "lazyvim.plugins.extras.util.gitui" },
+
+    { import = "lazyvim.plugins.extras.coding.mini-surround" },
 
     -- import/override with your plugins
     { import = "plugins" },
