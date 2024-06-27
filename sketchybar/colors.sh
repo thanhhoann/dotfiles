@@ -24,13 +24,12 @@ export BLUE=0xff8aadf4
 export YELLOW=0xffeed49f
 export ORANGE=0xfff5a97f
 export MAGENTA=0xffc6a0f6
-export GREY=0xff939ab7
+export GREY=0xff181926
+# export GREY=0xff939ab7
 export TRANSPARENT=0x00000000
 export BG0=0xff1e1e2e
 export BG1=0x603c3e4f
 export BG2=0x60494d64
-
-export CUSTOM_PINK=0xdb00b6bb
 
 # General bar colors
 export BAR_COLOR=$BG0

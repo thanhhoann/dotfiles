@@ -2,14 +2,16 @@
 
 update() {
   source "$CONFIG_DIR/colors.sh"
-  COLOR=$BACKGROUND_2
+  COLOR=$WHITE
+  BORDER_COLOR=$TRANSPARENT
   if [ "$SELECTED" = "true" ]; then
-    COLOR=$WHITE
+    COLOR=$TRANSPARENT
+    BORDER_COLOR=$WHITE
   fi
   sketchybar --set $NAME icon.highlight=$SELECTED \
                          label.highlight=$SELECTED \
-                         background.border_color=$COLOR \
-                         background.color=$BLACK
+                         background.border_color=$BORDER_COLOR \
+                         background.color=$COLOR # all
 }
 
 set_space_label() {
@@ -26,7 +28,7 @@ mouse_clicked() {
         if [ "$SPACE_LABEL" = "" ]; then
           set_space_label "${NAME:6}"
         else
-          set_space_label "${NAME:6} ($SPACE_LABEL)"
+          set_space_label "${NAME:6} [$SPACE_LABEL]"
         fi
       fi
     else

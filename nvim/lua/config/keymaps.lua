@@ -18,6 +18,8 @@ set("n", "sv", ":vsplit<Return>")
 
 -- quick quit
 set("n", "<leader>q", ":q!<CR>")
+-- quick save
+set("n", "<leader>wq", ":wq<CR>")
 
 -- PLUGINS
 

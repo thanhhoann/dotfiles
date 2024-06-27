@@ -17,5 +17,5 @@ if [ "$SENDER" = "space_windows_change" ]; then
   fi
   args+=(--set space.$space label="$icon_strip")
 
-  sketchybar -m "${args[@]}"
+  # sketchybar -m "${args[@]}"
 fi

@@ -9,7 +9,6 @@ end
 export HOMEBREW_NO_AUTO_UPDATE=1
 export VISUAL=nvim
 export EDITOR=nvim
-export OPENAI_API_KEY="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"
 export NODE_OPTIONS=--openssl-legacy-provider
 export WALK_REMOVE_CMD=trash
 export NIX_PATH=nixpkgs=https://nixos.org/channels/nixos-unstable
