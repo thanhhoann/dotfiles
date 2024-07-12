@@ -24,8 +24,9 @@ require("plugins.config.lsp")
 require("plugins.config.cmp")
 require("plugins.config.neo-tree")
 require("plugins.config.mini-surround")
--- require("plugins.config.telescope")
--- require("plugins.config.browser-bookmarks")
+require("plugins.config.telescope")
+require("plugins.config.codeium")
+require("plugins.config.headlines") -- adds horizontal highlights for text filetypes, like markdown
 
 -- Custom Plugins
 require("customs.font-picker")

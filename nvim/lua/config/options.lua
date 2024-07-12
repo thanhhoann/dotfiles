@@ -31,7 +31,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = ""
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -82,3 +82,6 @@ vim.opt.termguicolors = true
 
 -- show the effects of a search / replace in a live preview window
 vim.opt.inccommand = "split"
+
+-- disable lazyVim auto format
+vim.g.autoformat = false

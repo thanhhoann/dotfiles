@@ -77,6 +77,7 @@ ls.add_snippets("lua", {
 --          │                   Javascript - React                    │
 --          ╰─────────────────────────────────────────────────────────╯
 ls.add_snippets("javascriptreact", {
+  s("cl", fmt("console.log({})", { i(1) })),
   s("ef", {
     t({ "import React, { useState, useEffect } from 'react';", "" }),
     t({ "", "export default function " }),
@@ -122,6 +123,7 @@ ls.add_snippets("javascriptreact", {
 --          │                   Typescript - React                    │
 --          ╰─────────────────────────────────────────────────────────╯
 ls.add_snippets("typescriptreact", {
+  s("cl", fmt("console.log({})", { i(1) })),
   s("ef", {
     t({ "import React, { useState, useEffect } from 'react';", "" }),
     t({ "", "export default function " }),

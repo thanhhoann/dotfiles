@@ -21,6 +21,9 @@ set("n", "<leader>q", ":q!<CR>")
 -- quick save
 set("n", "<leader>wq", ":wq<CR>")
 
+-- esc & saves ! simple !
+set("i", "<esc>", "<esc>:w<cr>", { noremap = true, silent = true })
+
 -- PLUGINS
 
 -- open a tmux popup for noting todos

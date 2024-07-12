@@ -2,6 +2,11 @@ if status is-interactive
     # eval (zellij setup --generate-auto-start fish | string collect) 
 end
 
+set -gx PNPM_HOME /Users/thanhhoann/Library/pnpm
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+
 # EXPORTS
 # ---------------------------------------------------------------
 
@@ -26,6 +31,9 @@ set -x NNN_PLUG_WORK 'j:work/prettyjson;d:work/foobar'
 set -x NNN_PLUG_INLINE 'e:!go run "$nnn"*'
 set -x NNN_PLUG_DEFAULT '1:ipinfo;p:preview-tui;o:fzz;b:nbak'
 set -x NNN_PLUG "$NNN_PLUG_PERSONAL;$NNN_PLUG_WORK;$NNN_PLUG_DEFAULT;$NNN_PLUG_INLINE"
+
+# ollama
+set -x OLLAMA_ORIGINS '*'
 
 # nvm
 
@@ -123,6 +131,22 @@ end
 
 # ---------------------------
 
+function f
+    set -l DIFF (git show -b $argv)
+    echo $DIFF
+end
+
+# ---------------------------
+
+function ai_commit
+    # set git_diff (git diff --cached)
+    set git_diff (git show -b)
+    echo "Repo diff: $git_diff"
+    ollama run deepseek-coder:6.7b-instruct "Diff: $git_diff. Suggest a git commit message for the diff provided above. The commit message should be written in active voice and should follow conventional commit style, and the format should be <type>[scope]: <description>. Example: fix(authentication): add password regex pattern."
+end
+
+# ---------------------------
+
 function yy
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
@@ -204,3 +228,10 @@ oh-my-posh init fish --config ~/.config/oh-my-posh/themes/thanhhoan.omp.json | s
 # starship init fish | source
 
 zoxide init fish | source
+
+# pnpm
+set -gx PNPM_HOME /Users/thanhhoann/Library/pnpm
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

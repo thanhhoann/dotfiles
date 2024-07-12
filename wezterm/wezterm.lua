@@ -17,7 +17,6 @@ config.webgpu_power_preference = "HighPerformance"
 -- Fonts
 config.font_size = 16.0
 -- config.font = wezterm.font("FantasqueSansMono Nerd Font Mono")
--- config.font = wezterm.font("EnvyCodeR Nerd Font Mono")
 -- config.font = wezterm.font("FiraCode Nerd Font Mono")
 -- config.font = wezterm.font("Monofur Nerd Font Mono")
 -- config.font = wezterm.font("mononoki Nerd Font Mono")
