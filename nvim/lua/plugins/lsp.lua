@@ -18,6 +18,7 @@ return {
     },
     -- make sure mason installs the server
     servers = {
+      -- not installing tsserver
       tsserver = {
         enabled = false,
       },

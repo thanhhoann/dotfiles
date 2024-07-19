@@ -112,7 +112,7 @@ require("neogit").setup({
     kind = "tab",
   },
   commit_view = {
-    kind = "vsplit",
+    kind = "tab",
     verify_commit = vim.fn.executable("gpg") == 1, -- Can be set to true or false, otherwise we try to find the binary
   },
   log_view = {

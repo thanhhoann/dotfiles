@@ -22,16 +22,6 @@ return {
   },
 
   {
-    "rebelot/kanagawa.nvim",
-    lazy = true,
-  },
-
-  {
-    "sho-87/kanagawa-paper.nvim",
-    lazy = true,
-  },
-
-  {
     "scottmckendry/cyberdream.nvim",
     lazy = true,
   },

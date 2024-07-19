@@ -21,13 +21,8 @@ require("lazy").setup({
       },
     },
 
-    -- coding
-    { import = "lazyvim.plugins.extras.coding.codeium" },
-    { import = "lazyvim.plugins.extras.coding.tabnine" },
-    -- { import = "lazyvim.plugins.extras.coding.copilot-chat" },
-
-    -- { import = "lazyvim.plugins.extras.coding.copilot" },
-    -- { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- Plugins that I config myself
+    -- LazyExtras to intall & config by LazyVim
 
     -- editor
     { import = "lazyvim.plugins.extras.editor.refactoring" },
@@ -51,14 +46,11 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.util.gitui" },
 
     -- ui
-    { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.ui.edgy" },
 
     -- util
     { import = "lazyvim.plugins.extras.util.startuptime" },
     -- { import = "lazyvim.plugins.extras.util.gitui" },
-
-    { import = "lazyvim.plugins.extras.coding.mini-surround" },
 
     -- import/override with your plugins
     { import = "plugins" },

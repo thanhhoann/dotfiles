@@ -1,60 +1,59 @@
-local set = vim.keymap.set
-
--- PERSONAL
--- lazygit on tmux
--- set("n", "<leader>gt", "<cmd>!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { desc = "Git Go" })
-
--- so I dont have to press ":"
-set("n", "<leader>w", ":w<CR>")
-
-set("n", "<leader>f", ":w<CR>:lua vim.lsp.buf.format { async = true }<CR>")
+-- Make all keymaps silent by default
+local keymap_set = vim.keymap.set
+---@diagnostic disable-next-line: duplicate-set-field
+vim.keymap.set = function(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.silent = opts.silent ~= false
+  return keymap_set(mode, lhs, rhs, opts)
+end
 
 -- Select all
-set("n", "<leader>a", "gg<S-v>G")
+keymap_set("n", "<leader>a", "gg<S-v>G")
 
 -- Split window
-set("n", "ss", ":split<Return>")
-set("n", "sv", ":vsplit<Return>")
+keymap_set("n", "ss", ":split<Return>")
+keymap_set("n", "sv", ":vsplit<Return>")
 
 -- quick quit
-set("n", "<leader>q", ":q!<CR>")
+keymap_set("n", "<leader>q", ":q!<CR>")
+
 -- quick save
-set("n", "<leader>wq", ":wq<CR>")
+keymap_set("n", "z", _G.custom_notify("<cmd>w<cr>", "  ", "info", "File status", "500", "   ", "compact"))
 
--- esc & saves ! simple !
-set("i", "<esc>", "<esc>:w<cr>", { noremap = true, silent = true })
-
--- PLUGINS
-
--- open a tmux popup for noting todos
-set(
-  "n",
-  "<leader>m",
-  "<CMD>!tmux display-popup -w 80 -h 30 -E 'env TERM=wezterm nvim /Users/thanhhoann/core_machine/desktop/studies/TODOs.md'<CR>"
+-- quick format & save
+keymap_set(
+  { "n", "i" },
+  "zf",
+  _G.custom_notify("<cmd>LazyFormat<cr><cmd>:w<cr>", "󱡄 +  ", "info", "File status", "500", "   ", "compact")
 )
 
--- telescope
-local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
-set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor)
+-- esc & saves ! simple !
+keymap_set("i", "<esc>", "<esc>:w<cr>")
+
+-------------
+-- PLUGINS --
+-------------
+keymap_set(
+  "n",
+  "<leader>m",
+  "<CMD>!tmux display-popup -w 100 -h 40 -E 'env TERM=wezterm nvim /Users/thanhhoann/core_machine/desktop/obsidian/TODOs.md'<CR>"
+)
 
 -- neogit https://github.com/NeogitOrg/neogit
-set("n", "<leader>gg", ":Neogit<CR>")
+keymap_set("n", "<leader>gg", ":Neogit<CR>")
 
--- search-replace.nvim https://github.com/roobert/search-replace.nvim
-set("v", "<C-r>", "<CMD>SearchReplaceSingleBufferVisualSelection<CR>")
-set("v", "<C-s>", "<CMD>SearchReplaceWithinVisualSelection<CR>")
-set("v", "<C-b>", "<CMD>SearchReplaceWithinVisualSelectionCWord<CR>")
+-- nvim-spectre https://github.com/nvim-pack/nvim-spectre
+keymap_set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+  desc = "Search current word",
+})
+keymap_set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = "Search current word",
+})
+keymap_set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = "Search on current file",
+})
 
-set("n", "<leader>rs", "<CMD>SearchReplaceSingleBufferSelections<CR>")
-set("n", "<leader>ro", "<CMD>SearchReplaceSingleBufferOpen<CR>")
-set("n", "<leader>rw", "<CMD>SearchReplaceSingleBufferCWord<CR>")
-set("n", "<leader>rW", "<CMD>SearchReplaceSingleBufferCWORD<CR>")
-set("n", "<leader>re", "<CMD>SearchReplaceSingleBufferCExpr<CR>")
-set("n", "<leader>rf", "<CMD>SearchReplaceSingleBufferCFile<CR>")
-
-set("n", "<leader>rbs", "<CMD>SearchReplaceMultiBufferSelections<CR>")
-set("n", "<leader>rbo", "<CMD>SearchReplaceMultiBufferOpen<CR>")
-set("n", "<leader>rbw", "<CMD>SearchReplaceMultiBufferCWord<CR>")
-set("n", "<leader>rbW", "<CMD>SearchReplaceMultiBufferCWORD<CR>")
-set("n", "<leader>rbe", "<CMD>SearchReplaceMultiBufferCExpr<CR>")
-set("n", "<leader>rbf", "<CMD>SearchReplaceMultiBufferCFile<CR>")
+-- nvim-rip-substiture https://github.com/chrisgrieser/nvim-rip-substitute
+keymap_set({ "n", "x" }, "<leader>fs", function()
+  require("rip-substitute").sub()
+end)

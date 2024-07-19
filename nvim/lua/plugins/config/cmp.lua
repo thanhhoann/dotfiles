@@ -11,50 +11,52 @@ cmp.setup({
       symbol_map = { Codeium = "" },
     }),
   },
-  sources = cmp.config.sources({
-    { name = "luasnip" },
-    {
-      name = "nvim_lsp",
-      option = {
-        markdown_oxide = {
-          keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
-        },
-      },
-    },
-    { name = "codeium" },
-    {
-      name = "async_path",
-      option = {
-        trailing_slash = true,
-        show_hidden_files_by_default = true,
-      },
-    },
-    -- { name = "cmp-tw2css" }, -- tailwindcss in css files
-    {
-      name = "tmux",
-      option = {
-        -- Source from all panes in session instead of adjacent panes
-        all_panes = false,
-
-        -- Completion popup label
-        label = "[tmux]",
-
-        -- Trigger character
-        trigger_characters = { "." },
-
-        -- Specify trigger characters for filetype(s)
-        -- { filetype = { '.' } }
-        trigger_characters_ft = {},
-
-        -- Keyword patch mattern
-        keyword_pattern = [[\w\+]],
-
-        -- Capture full pane history
-        -- `false`: show completion suggestion from text in the visible pane (default)
-        -- `true`: show completion suggestion from text starting from the beginning of the pane history.
-        --         This works by passing `-S -` flag to `tmux capture-pane` command. See `man tmux` for details.
-        capture_history = false,
-      },
-    },
-  }),
+  -- sources = cmp.config.sources({
+  --   { name = "luasnip" },
+  --   { name = "codeium" },
+  --   {
+  --     name = "async_path",
+  --     option = {
+  --       trailing_slash = true,
+  --       show_hidden_files_by_default = true,
+  --     },
+  --   },
+  --   -- { name = "cmp-tw2css" }, -- tailwindcss in css files
+  --   -- {
+  --   --   name = "tmux",
+  --   --   option = {
+  --   --     -- Source from all panes in session instead of adjacent panes
+  --   --     all_panes = false,
+  --   --
+  --   --     -- Completion popup label
+  --   --     label = "[tmux]",
+  --   --
+  --   --     -- Trigger character
+  --   --     trigger_characters = { "." },
+  --   --
+  --   --     -- Specify trigger characters for filetype(s)
+  --   --     -- { filetype = { '.' } }
+  --   --     trigger_characters_ft = {},
+  --   --
+  --   --     -- Keyword patch mattern
+  --   --     keyword_pattern = [[\w\+]],
+  --   --
+  --   --     -- Capture full pane history
+  --   --     -- `false`: show completion suggestion from text in the visible pane (default)
+  --   --     -- `true`: show completion suggestion from text starting from the beginning of the pane history.
+  --   --     --         This works by passing `-S -` flag to `tmux capture-pane` command. See `man tmux` for details.
+  --   --     capture_history = false,
+  --   --   },
+  --   -- },
+  -- }),
 })
+
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+--
+-- require("lspconfig").vtsls.setup({
+--   capabilities = capabilities,
+-- })
+--
+-- require("lspconfig").lua_ls.setup({
+--   capabilities = capabilities,
+-- })

@@ -9,6 +9,7 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
+      {'s', false},
       { "f",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
       { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
       { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
@@ -101,11 +102,40 @@ return {
       require("treesj").setup({})
     end,
   },
-  -- {
-  --   "rachartier/tiny-inline-diagnostic.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("tiny-inline-diagnostic").setup()
-  --   end,
-  -- },
+
+  { "nvimtools/none-ls-extras.nvim" },
+
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
+  },
+
+  {
+    -- Nerd Icons w Telescope
+    "2kabhishek/nerdy.nvim",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
+
+  { "chrisgrieser/nvim-rip-substitute", cmd = "RipSubstitute" },
+
+  { "David-Kunz/gen.nvim" },
+
+  { "nvim-neotest/nvim-nio" }
 }
