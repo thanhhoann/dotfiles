@@ -16,7 +16,7 @@ require("config.functions")
 
 -- Plugins Configurations
 require("plugins.config.gen") -- generate text using LLMs with customizable prompts
-require("plugins.config.spectre") -- search & replace for multiple files (regex, filter by filetype)
+-- require("plugins.config.spectre") -- search & replace for multiple files (regex, filter by filetype)
 require("plugins.config.rip-substitute") -- search & replace for current buffer (regex, code completion, range support, Regex101 integrated)
 require("plugins.config.none-ls")
 require("plugins.config.luasnip")
