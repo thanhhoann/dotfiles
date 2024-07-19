@@ -137,5 +137,5 @@ return {
 
   { "David-Kunz/gen.nvim" },
 
-  { "nvim-neotest/nvim-nio" }
+  { "nvim-neotest/nvim-nio" },
 }
