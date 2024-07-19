@@ -138,4 +138,7 @@ return {
   { "David-Kunz/gen.nvim" },
 
   { "nvim-neotest/nvim-nio" },
+
+  {'akinsho/git-conflict.nvim', version = "*", config = true}
+
 }

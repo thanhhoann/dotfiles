@@ -32,5 +32,5 @@ require("plugins.config.telescope")
 require("plugins.config.headlines") -- adds horizontal highlights for text filetypes, like markdown
 
 -- Available colorschemes
--- tokyonight | night-owl | rose-pine | catppuccin | cyberdream
-set_colorscheme("tokyonight")
+-- tokyonight | night-owl | rose-pine | catppuccin | tokyodark
+set_colorscheme("tokyodark")

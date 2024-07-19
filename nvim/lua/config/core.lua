@@ -25,7 +25,7 @@ require("lazy").setup({
     -- LazyExtras to intall & config by LazyVim
 
     -- editor
-    { import = "lazyvim.plugins.extras.editor.refactoring" },
+    -- { import = "lazyvim.plugins.extras.editor.refactoring" },
 
     -- lsp
     { import = "lazyvim.plugins.extras.lsp.neoconf" },
