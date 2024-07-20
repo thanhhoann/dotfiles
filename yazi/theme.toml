@@ -18,7 +18,7 @@
 cwd = { fg = "#1be1cb" }
 
 # Hovered
-hovered = { fg = "black", bg = "#D90368" }
+hovered = { fg = "#1b2a40", bg = "#ccff00" } # selected path
 preview_hovered = { underline = true }
 
 # Find

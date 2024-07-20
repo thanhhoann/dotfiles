@@ -22,3 +22,14 @@ function _G.set_colorscheme(name)
   -- set via vim.cmd
   vim.cmd("colorscheme" .. " " .. name)
 end
+
+function _G.camel_to_snake()
+  local line = vim.api.nvim_get_current_line()
+  local col_start = vim.fn.col("'<") - 1
+  local col_end = vim.fn.col("'>") - 1
+  local selection = string.sub(line, col_start + 1, col_end + 1)
+  local snake = selection:gsub("(%l)(%u)", "%1_%2"):lower()
+  vim.api.nvim_set_current_line(line:sub(1, col_start) .. snake .. line:sub(col_end + 2))
+  vim.cmd("normal! gv")
+end
+

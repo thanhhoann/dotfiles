@@ -139,6 +139,15 @@ return {
 
   { "nvim-neotest/nvim-nio" },
 
-  {'akinsho/git-conflict.nvim', version = "*", config = true}
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
 
+  { "MagicDuck/grug-far.nvim" },
+
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+
+  { "tpope/vim-abolish" }, -- crs (coerce to snake_case). MixedCase (crm), camelCase (crc), UPPER_CASE (cru), dash-case (cr-), and dot.case (cr.)
 }
