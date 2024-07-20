@@ -29,17 +29,7 @@ createUserCommand("Format", function(args)
   require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
--- Toggle text wrap
-createUserCommand("ToggleWrap", function()
-  if vim.wo.wrap then
-    vim.wo.wrap = false
-    print("Changed Option: set")
-  else
-    vim.wo.wrap = true
-    print("Changed Option: unset")
-  end
-end, {})
-
+-- Toggle wrap | nowrap & spell | nospell
 createUserCommand("ToggleOption", function(opts)
   local option = opts.args
 
