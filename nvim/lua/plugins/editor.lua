@@ -1,4 +1,5 @@
 return {
+  -- Notifications for Neovim
   {
     "folke/noice.nvim",
     opts = function(_, opts)
@@ -10,6 +11,7 @@ return {
     end,
   },
 
+  -- Neovim Least Important Add-on
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -77,5 +79,15 @@ return {
     extensions = {},
   },
 
+  -- UI for Telescope
   { "nvim-telescope/telescope-ui-select.nvim" },
+
+  -- Telescope + Nerd Icons
+  {
+    "2kabhishek/nerdy.nvim",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
 }

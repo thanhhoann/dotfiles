@@ -1,4 +1,5 @@
 return {
+  -- Yazi + Neovim
   {
     "mikavilpas/yazi.nvim",
     dependencies = {

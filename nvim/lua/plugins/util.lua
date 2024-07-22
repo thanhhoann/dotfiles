@@ -1,15 +1,8 @@
 return {
+  -- Add support for color highlighting
   { "brenoprata10/nvim-highlight-colors", lazy = true },
 
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-      "nvim-telescope/telescope.nvim", -- optional
-    },
-  },
-
+  -- Obsidian + Neovim
   {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
@@ -20,6 +13,7 @@ return {
     },
   },
 
+  -- Scrolling in Neovim with ease
   {
     "karb94/neoscroll.nvim",
     config = function()
@@ -27,58 +21,8 @@ return {
     end,
   },
 
-  { "FelipeLema/cmp-async-path" },
-
-  { "andersevenrud/cmp-tmux" },
-
-  { "onsails/lspkind.nvim" },
-
-  -- { "jcha0713/cmp-tw2css" },
-
-  -- { "bullets-vim/bullets.vim" },
-  -- {
-  --   "lukas-reineke/headlines.nvim",
-  --   dependencies = "nvim-treesitter/nvim-treesitter",
-  --   config = true, -- or `opts = {}`
-  -- },
-
+  -- Telescope + Nerd Icons
   {
-    "MeanderingProgrammer/markdown.nvim",
-    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-    config = function()
-      require("render-markdown").setup({})
-    end,
-  },
-
-  {
-    "Wansmer/treesj",
-    keys = { "<leader>zz", "<space>j", "<space>s" },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("treesj").setup({})
-    end,
-  },
-
-  { "nvimtools/none-ls-extras.nvim" },
-
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = true,
-  },
-
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({})
-    end,
-  },
-
-  {
-    -- Telescope + Nerd Icons
     "2kabhishek/nerdy.nvim",
     dependencies = {
       "stevearc/dressing.nvim",
@@ -86,46 +30,8 @@ return {
     },
   },
 
-  { "chrisgrieser/nvim-rip-substitute", cmd = "RipSubstitute" },
-
-  { "David-Kunz/gen.nvim" },
-
-  -- { "akinsho/git-conflict.nvim", version = "*", config = true },
-
-  {
-    "davidmh/mdx.nvim",
-    config = true,
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
-
-  -- crs snake_case
-  -- crm MixedCase
-  -- crc camelCase
-  -- cru UPPER_CASE
-  -- cr- dash-case
-  -- cr.dot.case
-  { "tpope/vim-abolish" },
-
+  -- View undo history
   { "mbbill/undotree", lazy = true, cmd = "UndotreeToggle" },
-
-  { "godlygeek/tabular" },
-
-  -- {
-  --   "rachartier/tiny-inline-diagnostic.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("tiny-inline-diagnostic").setup()
-  --   end,
-  -- },
-
-  {
-    "sontungexpt/better-diagnostic-virtual-text",
-    config = function(_)
-      require("better-diagnostic-virtual-text").setup({
-        inline = false,
-      })
-    end,
-  },
 
   -- Auto close quickfix by timer
   -- Deletes the Quickfix buffer after closing the window.
