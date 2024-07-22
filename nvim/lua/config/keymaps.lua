@@ -77,5 +77,5 @@ key("n", "=p", "<Plug>(YankyPutAfterFilter)")
 key("n", "=P", "<Plug>(YankyPutBeforeFilter)")
 
 key({ "n", "i" }, "zp", "<cmd>Telescope yank_history<cr>")
--- key("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
--- key("n", "<c-n>", "<Plug>(YankyNextEntry)")
+
+-- 

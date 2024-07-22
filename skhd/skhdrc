@@ -9,11 +9,12 @@ lalt - tab : yabai -m space --focus recent
 lalt - x : yabai -m space --destroy
 
 # focus desktop #
-lalt - 1 : yabai -m space --focus 1 
-lalt - 2 : yabai -m space --focus 2 
-lalt - 3 : yabai -m space --focus 3 
-lalt - 4 : yabai -m space --focus 4 
-lalt - 5 : yabai -m space --focus 5
+# lalt - 1 : yabai -m space --focus 1 
+ctrl - 1 : yabai -m space --focus 1 
+ctrl - 2 : yabai -m space --focus 2 
+ctrl - 3 : yabai -m space --focus 3 
+ctrl - 4 : yabai -m space --focus 4 
+ctrl - 5 : yabai -m space --focus 5
 lalt - 6 : yabai -m space --focus 6 
 lalt - 7 : yabai -m space --focus 7 
 lalt - 8 : yabai -m space --focus 8 

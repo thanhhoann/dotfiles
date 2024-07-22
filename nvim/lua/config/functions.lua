@@ -16,9 +16,11 @@ function _G.custom_notify(command, message, level, title, time_out, icon, render
     .. "'})<cr>"
 end
 
-function _G.set_colorscheme(name)
-  -- loads custom config
-  require("plugins.config.colorschemes." .. name)
+function _G.set_colorscheme(name, hasConfigFile)
+  if hasConfigFile == true then
+    -- loads custom config
+    require("plugins.config.colorschemes." .. name)
+  end
   -- set via vim.cmd
   vim.cmd("colorscheme" .. " " .. name)
 end
@@ -32,4 +34,3 @@ function _G.camel_to_snake()
   vim.api.nvim_set_current_line(line:sub(1, col_start) .. snake .. line:sub(col_end + 2))
   vim.cmd("normal! gv")
 end
-

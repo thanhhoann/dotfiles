@@ -25,6 +25,7 @@ require("plugins.config.cmp")
 require("plugins.config.conform")
 -- 󰇋 Less important IMO
 require("plugins.config.gen") -- generate text using LLMs with customizable prompts
+require("plugins.config.copilot-chat") -- generate text using LLMs with customizable prompts
 require("plugins.config.neogit")
 require("plugins.config.rip-substitute") -- search & replace for current buffer (regex, code completion, range support, Regex101 integrated)
 require("plugins.config.render-markdown")
@@ -32,6 +33,9 @@ require("plugins.config.highlight-colors")
 require("plugins.config.obsidian")
 
 -- Available colorschemes
--- NOTE: This command loads both colorscheme & its config
--- tokyonight | night-owl | rose-pine | catppuccin | tokyodark
-set_colorscheme("tokyodark")
+-- NOTE: This command loads both colorscheme & its config file set_colorscheme(colorscheme: string, isConfig: boolean)
+-- tokyonight | night-owl | rose-pine | catppuccin | tokyodark | nightfall - deepernight - maron
+set_colorscheme("nightfall", true)
+
+-- temporarily disable diagnostic virtual text for tiny-inline-diagnostic.nvim
+vim.diagnostic.config({ virtual_text = false })

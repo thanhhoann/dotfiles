@@ -27,87 +27,117 @@ return {
     end,
   },
 
+  { "FelipeLema/cmp-async-path" },
+
+  { "andersevenrud/cmp-tmux" },
+
+  { "onsails/lspkind.nvim" },
+
+  -- { "jcha0713/cmp-tw2css" },
+
+  -- { "bullets-vim/bullets.vim" },
+  -- {
+  --   "lukas-reineke/headlines.nvim",
+  --   dependencies = "nvim-treesitter/nvim-treesitter",
+  --   config = true, -- or `opts = {}`
+  -- },
+
   {
+    "MeanderingProgrammer/markdown.nvim",
+    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    config = function()
+      require("render-markdown").setup({})
+    end,
+  },
 
-    { "FelipeLema/cmp-async-path" },
+  {
+    "Wansmer/treesj",
+    keys = { "<leader>zz", "<space>j", "<space>s" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesj").setup({})
+    end,
+  },
 
-    { "andersevenrud/cmp-tmux" },
+  { "nvimtools/none-ls-extras.nvim" },
 
-    { "onsails/lspkind.nvim" },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
 
-    -- { "jcha0713/cmp-tw2css" },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end,
+  },
 
-    -- { "bullets-vim/bullets.vim" },
-    -- {
-    --   "lukas-reineke/headlines.nvim",
-    --   dependencies = "nvim-treesitter/nvim-treesitter",
-    --   config = true, -- or `opts = {}`
-    -- },
-
-    {
-      "MeanderingProgrammer/markdown.nvim",
-      name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-      dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-      config = function()
-        require("render-markdown").setup({})
-      end,
+  {
+    -- Telescope + Nerd Icons
+    "2kabhishek/nerdy.nvim",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
     },
+  },
 
-    {
-      "Wansmer/treesj",
-      keys = { "<leader>zz", "<space>j", "<space>s" },
-      dependencies = { "nvim-treesitter/nvim-treesitter" },
-      config = function()
-        require("treesj").setup({})
-      end,
-    },
+  { "chrisgrieser/nvim-rip-substitute", cmd = "RipSubstitute" },
 
-    { "nvimtools/none-ls-extras.nvim" },
+  { "David-Kunz/gen.nvim" },
 
-    {
-      "windwp/nvim-autopairs",
-      event = "InsertEnter",
-      config = true,
-    },
+  -- { "akinsho/git-conflict.nvim", version = "*", config = true },
 
-    {
-      "kylechui/nvim-surround",
-      version = "*", -- Use for stability; omit to use `main` branch for the latest features
-      event = "VeryLazy",
-      config = function()
-        require("nvim-surround").setup({})
-      end,
-    },
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
 
-    {
-      -- Telescope + Nerd Icons
-      "2kabhishek/nerdy.nvim",
-      dependencies = {
-        "stevearc/dressing.nvim",
-        "nvim-telescope/telescope.nvim",
-      },
-    },
+  -- crs snake_case
+  -- crm MixedCase
+  -- crc camelCase
+  -- cru UPPER_CASE
+  -- cr- dash-case
+  -- cr.dot.case
+  { "tpope/vim-abolish" },
 
-    { "chrisgrieser/nvim-rip-substitute", cmd = "RipSubstitute" },
+  { "mbbill/undotree", lazy = true, cmd = "UndotreeToggle" },
 
-    { "David-Kunz/gen.nvim" },
+  { "godlygeek/tabular" },
 
-    -- { "akinsho/git-conflict.nvim", version = "*", config = true },
+  -- {
+  --   "rachartier/tiny-inline-diagnostic.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("tiny-inline-diagnostic").setup()
+  --   end,
+  -- },
 
-    {
-      "davidmh/mdx.nvim",
-      config = true,
-      dependencies = { "nvim-treesitter/nvim-treesitter" },
-    },
+  {
+    "sontungexpt/better-diagnostic-virtual-text",
+    config = function(_)
+      require("better-diagnostic-virtual-text").setup({
+        inline = false,
+      })
+    end,
+  },
 
-    -- crs snake_case
-    -- crm MixedCase
-    -- crc camelCase
-    -- cru UPPER_CASE
-    -- cr- dash-case
-    -- cr.dot.case
-    { "tpope/vim-abolish" },
-
-    { "mbbill/undotree", lazy = true, cmd = "UndotreeToggle" },
+  -- Auto close quickfix by timer
+  -- Deletes the Quickfix buffer after closing the window.
+  {
+    "mei28/qfc.nvim",
+    config = function()
+      require("qfc").setup({
+        timeout = 3000, -- Timeout setting in milliseconds
+        enabled = true, -- Enable/disable autoclose feature
+      })
+      -- ft = 'qf', -- for lazy load
+      -- cmd = {'QFC'} -- for lazy load
+    end,
   },
 }
