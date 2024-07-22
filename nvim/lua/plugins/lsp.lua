@@ -37,14 +37,14 @@ return {
   { "onsails/lspkind.nvim" },
 
   -- LSP Diagnostic Virtual Text Revamped
-  {
-    "sontungexpt/better-diagnostic-virtual-text",
-    config = function(_)
-      require("better-diagnostic-virtual-text").setup({
-        inline = false,
-      })
-    end,
-  },
+  -- {
+  --   "sontungexpt/better-diagnostic-virtual-text",
+  --   config = function(_)
+  --     require("better-diagnostic-virtual-text").setup({
+  --       inline = false,
+  --     })
+  --   end,
+  -- },
 
   -- In case you dont like the above
   -- {

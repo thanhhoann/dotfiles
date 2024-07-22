@@ -34,4 +34,4 @@ require("plugins.config.obsidian")
 set_colorscheme("nightfall", true)
 
 -- Temporarily disable diagnostic virtual text for tiny-inline-diagnostic.nvim to work
-vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.config({ virtual_text = false })
